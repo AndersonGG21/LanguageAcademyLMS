@@ -18,8 +18,8 @@ public class Enrollment {
     @Id @Column(name = "code") @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int code;
 
-    @ManyToOne
-    @JoinColumn(name = "FKStudent")
-    private Student student;
+    // @ManyToOne
+    // @JoinColumn(name = "enrollStudent")
+    // private Student student;
 
 }
