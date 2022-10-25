@@ -1,7 +1,10 @@
-package com.lms.demo.models;
+package com.lms.demo;
 
 
 import javax.persistence.*;
+
+import com.lms.demo.models.Course;
+import com.lms.demo.models.Student;
 
 import lombok.*;
 
