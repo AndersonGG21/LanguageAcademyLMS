@@ -1,8 +1,7 @@
 package com.lms.demo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 import com.lms.demo.models.User;
 
@@ -13,8 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Entity
-@Table(name = "teacher")
+@Entity(name = "teachers")
 public class Teacher extends User{
     
     @Column(name = "salary")
