@@ -3,6 +3,7 @@ package com.lms.demo;
 
 import javax.persistence.*;
 
+import com.lms.demo.models.Course;
 import com.lms.demo.models.Student;
 
 import lombok.*;
@@ -21,4 +22,8 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name = "enrollmentStudent")
     private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "enrollmentCourse")
+    private Course course;
 }
