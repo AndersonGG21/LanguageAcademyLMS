@@ -1,7 +1,6 @@
 package com.lms.demo.models;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -14,7 +13,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-// @Entity(name = "users")
 @MappedSuperclass
 public class User {
 
