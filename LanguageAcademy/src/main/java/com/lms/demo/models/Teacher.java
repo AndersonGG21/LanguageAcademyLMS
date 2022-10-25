@@ -1,9 +1,7 @@
-package com.lms.demo;
+package com.lms.demo.models;
 
 
 import javax.persistence.*;
-
-import com.lms.demo.models.User;
 
 import lombok.Getter;
 import lombok.Setter;
