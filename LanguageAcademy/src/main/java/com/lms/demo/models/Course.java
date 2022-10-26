@@ -3,6 +3,8 @@ package com.lms.demo.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.*;
 
@@ -23,4 +25,8 @@ public class Course {
 
     @Column(name = "course_img")
     private String img;
+    
+    @OneToOne
+    @JoinColumn(name = "asigned_teacher")
+    private Teacher teacher;
 }

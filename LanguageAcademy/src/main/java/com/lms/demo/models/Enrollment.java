@@ -23,4 +23,6 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name = "enrollmentCourse")
     private Course course;
+    
+    
 }

@@ -1,5 +1,6 @@
+package com.lms.demo.dao;
 
-import com.lms.demo.dao.EnrollmentDAO;
+
 import java.math.BigInteger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

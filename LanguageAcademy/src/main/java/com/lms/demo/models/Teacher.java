@@ -20,4 +20,8 @@ public class Teacher extends User{
 
     @Column(name = "hiredate")
     private String hireDate;
+    
+    @ManyToOne @Id
+    @JoinColumn(name = "asigned_course")
+    private Course course;
 }   
