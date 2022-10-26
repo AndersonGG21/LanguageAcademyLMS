@@ -16,8 +16,12 @@ import lombok.*;
 @Setter
 @ToString
 @Entity(name = "subjects")
-public class Subject {
-    @Id @Column(name = "subject_name")
+public class Subject {   
+    
+    @Id @Column(name = "subject_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    @Column(name = "subject_name")
     private String name;
     
     @ManyToOne

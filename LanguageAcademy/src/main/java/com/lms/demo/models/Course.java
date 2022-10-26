@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import lombok.*;
@@ -26,7 +27,7 @@ public class Course {
     @Column(name = "course_img")
     private String img;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "asigned_teacher")
     private Teacher teacher;
 }
