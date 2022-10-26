@@ -33,7 +33,8 @@ public class CourseDAOImp implements CourseDAO {
 
     @Override
     public void deleteCourse(String courseCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Course course = entityManager.find(Course.class, courseCode);
+        entityManager.remove(course);
     }
 
     @Override
