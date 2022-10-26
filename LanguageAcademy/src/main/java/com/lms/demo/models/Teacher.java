@@ -21,7 +21,5 @@ public class Teacher extends User{
 
     @Column(name = "hiredate")
     private String hireDate;
-    
-    @OneToMany(mappedBy = "teacher")
-    private Set<Course> course;
+   
 }   
