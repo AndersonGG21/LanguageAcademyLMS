@@ -39,7 +39,7 @@ public class CourseDAOImp implements CourseDAO {
 
     @Override
     public void createCourse(Course course) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.merge(course);
     }
 
     @Override
