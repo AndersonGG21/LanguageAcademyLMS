@@ -44,7 +44,7 @@ public class CourseDAOImp implements CourseDAO {
 
     @Override
     public Course getCourse(String courseCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return entityManager.find(Course.class, courseCode);
     }
     
 }
