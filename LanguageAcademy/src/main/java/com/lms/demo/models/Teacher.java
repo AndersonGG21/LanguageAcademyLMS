@@ -1,6 +1,7 @@
 package com.lms.demo.models;
 
 
+import java.util.Set;
 import javax.persistence.*;
 
 
@@ -21,7 +22,6 @@ public class Teacher extends User{
     @Column(name = "hiredate")
     private String hireDate;
     
-    @ManyToOne @Id
-    @JoinColumn(name = "asigned_course")
-    private Course course;
+    @OneToMany(mappedBy = "teacher")
+    private Set<Course> course;
 }   
