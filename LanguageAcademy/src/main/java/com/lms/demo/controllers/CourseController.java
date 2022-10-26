@@ -6,6 +6,8 @@
 package com.lms.demo.controllers;
 
 import com.lms.demo.dao.CourseDAO;
+import com.lms.demo.models.Course;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,9 @@ public class CourseController {
     @Autowired
     private CourseDAO courseDAO;
     
-    //@GetMapping(value = "/api/courses")
+    @GetMapping(value = "/api/courses")
+    public List<Course> getAllCourse(){
+        return courseDAO.getCourses();
+    }
    
 }
