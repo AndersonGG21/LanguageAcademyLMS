@@ -26,8 +26,9 @@ public class CourseDAOImp implements CourseDAO {
     
     @Override
     public List<Course> getCourses() {
-        
-        return null;
+        String sqlQuery = "SELECT * FROM `courses`";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        return query.getResultList();
     }
 
     @Override
