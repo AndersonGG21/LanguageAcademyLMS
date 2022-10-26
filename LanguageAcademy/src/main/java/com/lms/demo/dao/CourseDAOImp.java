@@ -6,6 +6,8 @@
 package com.lms.demo.dao;
 
 import com.lms.demo.models.Course;
+import com.lms.demo.models.Teacher;
+import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -45,6 +47,13 @@ public class CourseDAOImp implements CourseDAO {
     @Override
     public Course getCourse(String courseCode) {
         return entityManager.find(Course.class, courseCode);
+    }
+
+    @Override
+    public void assignTeacher(Course course, String code) {
+        Course courseTemp = entityManager.find(Course.class, code);
+        courseTemp.setTeacher(course.getTeacher());
+        entityManager.merge(courseTemp);
     }
     
 }

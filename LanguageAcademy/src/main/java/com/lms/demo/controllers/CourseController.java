@@ -7,11 +7,14 @@ package com.lms.demo.controllers;
 
 import com.lms.demo.dao.CourseDAO;
 import com.lms.demo.models.Course;
+import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,5 +41,10 @@ public class CourseController {
     @DeleteMapping(value = "/api/courses/{code}")
     public void deleteCourse(@PathVariable String code){
         courseDAO.deleteCourse(code);
+    }
+    
+    @PatchMapping(value = "/api/courses/{code}")
+    public void assignTeacher(@RequestBody Course course, @PathVariable String code){
+        courseDAO.assignTeacher(course, code);
     }
 }

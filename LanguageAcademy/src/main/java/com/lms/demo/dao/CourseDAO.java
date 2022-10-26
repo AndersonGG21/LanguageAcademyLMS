@@ -6,6 +6,7 @@
 package com.lms.demo.dao;
 
 import com.lms.demo.models.Course;
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -18,4 +19,5 @@ public interface CourseDAO {
     void deleteCourse(String courseCode);
     void createCourse(Course course);
     Course getCourse(String courseCode);
+    void assignTeacher(Course course, String courseCode);
 }
