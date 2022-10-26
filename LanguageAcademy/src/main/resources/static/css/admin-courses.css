@@ -1,12 +1,12 @@
 
-h1{
+h2{
     color: #d90429;
-    margin-top: 50px;
+    margin: 40px;
 }
 
 .btn-primary{
-    min-width: 130px;
-    height: 40px;
+    min-width: 60px;
+    height: 30px;
     color: #fff;
     padding: 5px 10px;
     font-weight: bold;
@@ -82,4 +82,16 @@ h1{
 
 .nav-link.active{
     color: #d90429!important;
+}
+
+.card{
+    margin-left: 30px;
+    margin-bottom: 20px;
+    min-width: 90%;
+}
+
+.course-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

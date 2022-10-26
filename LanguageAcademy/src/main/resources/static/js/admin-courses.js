@@ -1,10 +1,8 @@
 $(document).ready(function () {
-    alert("siuu");
-    loadCourses();
+    // loadCourses();
 });
 
 async function loadCourses() {
-    alert("siuu");
     const request = await fetch('/api/courses', {
         method: 'GET',
         headers: {
