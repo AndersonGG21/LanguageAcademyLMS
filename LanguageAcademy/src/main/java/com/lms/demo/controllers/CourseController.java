@@ -9,6 +9,7 @@ import com.lms.demo.dao.CourseDAO;
 import com.lms.demo.models.Course;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,10 @@ public class CourseController {
     @GetMapping(value = "/api/courses/{code}" )
     public Course getCourse(@PathVariable String code){
         return courseDAO.getCourse(code);
-    } 
+    }
+    
+    @DeleteMapping(value = "/api/courses/{code}")
+    public void deleteCourse(@PathVariable String code){
+        courseDAO.deleteCourse(code);
+    }
 }
