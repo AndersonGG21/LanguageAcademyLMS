@@ -1,52 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"   integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/admin-courses.css">
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/admin-courses.css" />
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.js"
+      integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+      crossorigin="anonymous"
+    ></script>
     <title>Course | Admin</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">            
-            <img src="/imgs/white-logo.png" alt="JDAS-white-logo" class="white-logo" width="50px">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Courses</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Students</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">Teachers</a>
-              </li>
-            </ul>
-            <button class="btn btn-primary">Logout</button>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="/imgs/white-logo.png"
+            alt="JDAS-white-logo"
+            class="white-logo"
+            width="50px"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Courses</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Teachers</a>
+            </li>
+          </ul>
+          <button class="btn btn-primary">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <h2 style="display: inline-block">Courses</h2>
+    <button class="btn btn-insert" style="display: inline-block">
+      Add a new course
+    </button>
+
+    <div
+      class="course-container container-fluid scale-up-horizontal-left"
+      id="prueba"
+    >
+      <div class="card" style="width: 18rem">
+        <div class="card-left">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/imgs/ena1.png"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Englis A1</h5>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad magnam, dolorum vel, doloribus, dolores numquam repellat porro sit iste deleniti nemo quod. Iure magni et ad minima natus aliquam? Asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Fugiat aut obcaecati officia sunt libero autem facere!
+                  Explicabo, pariatur nam asperiores dolore exercitationem,
+                  fugiat necessitatibus aperiam, minus debitis labore magni.
+                  Commodi.
+                </p>
+                <span class="teacher">
+                  <b>Teacher:</b>
+                  <span>Not assigned</span>
+                </span>
+
+                <button class="btn btn-primary">Assign a Teacher</button>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
-      
-    <h2>Listado de cursos</h2>
+        <div class="card-right">
+          <div class="subject-container">
+            <h6><b>Subjects:</b></h6>
+            <ul class="list-group">
+              <li class="list-group-item">Grammar</li>
+              <li class="list-group-item">Listening</li>
+              <li class="list-group-item">Reading</li>
+              <li class="list-group-item">Speaking</li>
+              <li class="list-group-item">Writing</li>
+            </ul>
+            <a href="">Add a subject</a>
+          </div>   
+          <div class="information">
+            
+          </div>       
+        </div>
+      </div>
 
-    <div class="course-container container-fluid" id="prueba">
-        
+      <div class="card" style="width: 18rem">
+        <div class="card-left">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/imgs/ena1.png"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Englis A1</h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Fugiat aut obcaecati officia sunt libero autem facere!
+                  Explicabo, pariatur nam asperiores dolore exercitationem,
+                  fugiat necessitatibus aperiam, minus debitis labore magni.
+                  Commodi.
+                </p>
+                <span class="teacher">
+                  <b>Teacher:</b>
+                  <span>Not assigned</span>
+                </span>
+
+                <button class="btn btn-primary">Assign a Teacher</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-right">
+          <h6><b>Subjects:</b></h6>
+          <ul class="list-group">
+            <li class="list-group-item">Grammar</li>
+            <li class="list-group-item">Listening</li>
+            <li class="list-group-item">Reading</li>
+            <li class="list-group-item">Speaking</li>
+            <li class="list-group-item">Writing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem">
+        <div class="card-left">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/imgs/ena1.png"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Englis A1</h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Fugiat aut obcaecati officia sunt libero autem facere!
+                  Explicabo, pariatur nam asperiores dolore exercitationem,
+                  fugiat necessitatibus aperiam, minus debitis labore magni.
+                  Commodi.
+                </p>
+                <span class="teacher">
+                  <b>Teacher:</b>
+                  <span>Not assigned</span>
+                </span>
+
+                <button class="btn btn-primary">Assign a Teacher</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-right">
+          <h6><b>Subjects:</b></h6>
+          <ul class="list-group">
+            <li class="list-group-item">Grammar</li>
+            <li class="list-group-item">Listening</li>
+            <li class="list-group-item">Reading</li>
+            <li class="list-group-item">Speaking</li>
+            <li class="list-group-item">Writing</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
     <script src="/js/admin-courses.js"></script>
 
     <!-- Jquery CDN -->
-    
-
-</body>
+  </body>
 </html>
