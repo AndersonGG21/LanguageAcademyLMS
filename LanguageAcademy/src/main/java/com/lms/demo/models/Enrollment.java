@@ -24,5 +24,8 @@ public class Enrollment {
     @JoinColumn(name = "enrollmentCourse")
     private Course course;
     
+    @ManyToOne
+    @JoinColumn(name = "enrollmentGroup")
+    private Group group;
     
 }

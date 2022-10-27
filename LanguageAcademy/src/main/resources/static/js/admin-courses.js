@@ -51,6 +51,5 @@ async function loadCourses() {
         list += card;
     }
 
-
     document.getElementById('prueba').innerHTML = list;
 }
