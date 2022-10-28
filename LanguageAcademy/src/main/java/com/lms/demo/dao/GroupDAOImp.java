@@ -36,9 +36,10 @@ public class GroupDAOImp implements GroupDAO {
     public void createGroup(Group group) {
         entityManager.merge(group);
     }
-
+    
     @Override
     public void deletGroup(String groupCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Group group = entityManager.find(Group.class, groupCode);
+        entityManager.remove(group);
     }
 }
