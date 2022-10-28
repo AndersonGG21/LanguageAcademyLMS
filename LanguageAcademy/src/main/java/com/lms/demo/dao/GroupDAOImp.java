@@ -29,7 +29,7 @@ public class GroupDAOImp implements GroupDAO {
 
     @Override
     public Group getGroup(String groupCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return entityManager.find(Group.class, groupCode);
     }
 
     @Override
