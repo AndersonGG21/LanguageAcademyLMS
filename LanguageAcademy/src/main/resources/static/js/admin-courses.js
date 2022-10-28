@@ -28,7 +28,7 @@ async function loadCourses() {
                         <h5 class='card-title' style='display: inline-block;'>"+iterator[3]+"</h5>\n\
                         <a href='https://www.politecnicojic.edu.co/images/downloads/facultades/ingenieria/programa-ingenieria-informatica-plan-10.jpg' target='_blank' rel='noopener noreferrer' style='display: inline-block; margin-left: 10px;'>(See the content of this course)</a>\n\
                         <p class='card-text'>"+iterator[1]+"</p>\n\
-                        <span class='teacher'><b>Teacher ID:</b><span>"+iterator[4]+"</span></span>\n\
+                        <span class='teacher'><b>Teacher ID:</b><span>"+iterator[3]+"</span></span>\n\
                         <button class='btn btn-primary' onclick=assignTeacher()>Assign a Teacher</button>\n\
                         </div>\n\
                         </div>\n\
@@ -55,7 +55,7 @@ async function loadCourses() {
 }
 
 async function assignTeacher(){
-    alert("Siuu");
+    
     let teacher = {
         id:21556089
     }
