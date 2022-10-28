@@ -63,6 +63,8 @@ async function assignTeacher(id){
         id:21556089
     }
     
+    console.log(teacher);
+    
     const request = await fetch('/api/groups/' + id, {
         method: 'PATCH',
         headers: {
