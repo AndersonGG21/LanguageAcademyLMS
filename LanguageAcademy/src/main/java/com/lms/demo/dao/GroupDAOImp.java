@@ -19,11 +19,13 @@ public class GroupDAOImp implements GroupDAO {
 
     @Autowired
     private EntityManager entityManager;
-
+    
     @Override
     public List<Group> getGroups() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        String sqlQuery = "SELECT * FROM `groups` WHERE 1";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        return query.getResultList();
+    }    
 
     @Override
     public Group getGroup(String groupCode) {
@@ -39,6 +41,4 @@ public class GroupDAOImp implements GroupDAO {
     public void deletGroup(String groupCode) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 }
