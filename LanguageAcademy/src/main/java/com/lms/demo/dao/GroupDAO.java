@@ -5,10 +5,17 @@
  */
 package com.lms.demo.dao;
 
+import com.lms.demo.models.Group;
+import java.util.List;
+
 /**
  *
  * @author Anderson
  */
 public interface GroupDAO {
-    
+    List<Group> getGroups();
+    Group getGroup(String groupCode);
+    void createGroup(Group group);
+    void deletGroup(String groupCode);
+    List<Group> getGroupsByCourse(String courseCode);
 }

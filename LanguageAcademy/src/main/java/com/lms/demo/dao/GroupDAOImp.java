@@ -9,12 +9,16 @@ import com.lms.demo.models.Group;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Anderson
  */
+@Repository
+@Transactional
 public class GroupDAOImp implements GroupDAO {
 
     @Autowired
