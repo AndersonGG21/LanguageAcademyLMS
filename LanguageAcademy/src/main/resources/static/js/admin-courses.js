@@ -65,19 +65,21 @@ async function assignTeacher(id){
     
     console.log(teacher);
     
-    // const request = await fetch('/api/groups/' + 'GP001', {
-    //     method: 'PATCH',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         teacher
-    //     })
-    // });
+    const request = await fetch('/api/groups/' + 'GP001', {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            teacher
+        })
+    });
+
+    $("#table-responsive").load(" #table-responsive");
 }
 
-function createCourse(){
+async function createCourse(){
     
     let data={};
     data.name = document.getElementById("recipient-name").value;
@@ -99,5 +101,4 @@ function createCourse(){
         })
     });
 
-    $("#table-responsive").load(" #table-responsive");
 }
