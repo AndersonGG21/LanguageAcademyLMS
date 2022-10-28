@@ -34,7 +34,7 @@ public class GroupDAOImp implements GroupDAO {
 
     @Override
     public void createGroup(Group group) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.merge(group);
     }
 
     @Override
