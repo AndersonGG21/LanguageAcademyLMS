@@ -42,4 +42,11 @@ public class GroupDAOImp implements GroupDAO {
         Group group = entityManager.find(Group.class, groupCode);
         entityManager.remove(group);
     }
+
+    @Override
+    public List<Group> getGroupsByCourse(String courseCode) {
+        String sqlQuery = "SELECT * FROM `groups` g WHERE g.course = ?";
+        Query query = entityManager.createNativeQuery(sqlQuery).setParameter(1, courseCode);
+        return query.getResultList();
+    }
 }
