@@ -77,7 +77,7 @@ async function assignTeacher(id){
     // });
 }
 
-function createCourse(){
+async function createCourse(){
     
     let data={};
     data.name = document.getElementById("recipient-name").value;
