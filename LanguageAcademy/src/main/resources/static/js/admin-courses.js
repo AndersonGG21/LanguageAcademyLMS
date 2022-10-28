@@ -17,7 +17,6 @@ async function loadGroups(course) {
         trs += item;
     }
     document.getElementById('groupTableBody').innerHTML = trs;
-    
     console.log(groupsHTML);
 }
 async function loadCourses() {
