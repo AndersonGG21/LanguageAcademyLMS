@@ -19,5 +19,4 @@ public interface CourseDAO {
     void deleteCourse(String courseCode);
     void createCourse(Course course);
     Course getCourse(String courseCode);
-    void assignTeacher(Course course, String courseCode);
 }

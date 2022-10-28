@@ -1,5 +1,6 @@
 package com.lms.demo.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import lombok.*;
 
@@ -11,9 +12,19 @@ import lombok.*;
 @Setter
 @ToString
 @Entity(name = "groups")
-public class Group {
+public class Group{
     
-    @Id @Column(name = "group_name")
+    @Id @Column(name = "group_code")
+    private String groupCode;
+    
+    @Column(name = "group_name")
     private String groupName;
     
+    @ManyToOne
+    @JoinColumn(name = "asigned_teacher")
+    private Teacher teacher;
+    
+    @ManyToOne
+    @JoinColumn(name = "course")
+    private Course course;
 }

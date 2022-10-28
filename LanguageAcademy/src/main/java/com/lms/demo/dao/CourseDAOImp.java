@@ -49,11 +49,5 @@ public class CourseDAOImp implements CourseDAO {
         return entityManager.find(Course.class, courseCode);
     }
 
-    @Override
-    public void assignTeacher(Course course, String code) {
-        Course courseTemp = entityManager.find(Course.class, code);
-        courseTemp.setTeacher(course.getTeacher());
-        entityManager.merge(courseTemp);
-    }
     
 }

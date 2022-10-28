@@ -43,8 +43,4 @@ public class CourseController {
         courseDAO.deleteCourse(code);
     }
     
-    @PatchMapping(value = "/api/courses/{code}")
-    public void assignTeacher(@RequestBody Course course, @PathVariable String code){
-        courseDAO.assignTeacher(course, code);
-    }
 }

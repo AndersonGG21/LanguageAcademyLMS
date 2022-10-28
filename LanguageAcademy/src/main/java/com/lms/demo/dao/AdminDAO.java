@@ -5,12 +5,14 @@
  */
 package com.lms.demo.dao;
 
-import java.math.BigInteger;
+import com.lms.demo.models.Group;
+
+
 
 /**
  *
  * @author Anderson
  */
 public interface AdminDAO {
-    void assignTeacher(BigInteger id);
+    void assignTeacher(Group group, String gpCode);
 }
