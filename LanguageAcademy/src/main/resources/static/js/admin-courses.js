@@ -65,6 +65,29 @@ async function assignTeacher(id){
     
     console.log(teacher);
     
+    // const request = await fetch('/api/groups/' + 'GP001', {
+    //     method: 'PATCH',
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //         teacher
+    //     })
+    // });
+}
+
+function createCourse(){
+    
+    let data={};
+    data.name = document.getElementById("recipient-name").value;
+    data.image = document.getElementById("recipient-Image").value;
+    data.description = document.getElementById("message-Description").value;
+
+    
+    let btnClose=document.getElementById("btnClose");
+    btnClose.click();
+
     const request = await fetch('/api/groups/' + id, {
         method: 'PATCH',
         headers: {
