@@ -6,6 +6,7 @@
 package com.lms.demo.controllers;
 
 import com.lms.demo.dao.AdminDAO;
+import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,11 @@ public class AdminController {
         System.out.println("Grupo(Body):" + group.toString());
         adminDAO.assignTeacher(group,idGroup);
     }
+ 
+    @RequestMapping(value = "api/groups", method = RequestMethod.POST)
+    public void registerSale(@RequestBody Course course){ 
+        adminDAO.regCourse(course);
+    }
+    
+    
 }
