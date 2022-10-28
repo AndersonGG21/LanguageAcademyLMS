@@ -80,3 +80,16 @@ async function assignTeacher(id){
     //     })
     // });
 }
+
+function createCourse(){
+    
+    let data={};
+    data.name = document.getElementById("recipient-name").value;
+    data.image = document.getElementById("recipient-Image").value;
+    data.description = document.getElementById("message-Description").value;
+
+    
+    let btnClose=document.getElementById("btnClose");
+    btnClose.click();
+
+}
