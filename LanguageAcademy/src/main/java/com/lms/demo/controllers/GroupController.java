@@ -9,8 +9,11 @@ import com.lms.demo.dao.GroupDAO;
 import com.lms.demo.models.Group;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -31,5 +34,15 @@ public class GroupController {
     @GetMapping(value = "api/groups/{course}")
     public List<Group> getGroupsByCourse(@PathVariable String course){
         return groupDAO.getGroupsByCourse(course);
+    }
+    
+    @DeleteMapping(value = "api/groups/{group}")
+    public void deleteGroup(@PathVariable String group){
+        groupDAO.deletGroup(group);
+    }
+    
+    @PostMapping(value = "api/groups")
+    public void createGroup(@RequestBody Group group){
+        groupDAO.createGroup(group);
     }
 }
