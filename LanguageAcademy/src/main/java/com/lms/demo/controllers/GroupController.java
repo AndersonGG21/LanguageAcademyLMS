@@ -10,6 +10,7 @@ import com.lms.demo.models.Group;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,5 +26,10 @@ public class GroupController {
     @GetMapping(value = "/api/groups")
     public List<Group> getGroups(){
         return groupDAO.getGroups();
+    }
+    
+    @GetMapping(value = "api/groups/{course}")
+    public List<Group> getGroupsByCourse(@PathVariable String course){
+        return groupDAO.getGroupsByCourse(course);
     }
 }
