@@ -120,7 +120,23 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              ...
+                <form>
+                    <div class="mb-3">
+                      <label for="groupCodeInput" class="form-label">Group Code</label>
+                      <input type="text" class="form-control" id="groupCodeInput" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="groupNameInput" class="form-label">Group Name</label>
+                      <input type="text" class="form-control" id="groupNameInput">
+                    </div>
+                    <label for="selectTeacher">Select a Teacher</label>
+                    <select class="form-select" aria-label="Default select example" id="selectTeacher">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                  </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -65,7 +65,7 @@ async function assignTeacher(id){
     
     console.log(teacher);
     
-    const request = await fetch('/api/groups/' + 'GP001', {
+    const request = await fetch('/api/groups/' + id, {
         method: 'PATCH',
         headers: {
             'Accept': 'application/json',

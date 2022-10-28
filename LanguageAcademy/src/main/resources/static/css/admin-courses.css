@@ -187,3 +187,7 @@ a:hover{
   display: flex;
   /* flex-direction: column; */
 }
+
+form label{
+  color: #d90429;
+}
