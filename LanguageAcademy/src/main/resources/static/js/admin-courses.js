@@ -2,7 +2,23 @@ $(document).ready(function () {
     loadCourses();
 });
 
-
+async function loadGroups(course) {
+    const groupRequest = await fetch('/api/groups/' + course ,{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+    const groupsHTML = await groupRequest.json();
+    let trs = '';
+    for (const iterator of groupsHTML) {
+        let item = "<tr><td>"+iterator[0]+"</td><td>"+iterator[1]+"</td><td>"+iterator[2]+"</td><td><button class= 'btn btn.edit'onclick=assignTeacher('"+iterator[0]+"')><i class='bi bi-pen'></i></button></td></tr>"
+        trs += item;
+    }
+    document.getElementById('groupTableBody').innerHTML = trs;
+    console.log(groupsHTML);
+}
 async function loadCourses() {
     const request = await fetch('/api/courses', {
         method: 'GET',
@@ -13,25 +29,6 @@ async function loadCourses() {
     });
 
     const coursesHTML = await request.json();
-    console.log(coursesHTML);
-
-    const groupRequest = await fetch('/api/groups/ENG001',{
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    });
-
-    const groupsHTML = await groupRequest.json();
-    console.log(groupsHTML);
-
-    let trs = '';
-    for (const iterator of groupsHTML) {
-        let item = "<tr><td>"+iterator[0]+"</td><td>"+iterator[1]+"</td><td>"+iterator[2]+"</td><td><button onclick=alert('"+iterator[0]+"')>Ola</button></td></tr>"
-        trs += item;
-    }
-    
     
     let list = '';
 
@@ -48,7 +45,7 @@ async function loadCourses() {
                         <a href='https://www.politecnicojic.edu.co/images/downloads/facultades/ingenieria/programa-ingenieria-informatica-plan-10.jpg' target='_blank' rel='noopener noreferrer' style='display: inline-block; margin-left: 10px;'>(See the pensum of this course)</a>\n\
                         <p class='card-text'>"+iterator[1]+"</p>\n\
                         <h6>Actions:</h6>\n\
-                        <button class='btn btn-danger' style='width: 200px;'>Groups</button>\n\
+                        <button class='btn btn-danger' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample' onclick=loadGroups('"+iterator[0]+"')>Groups</button>\n\
                         <button class='btn btn-dark' style='width: 200px;'>Subjects</button>\n\
                         </div>\n\
                         </div>\n\
@@ -61,22 +58,47 @@ async function loadCourses() {
 }
 
 async function assignTeacher(id){
-    alert(id);
     
-    // let teacher = {
-    //     id:21556089
-    // }
+    let teacher = {
+        id:21556089
+    }
     
-    // console.log(teacher);
+    console.log(teacher);
     
-    // const request = await fetch('/api/groups/' + 'GP001', {
-    //     method: 'PATCH',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         teacher
-    //     })
-    // });
+    const request = await fetch('/api/groups/' + 'GP001', {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            teacher
+        })
+    });
+
+    $("#table-responsive").load(" #table-responsive");
+}
+
+async function createCourse(){
+    
+    let data={};
+    data.name = document.getElementById("recipient-name").value;
+    data.image = document.getElementById("recipient-Image").value;
+    data.description = document.getElementById("message-Description").value;
+
+    
+    let btnClose=document.getElementById("btnClose");
+    btnClose.click();
+
+    const request = await fetch('/api/groups/' + id, {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            teacher
+        })
+    });
+
 }
