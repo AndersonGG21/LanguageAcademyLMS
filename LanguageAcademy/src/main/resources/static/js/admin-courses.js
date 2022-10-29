@@ -13,14 +13,20 @@ async function createCourse(){
     if (data.name===""|| data.name===" "){
         condicion=false;
         document.getElementById("conditionName").classList.add('conditionColor');
+    }else{
+        document.getElementById("conditionName").classList.remove('conditionColor');
     }
     if (data.img===""||data.img===" "){
         condicion=false;
         document.getElementById("conditionImage").classList.add('conditionColor');
+    }else{
+        document.getElementById("conditionImage").classList.remove('conditionColor');
     }
     if (data.desc===""||data.desc===" "){
         condicion=false;
-        document.getElementById("conditionDescription").classList.add('conditionColor')
+        document.getElementById("conditionDescription").classList.add('conditionColor');
+    }else{
+        document.getElementById("conditionDescription").classList.remove('conditionColor');
     }
     if(condicion){
         const request = await fetch('/api/groups/' + id, {
