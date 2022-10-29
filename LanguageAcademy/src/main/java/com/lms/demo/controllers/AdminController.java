@@ -36,10 +36,11 @@ public class AdminController {
         adminDAO.assignTeacher(group,idGroup);
     }
  
+    /*
     @RequestMapping(value = "/api/courses", method = RequestMethod.POST)
     public void createCourse(@RequestBody Course course){ 
         adminDAO.regCourse(course);
-    }
+    }*/
     
     @GetMapping(value = "/api/teachers/{courseCode}")
     public List<Teacher> getTeachersName(@PathVariable String courseCode){

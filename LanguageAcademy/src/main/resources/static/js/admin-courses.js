@@ -46,13 +46,51 @@ async function loadCourses() {
                         <p class='card-text'>"+iterator[1]+"</p>\n\
                         <h6>Actions:</h6>\n\
                         <button class='btn btn-danger' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample' onclick=loadGroups('"+iterator[0]+"')>Groups</button>\n\
-                        <button class='btn btn-dark' style='width: 200px;'>Subjects</button>\n\
+                        <button class='btn btn-dark' style='width: 200px;' data-bs-toggle='modal' data-bs-target='#Modal"+iterator[0]+"' data-bs-whatever='@mdo'>Subjects</button>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
                 </div>";
         list += card;
+        let modalCourse="<div class='modal fade' id='Modal"+iterator[0]+"' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>\n\
+            <div class='modal-dialog'>\n\
+            <div class='modal-content'>\n\
+            <div class='modal-header'>\n\
+                <h1 class='modal-title fs-5' id='exampleModalLabel'>Course material-"+iterator[3]+"</h1>\n\
+            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>\n\
+            </div>\n\
+            <div class='modal-body'>\n\
+                <form>\n\
+                <div class='mb-3'>\n\
+                    <label for='recipient-name' class='col-form-label'>Grammar</label>\n\
+                    <input type='file' accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-Grammar'>\n\
+                </div>\n\
+                <div class='mb-3'>\n\
+                    <label for='recipient-name' class='col-form-label'>Listening</label>\n\
+                    <input type='text' class='form-control' id='recipient-Listening'>\n\
+                </div>\n\
+                <div class='mb-3'>\n\
+                    <label for='recipient-name' class='col-form-label'>Reading</label>\n\
+                    <input type='file' accept='application/pdf,application/vnd.ms-excel'class='form-control' id='recipient-Reading'>\n\
+                </div>\n\
+                <div class='mb-3'>\n\
+                    <label for='recipient-name' class='col-form-label'>Writing</label>\n\
+                    <input type='file' accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-Writing'>\n\
+                </div>\n\
+                </form>\n\
+            </div>\n\
+            <div class='modal-footer'>\n\
+                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'id='btnClose'>Close</button>\n\
+                <button type='button' class='btn btn-primary' onClick='createCourseMaterial()'>Course material</button>\n\
+            </div>\n\
+            </div>\n\
+        </div>\n\
+        </div>";
+        list += modalCourse;
+        console.log(iterator);
+        console.log(iterator[0]);
+        console.log("-----------------------");
     }
     document.getElementById('prueba').innerHTML = list;
 }
@@ -82,23 +120,27 @@ async function assignTeacher(id){
 async function createCourse(){
     
     let data={};
+    data.code=Date.now().toString();
     data.name = document.getElementById("recipient-name").value;
-    data.image = document.getElementById("recipient-Image").value;
-    data.description = document.getElementById("message-Description").value;
+    data.img = document.getElementById("recipient-Image").value;
+    data.desc = document.getElementById("message-Description").value;
 
     
     let btnClose=document.getElementById("btnClose");
     btnClose.click();
 
-    const request = await fetch('/api/groups/' + id, {
-        method: 'PATCH',
+    console.log(data);
+    const request = await fetch('/api/courses', {
+        method: 'POST',
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       
         },
-        body: JSON.stringify({
-            teacher
-        })
-    });
+        body: JSON.stringify(data)
+      });
 
+}
+function createCourseMaterial(){
+    alert("Vamos que vamos")
 }
