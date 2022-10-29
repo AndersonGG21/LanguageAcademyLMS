@@ -25,13 +25,13 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "roleName")
+    @Column(name = "role_name")
     private String roleName;
     
 }
