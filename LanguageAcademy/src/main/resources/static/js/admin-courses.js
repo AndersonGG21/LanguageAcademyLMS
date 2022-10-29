@@ -3,57 +3,32 @@ $(document).ready(function () {
 });
 
 async function createCourse(){
-    
+    let condicion=true;
     let data={};
+    data.code=Date.now().toString();
     data.name = document.getElementById("recipient-name").value;
-    data.image = document.getElementById("recipient-Image").value;
-    data.description = document.getElementById("message-Description").value;
-
-    
-    let btnClose=document.getElementById("btnClose");
-    btnClose.click();
-
-    const request = await fetch('/api/groups/' + id, {
-        method: 'PATCH',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            teacher
-        })
-    });
-}
-
-async function getTeachersName() {
-    alert(courseCode)
-    // const request = await fetch('/api/teachers/' + courseCode ,{
-    //     method: 'GET',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     }
-    // });
-    // let teachersHTML = await request.json();
-    // console.log(teachersHTML);
-    // let options = '';
-    // for (const iterator of teachersHTML) {
-    //     let option = "<option>"+iterator+"</option>";
-    //     options += option;
-    // }
-
-    
+    data.img = document.getElementById("recipient-Image").value;
+    data.desc = document.getElementById("message-Description").value;
+    console.log(data);
     if (data.name===""|| data.name===" "){
         condicion=false;
         document.getElementById("conditionName").classList.add('conditionColor');
+    }else{
+        document.getElementById("conditionName").classList.remove('conditionColor');
     }
+
     if (data.img===""||data.img===" "){
         condicion=false;
         document.getElementById("conditionImage").classList.add('conditionColor');
+    }else{
+        document.getElementById("conditionImage").classList.remove('conditionColor');
     }
+
     if (data.desc===""||data.desc===" "){
         condicion=false;
         document.getElementById("conditionDescription").classList.add('conditionColor');
+    }else{
+        document.getElementById("conditionDescription").classList.remove('conditionColor');
     }
     if(condicion){
         const request = await fetch('/api/courses', {
@@ -65,18 +40,22 @@ async function getTeachersName() {
             },
             body: JSON.stringify(data)
         });
-        let btnClose=document.getElementById("btnClose");
         cleanModalBtn();
+        let btnClose=document.getElementById("btnClose");
         btnClose.click();
-
+    
     }else{
         document.getElementById("wrongData").classList.remove('conditionDescriptionDisplay');
     }
+    
+    
+}
 
-}
-function createCourseMaterial(){
-    alert("Vamos que vamos")
-}
+
+async function createCourseMaterial(){
+    alert("lll");
+    
+}  
 function cleanModalBtn(){
     document.getElementById("conditionName").classList.remove('conditionColor');
     document.getElementById("conditionImage").classList.remove('conditionColor');
