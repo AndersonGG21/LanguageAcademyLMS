@@ -8,7 +8,9 @@ package com.lms.demo.controllers;
 import com.lms.demo.dao.AdminDAO;
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
+import com.lms.demo.models.Teacher;
 import java.math.BigInteger;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -34,9 +36,14 @@ public class AdminController {
         adminDAO.assignTeacher(group,idGroup);
     }
  
-    @RequestMapping(value = "api/groups", method = RequestMethod.POST)
-    public void registerSale(@RequestBody Course course){ 
+    @RequestMapping(value = "/api/courses", method = RequestMethod.POST)
+    public void createCourse(@RequestBody Course course){ 
         adminDAO.regCourse(course);
+    }
+    
+    @GetMapping(value = "/api/teachers/{courseCode}")
+    public List<Teacher> getTeachersName(@PathVariable String courseCode){
+        return adminDAO.getTeachersName(courseCode);
     }
     
     

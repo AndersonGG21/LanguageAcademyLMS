@@ -7,8 +7,11 @@ package com.lms.demo.dao;
 
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
+import com.lms.demo.models.Teacher;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
@@ -36,7 +39,13 @@ public class AdminDAOImp implements AdminDAO{
     public void regCourse(Course course) {
         entityManager.merge(course);
     }
-    
-   
+
+    @Override
+    public List<Teacher> getTeachersName(String courseCode){
+        String sqlQuery = "SELECT DISTINCT t.name FROM groups g INNER JOIN teachers t WHERE g.course = ?";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, courseCode);
+        return query.getResultList();
+    }   
     
 }
