@@ -5,12 +5,13 @@
  */
 package com.lms.demo.dao;
 
+import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+
 
 /**
  *
@@ -30,5 +31,12 @@ public class AdminDAOImp implements AdminDAO{
         System.out.println("Grupo:"+ temp.toString());
         entityManager.merge(temp);
     }
+    
+    @Override
+    public void regCourse(Course course) {
+        entityManager.merge(course);
+    }
+    
+   
     
 }
