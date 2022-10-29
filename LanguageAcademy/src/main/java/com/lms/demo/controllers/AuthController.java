@@ -15,6 +15,7 @@ import com.lms.demo.models.User;
 import com.lms.demo.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +38,14 @@ public class AuthController {
     @Autowired
     private JWTUtil jwtutil;
     
-    @GetMapping(value = "/api/login")
-    public String login(@RequestBody User Admin){
-        return "Hola";
+    @PostMapping(value = "/api/login")
+    public String login(@RequestBody Admin admin){
+        Admin logged = adminDAO.getAdminByCr(admin);
+        
+        if(logged != null){
+            return jwtutil.create(admin.getId(), admin.getEmail());
+        }
+        
+        return "FAIL";
     }
 }
