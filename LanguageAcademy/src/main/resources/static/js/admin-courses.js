@@ -2,7 +2,16 @@ $(document).ready(function () {
     loadCourses();
 });
 
+let groupCode;
+
+
+function setGroupCode(code) {
+    groupCode = code;
+    getTeachers();
+}
+
 async function loadGroups(course) {
+    // courseCode = course;
     const groupRequest = await fetch('/api/groups/' + course ,{
         method: 'GET',
         headers: {
@@ -13,12 +22,12 @@ async function loadGroups(course) {
     const groupsHTML = await groupRequest.json();
     let trs = '';
     for (const iterator of groupsHTML) {
-        let item = "<tr><td>"+iterator[0]+"</td><td>"+iterator[1]+"</td><td>"+iterator[2]+"</td><td><button class= 'btn btn.edit'onclick=assignTeacher('"+iterator[0]+"')><i class='bi bi-pen'></i></button></td></tr>"
+        let item = "<tr><td>"+iterator[0]+"</td><td>"+iterator[1]+"</td><td>"+iterator[2]+"</td><td><button class= 'btn btn.edit' data-bs-toggle='modal' data-bs-target='#teacherModal' onclick=setGroupCode('"+iterator[0]+"')><i class='bi bi-pen'></i></button></td></tr>"
         trs += item;
     }
     document.getElementById('groupTableBody').innerHTML = trs;
-    console.log(groupsHTML);
 }
+
 async function loadCourses() {
     const request = await fetch('/api/courses', {
         method: 'GET',
@@ -57,15 +66,12 @@ async function loadCourses() {
     document.getElementById('prueba').innerHTML = list;
 }
 
-async function assignTeacher(id){
-    
+async function assignTeacher(groupCode, idTeacher){
     let teacher = {
-        id:21556089
+        id: idTeacher
     }
     
-    console.log(teacher);
-    
-    const request = await fetch('/api/groups/' + id, {
+    const request = await fetch('/api/groups/' + groupCode, {
         method: 'PATCH',
         headers: {
             'Accept': 'application/json',
@@ -75,8 +81,41 @@ async function assignTeacher(id){
             teacher
         })
     });
+}
 
-    $("#table-responsive").load(" #table-responsive");
+async function getTeachers() {
+    const request = await fetch('/api/teachers/', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+
+    let resp = await request.json();
+    
+    let options = "<option>Please select a teacher:</option>";
+    for (const iterator of resp) {
+        const iterator1 = iterator.join(' - ')
+        let option = "<option>"+iterator1+"</option>";
+        options+= option;
+    }
+
+    document.getElementById("selectTeacher").innerHTML = options;
+    document.getElementById("selectTeacherName").innerHTML = options;
+}
+
+async function prueba() {
+    const splitted = $("#selectTeacher :selected").text().split(" - ");
+    if (splitted == '' || splitted == 'Please select a teacher:') {
+        alert("Esoge un teacher");
+    }else{
+        alert("Correcto Pai")
+        assignTeacher(groupCode, splitted[0]);
+        location.reload();
+        
+        
+    }
 }
 
 async function createCourse(){
@@ -100,5 +139,24 @@ async function createCourse(){
             teacher
         })
     });
-
 }
+
+async function getTeachersName() {
+    alert(courseCode)
+    // const request = await fetch('/api/teachers/' + courseCode ,{
+    //     method: 'GET',
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     }
+    // });
+    // let teachersHTML = await request.json();
+    // console.log(teachersHTML);
+    // let options = '';
+    // for (const iterator of teachersHTML) {
+    //     let option = "<option>"+iterator+"</option>";
+    //     options += option;
+    // }
+
+    // document.getElementById("selectTeacherName").innerHTML = options;
+}    
