@@ -1,6 +1,9 @@
 $(document).ready(function () {
     loadStudents();
 });
+
+let studentsToModify;
+
 async function loadStudents() {
 
     const request = await fetch('api/students', {
