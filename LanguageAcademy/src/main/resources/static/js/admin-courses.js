@@ -119,5 +119,13 @@ async function createSubjects(idCourse,name){
     SubjectGram.course=idCourse;
     // SubjectGram.id=22;
     console.log(SubjectGram);
-
+    
+    const request = await fetch('/api/subjects', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(SubjectGram)
+    });
 }
