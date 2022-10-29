@@ -126,15 +126,15 @@ async function createCourse(){
     data.desc = document.getElementById("message-Description").value;
 
     
-    if (data.name===""){
+    if (data.name===""|| data.name===" "){
         condicion=false;
         document.getElementById("conditionName").classList.add('conditionColor');
     }
-    if (data.img===""){
+    if (data.img===""||data.img===" "){
         condicion=false;
         document.getElementById("conditionImage").classList.add('conditionColor');
     }
-    if (data.desc===""){
+    if (data.desc===""||data.desc===" "){
         condicion=false;
         document.getElementById("conditionDescription").classList.add('conditionColor');
     }
