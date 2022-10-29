@@ -57,7 +57,7 @@ async function createCourseMaterial(){
         }
     });
     const coursesHTML = await request.json();
-    console.log(coursesHTML);
+    // console.log(coursesHTML);
     let list = '';
 
     for (const iterator of coursesHTML) {
@@ -112,7 +112,7 @@ async function createCourseMaterial(){
             </form>\n\
             </div>\n\
         <div class='modal-footer'>\n\
-            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose' onclick='cleanModalBtn()'>Close</button>\n\
+            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose'>Close</button>\n\
             <button type='button' class='btn btn-primary' onClick='createCourse()' >Create scourse material</button>\n\
         </div>\n\
         </div>\n\

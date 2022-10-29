@@ -55,7 +55,7 @@ async function loadCourses() {
                         <p class='card-text'>"+iterator[1]+"</p>\n\
                         <h6>Actions:</h6>\n\
                         <button class='btn btn-danger' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample' onclick=loadGroups('"+iterator[0]+"')>Groups</button>\n\
-                        <button class='btn btn-dark' style='width: 200px;'>Subjects</button>\n\
+                        <button class='btn btn-dark' style='width: 200px;' data-bs-toggle='modal' data-bs-target='#ModalCourse"+iterator[0]+"' data-bs-whatever='@mdo'>Subjects</button>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
