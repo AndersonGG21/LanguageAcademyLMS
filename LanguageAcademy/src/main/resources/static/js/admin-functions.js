@@ -124,7 +124,7 @@ async function createGroup() {
         let teacher = {
             id : splitted[0],
         }
-        alert(courseCode)
+    
         let course ={
             code : courseCode
         }

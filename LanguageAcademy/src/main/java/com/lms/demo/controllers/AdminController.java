@@ -10,6 +10,9 @@ import com.lms.demo.models.Admin;
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Teacher;
+import com.lms.demo.models.User;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +48,12 @@ public class AdminController {
         return adminDAO.getTeachersName(courseCode);
     }
     
+    @PostMapping(value = "/api/admins")
+    public void registerAdmin(@RequestBody Admin admin){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash = argon2.hash(1, 1024, 1, admin.getPassword());
+        admin.setPassword(hash);
+        System.out.println("AdminBody:" + admin.toString());
+        adminDAO.registerAdmin(admin);
+    }
 }

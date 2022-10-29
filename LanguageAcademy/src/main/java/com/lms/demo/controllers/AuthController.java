@@ -37,15 +37,23 @@ public class AuthController {
     
     @Autowired
     private JWTUtil jwtutil;
+            
+    @GetMapping(value = "/api/logint")
+    public Admin getAdminByCr(@RequestBody Admin admin){
+        System.out.println(admin.toString());
+        return adminDAO.getAdminByCr(admin);
+    }
     
     @PostMapping(value = "/api/login")
     public String login(@RequestBody Admin admin){
         Admin logged = adminDAO.getAdminByCr(admin);
-        
+        System.out.println("AdminBody: " + logged.toString());
+        System.out.println("AdminPass" + admin.getPassword());
         if(logged != null){
             return jwtutil.create(admin.getId(), admin.getEmail());
         }
         
         return "FAIL";
     }
+    
 }

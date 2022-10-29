@@ -62,7 +62,7 @@ public class AdminDAOImp implements AdminDAO{
 
     @Override
     public Admin getAdminByCr(Admin admin) {
-        String query = "SELECT a FROM Adimn a WHERE a.email = :email";
+        String query = "SELECT a FROM Admin a WHERE a.email = :email";
         List<Admin> res = entityManager.createQuery(query).setParameter("email", admin.getEmail()).getResultList();
         
         if(res.isEmpty()){
@@ -78,5 +78,10 @@ public class AdminDAOImp implements AdminDAO{
         }
         
         return null;
+    }
+
+    @Override
+    public void registerAdmin(Admin admin) {
+        entityManager.merge(admin);
     }
 }

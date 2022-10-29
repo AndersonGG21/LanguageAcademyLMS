@@ -23,6 +23,6 @@ public interface AdminDAO{
     List<Teacher> getTeachersName(String courseCode);
     List<Admin> getAdminByName(String name);
     Admin getAdminByCr(Admin admin);
-    //Admin findByName(String name);
+    void registerAdmin(Admin admin);
     
 }

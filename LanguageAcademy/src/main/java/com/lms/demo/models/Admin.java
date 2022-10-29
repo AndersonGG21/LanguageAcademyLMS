@@ -15,7 +15,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Entity(name = "admins")
+@Entity
+@Table(name = "admins")
 public class Admin extends User{
     
+    @Column(name = "profession")
+    private String profession;
 }
