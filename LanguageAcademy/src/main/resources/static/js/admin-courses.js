@@ -2,7 +2,16 @@ $(document).ready(function () {
     loadCourses();
 });
 
+let groupCode;
+
+
+function setGroupCode(code) {
+    groupCode = code;
+    getTeachers();
+}
+
 async function loadGroups(course) {
+    // courseCode = course;
     const groupRequest = await fetch('/api/groups/' + course ,{
         method: 'GET',
         headers: {
@@ -13,12 +22,12 @@ async function loadGroups(course) {
     const groupsHTML = await groupRequest.json();
     let trs = '';
     for (const iterator of groupsHTML) {
-        let item = "<tr><td>"+iterator[0]+"</td><td>"+iterator[1]+"</td><td>"+iterator[2]+"</td><td><button class= 'btn btn.edit'onclick=assignTeacher('"+iterator[0]+"')><i class='bi bi-pen'></i></button></td></tr>"
+        let item = "<tr><td>"+iterator[0]+"</td><td>"+iterator[1]+"</td><td>"+iterator[2]+"</td><td><button class= 'btn btn.edit' data-bs-toggle='modal' data-bs-target='#teacherModal' onclick=setGroupCode('"+iterator[0]+"')><i class='bi bi-pen'></i></button></td></tr>"
         trs += item;
     }
     document.getElementById('groupTableBody').innerHTML = trs;
-    console.log(groupsHTML);
 }
+
 async function loadCourses() {
     const request = await fetch('/api/courses', {
         method: 'GET',
@@ -46,63 +55,80 @@ async function loadCourses() {
                         <p class='card-text'>"+iterator[1]+"</p>\n\
                         <h6>Actions:</h6>\n\
                         <button class='btn btn-danger' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample' onclick=loadGroups('"+iterator[0]+"')>Groups</button>\n\
-                        <button class='btn btn-dark' style='width: 200px;' data-bs-toggle='modal' data-bs-target='#Modal"+iterator[0]+"' data-bs-whatever='@mdo'>Subjects</button>\n\
+                        <button class='btn btn-dark' style='width: 200px;'>Subjects</button>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
                 </div>";
         list += card;
-        let modalCourse="<div class='modal fade' id='Modal"+iterator[0]+"' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>\n\
-            <div class='modal-dialog'>\n\
-            <div class='modal-content'>\n\
-            <div class='modal-header'>\n\
-                <h1 class='modal-title fs-5' id='exampleModalLabel'>Course material-"+iterator[3]+"</h1>\n\
-            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>\n\
-            </div>\n\
-            <div class='modal-body'>\n\
-                <form>\n\
-                <div class='mb-3'>\n\
-                    <label for='recipient-name' class='col-form-label'>Grammar</label>\n\
-                    <input type='file' accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-Grammar'>\n\
-                </div>\n\
-                <div class='mb-3'>\n\
-                    <label for='recipient-name' class='col-form-label'>Listening</label>\n\
-                    <input type='text' class='form-control' id='recipient-Listening'>\n\
-                </div>\n\
-                <div class='mb-3'>\n\
-                    <label for='recipient-name' class='col-form-label'>Reading</label>\n\
-                    <input type='file' accept='application/pdf,application/vnd.ms-excel'class='form-control' id='recipient-Reading'>\n\
-                </div>\n\
-                <div class='mb-3'>\n\
-                    <label for='recipient-name' class='col-form-label'>Writing</label>\n\
-                    <input type='file' accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-Writing'>\n\
-                </div>\n\
-                </form>\n\
-            </div>\n\
-            <div class='modal-footer'>\n\
-                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'id='btnClose'>Close</button>\n\
-                <button type='button' class='btn btn-primary' onClick='createCourseMaterial()'>Course material</button>\n\
-            </div>\n\
-            </div>\n\
-        </div>\n\
-        </div>";
-        list += modalCourse;
-        // console.log(iterator);
-        // console.log(iterator[0]);
-        // console.log("-----------------------");
     }
     document.getElementById('prueba').innerHTML = list;
 }
 
-async function assignTeacher(id){
-    
+async function assignTeacher(groupCode, idTeacher){
     let teacher = {
-        id:21556089
+        id: idTeacher
     }
     
-    console.log(teacher);
+    const request = await fetch('/api/groups/' + groupCode, {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            teacher
+        })
+    });
+}
+
+async function getTeachers() {
+    const request = await fetch('/api/teachers/', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+
+    let resp = await request.json();
     
+    let options = "<option>Please select a teacher:</option>";
+    for (const iterator of resp) {
+        const iterator1 = iterator.join(' - ')
+        let option = "<option>"+iterator1+"</option>";
+        options+= option;
+    }
+
+    document.getElementById("selectTeacher").innerHTML = options;
+    document.getElementById("selectTeacherName").innerHTML = options;
+}
+
+async function prueba() {
+    const splitted = $("#selectTeacher :selected").text().split(" - ");
+    if (splitted == '' || splitted == 'Please select a teacher:') {
+        alert("Esoge un teacher");
+    }else{
+        alert("Correcto Pai")
+        assignTeacher(groupCode, splitted[0]);
+        location.reload();
+        
+        
+    }
+}
+
+async function createCourse(){
+    
+    let data={};
+    data.name = document.getElementById("recipient-name").value;
+    data.image = document.getElementById("recipient-Image").value;
+    data.description = document.getElementById("message-Description").value;
+
+    
+    let btnClose=document.getElementById("btnClose");
+    btnClose.click();
+
     const request = await fetch('/api/groups/' + id, {
         method: 'PATCH',
         headers: {
@@ -113,17 +139,24 @@ async function assignTeacher(id){
             teacher
         })
     });
-
-    $("#table-responsive").load(" #table-responsive");
 }
 
-async function createCourse(){
-    let condicion=true;
-    let data={};
-    data.code=Date.now().toString();
-    data.name = document.getElementById("recipient-name").value;
-    data.img = document.getElementById("recipient-Image").value;
-    data.desc = document.getElementById("message-Description").value;
+async function getTeachersName() {
+    alert(courseCode)
+    // const request = await fetch('/api/teachers/' + courseCode ,{
+    //     method: 'GET',
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     }
+    // });
+    // let teachersHTML = await request.json();
+    // console.log(teachersHTML);
+    // let options = '';
+    // for (const iterator of teachersHTML) {
+    //     let option = "<option>"+iterator+"</option>";
+    //     options += option;
+    // }
 
     
     if (data.name===""|| data.name===" "){

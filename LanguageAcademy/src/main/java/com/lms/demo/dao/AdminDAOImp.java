@@ -42,7 +42,7 @@ public class AdminDAOImp implements AdminDAO{
 
     @Override
     public List<Teacher> getTeachersName(String courseCode){
-        String sqlQuery = "SELECT DISTINCT t.name FROM groups g INNER JOIN teachers t WHERE g.course = ?";
+        String sqlQuery = "SELECT t.name FROM `groups` g INNER JOIN `teachers` t ON g.asigned_teacher = t.id WHERE g.course = ?";
         Query query = entityManager.createNativeQuery(sqlQuery);
         query.setParameter(1, courseCode);
         return query.getResultList();

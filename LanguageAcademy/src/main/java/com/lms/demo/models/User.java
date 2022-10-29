@@ -17,7 +17,7 @@ import lombok.*;
 public class User {
 
     @Id @Column(name = "id")
-    private int id;
+    private String id;
     
     @Column(name = "name")
     private String name;
