@@ -120,6 +120,17 @@ th{
 .scale-up-horizontal-left {
   animation: scale-up-horizontal-left 0.8s;
 }
+
+.conditionColor{
+  color: #d90429;
+}
+.conditionDescriptionDisplay{
+  display: none;
+}
+.modalGreen {
+  color:black;
+}
+
 @keyframes scale-up-horizontal-left {
   0% {
     transform: scaleX(0.4);
@@ -186,4 +197,8 @@ a:hover{
 .actions{
   display: flex;
   /* flex-direction: column; */
+}
+
+form label{
+  color: #d90429;
 }

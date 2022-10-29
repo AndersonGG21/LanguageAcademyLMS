@@ -41,7 +41,7 @@ public class GroupController {
         groupDAO.deletGroup(group);
     }
     
-    @PostMapping(value = "api/groups")
+    @PostMapping(value = "/api/groups")
     public void createGroup(@RequestBody Group group){
         groupDAO.createGroup(group);
     }

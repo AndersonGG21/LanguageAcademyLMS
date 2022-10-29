@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @Entity(name = "students")
 public class Student extends User {
-    
+//    
     @Column(name = "address")
     private String address;
 
