@@ -34,11 +34,11 @@ public class AdminDAOImp implements AdminDAO{
         System.out.println("Grupo:"+ temp.toString());
         entityManager.merge(temp);
     }
-    
+    /*
     @Override
     public void regCourse(Course course) {
         entityManager.merge(course);
-    }
+    }*/
 
     @Override
     public List<Teacher> getTeachersName(String courseCode){

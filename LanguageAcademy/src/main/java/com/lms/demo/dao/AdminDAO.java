@@ -19,5 +19,7 @@ import java.util.List;
 public interface AdminDAO {
     void assignTeacher(Group group, String gpCode);
     List<Teacher> getTeachersName(String courseCode);
+    /*
     void regCourse(Course course);
+    */
 }

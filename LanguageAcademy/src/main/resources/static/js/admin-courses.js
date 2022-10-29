@@ -82,23 +82,24 @@ async function assignTeacher(id){
 async function createCourse(){
     
     let data={};
+    data.code=Date.now().toString();
     data.name = document.getElementById("recipient-name").value;
-    data.image = document.getElementById("recipient-Image").value;
-    data.description = document.getElementById("message-Description").value;
+    data.img = document.getElementById("recipient-Image").value;
+    data.desc = document.getElementById("message-Description").value;
 
     
     let btnClose=document.getElementById("btnClose");
     btnClose.click();
 
-    const request = await fetch('/api/groups/' + id, {
-        method: 'PATCH',
+    console.log(data);
+    const request = await fetch('/api/courses', {
+        method: 'POST',
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       
         },
-        body: JSON.stringify({
-            teacher
-        })
-    });
+        body: JSON.stringify(data)
+      });
 
 }
