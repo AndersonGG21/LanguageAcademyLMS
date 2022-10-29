@@ -10,5 +10,13 @@ import java.util.List;
  * @author seang
  */
 public interface StudentDAO {
+    List<Student> getStudent();
     
+    void regStudent(Student student);
+    
+    void modStudent(Student student, int id);
+    
+    void delete(int id);
+    
+    Student getStudentOne(int id);
 }
