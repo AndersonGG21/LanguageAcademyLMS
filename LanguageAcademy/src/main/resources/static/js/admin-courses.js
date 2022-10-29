@@ -46,14 +46,14 @@ async function loadCourses() {
                         <p class='card-text'>"+iterator[1]+"</p>\n\
                         <h6>Actions:</h6>\n\
                         <button class='btn btn-danger' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample' onclick=loadGroups('"+iterator[0]+"')>Groups</button>\n\
-                        <button class='btn btn-dark' style='width: 200px;' data-bs-toggle='modal' data-bs-target='#courseModal' data-bs-whatever='@mdo'>Subjects</button>\n\
+                        <button class='btn btn-dark' style='width: 200px;' data-bs-toggle='modal' data-bs-target='#Modal"+iterator[0]+"' data-bs-whatever='@mdo'>Subjects</button>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
                 </div>";
         list += card;
-        let modalCourse="<div class='modal fade' id='courseModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>\n\
+        let modalCourse="<div class='modal fade' id='Modal"+iterator[0]+"' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>\n\
             <div class='modal-dialog'>\n\
             <div class='modal-content'>\n\
             <div class='modal-header'>\n\
@@ -88,6 +88,9 @@ async function loadCourses() {
         </div>\n\
         </div>";
         list += modalCourse;
+        console.log(iterator);
+        console.log(iterator[0]);
+        console.log("-----------------------");
     }
     document.getElementById('prueba').innerHTML = list;
 }
