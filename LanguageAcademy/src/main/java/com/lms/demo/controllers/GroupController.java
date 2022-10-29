@@ -8,6 +8,9 @@ package com.lms.demo.controllers;
 import com.lms.demo.dao.GroupDAO;
 import com.lms.demo.models.Group;
 import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Anderson
  */
 @RestController
+@Transactional
 public class GroupController {
     
     @Autowired

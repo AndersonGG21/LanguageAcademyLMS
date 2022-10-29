@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 let groupCode;
-
+let courseCode;
 
 function setGroupCode(code) {
     groupCode = code;
@@ -11,7 +11,7 @@ function setGroupCode(code) {
 }
 
 async function loadGroups(course) {
-    // courseCode = course;
+    courseCode = course;
     const groupRequest = await fetch('/api/groups/' + course ,{
         method: 'GET',
         headers: {
@@ -113,9 +113,39 @@ async function prueba() {
         alert("Correcto Pai")
         assignTeacher(groupCode, splitted[0]);
         location.reload();
-        
-        
     }
 }
 
+async function createGroup() {
+    const splitted = $("#selectTeacherName :selected").text().split(" - ");
+    if (splitted == '' || splitted == 'Please select a teacher:') {
+        alert("Esoge un teacher");
+    }else{
+        let teacher = {
+            id : splitted[0],
+        }
+        alert(courseCode)
+        let course ={
+            code : courseCode
+        }
+        
+        const request = await fetch('/api/groups', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                groupCode : document.getElementById("groupCodeInput").value,
+                groupName : document.getElementById("groupNameInput").value,
+                teacher,
+                course,
+            })
+        });
 
+        if (request.status == 200) {
+            alert("Melisimo pai")
+        }
+    }
+    
+}

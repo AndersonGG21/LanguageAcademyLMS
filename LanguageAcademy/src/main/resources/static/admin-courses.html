@@ -114,7 +114,7 @@
 
                 </tbody>
             </table>
-            <button type="button" onclick="getTeachersName()" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#groupModal">Create a Group</button>
+            <button type="button" onclick="getTeachers()" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#groupModal">Create a Group</button>
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" onclick="createGroup()">Create Group</button>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="prueba()">Save changes</button>
+              <button type="button" class="btn btn-primary" onclick="prueba()">Asiggn Teacher</button>
             </div>
           </div>
         </div>
@@ -180,7 +180,6 @@
     <script src="/js/admin-courses.js"></script>
     <script src="/js/admin-functions.js"></script>
 
-    <!-- Jquery CDN -->
 </body>
 
 </html>

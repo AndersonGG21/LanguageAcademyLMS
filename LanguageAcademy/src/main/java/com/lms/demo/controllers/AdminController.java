@@ -32,7 +32,6 @@ public class AdminController {
     
     @PatchMapping(value = "/api/groups/{idGroup}")
     public void assignTeacher(@RequestBody Group group, @PathVariable String idGroup){
-        System.out.println("Grupo(Body):" + group.toString());
         adminDAO.assignTeacher(group,idGroup);
     }
  
