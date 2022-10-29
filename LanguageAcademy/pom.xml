@@ -50,6 +50,18 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.30</version>
 		</dependency>
+	 <dependency>
+	  <groupId>io.jsonwebtoken</groupId>
+	  <artifactId>jjwt</artifactId>
+	  <version>0.9.1</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>de.mkammerer</groupId>
+	  <artifactId>argon2-jvm</artifactId>
+	  <version>2.5</version>
+	  <type>jar</type>
+	 </dependency>
 	</dependencies>
 
 	<build>

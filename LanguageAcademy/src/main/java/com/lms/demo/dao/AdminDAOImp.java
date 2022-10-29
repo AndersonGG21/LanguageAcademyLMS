@@ -5,9 +5,12 @@
  */
 package com.lms.demo.dao;
 
+import com.lms.demo.models.Admin;
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Teacher;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +29,7 @@ public class AdminDAOImp implements AdminDAO{
 
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public void assignTeacher(Group group,String gpCode) {
         Group temp = entityManager.find(Group.class, gpCode);
@@ -47,5 +51,32 @@ public class AdminDAOImp implements AdminDAO{
         query.setParameter(1, courseCode);
         return query.getResultList();
     }   
-    
+
+    @Override
+    public List<Admin> getAdminByName(String name) {
+        String sqlQuery = "SELECT * FROM `admins` WHERE name = ?";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, name);
+        return query.getResultList();
+    }
+
+    @Override
+    public Admin getAdminByCr(Admin admin) {
+        String query = "SELECT a FROM Adimn a WHERE a.email = :email";
+        List<Admin> res = entityManager.createQuery(query).setParameter("email", admin.getEmail()).getResultList();
+        
+        if(res.isEmpty()){
+           return null; 
+        }
+        
+        String passHashed = res.get(0).getPassword();
+        
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        
+        if(argon2.verify(passHashed, admin.getPassword())){
+            return res.get(0);
+        }
+        
+        return null;
+    }
 }

@@ -5,10 +5,12 @@
  */
 package com.lms.demo.dao;
 
+import com.lms.demo.models.Admin;
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Teacher;
 import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
 
 
@@ -16,10 +18,11 @@ import java.util.List;
  *
  * @author Anderson
  */
-public interface AdminDAO {
+public interface AdminDAO{
     void assignTeacher(Group group, String gpCode);
     List<Teacher> getTeachersName(String courseCode);
-    /*
-    void regCourse(Course course);
-    */
+    List<Admin> getAdminByName(String name);
+    Admin getAdminByCr(Admin admin);
+    //Admin findByName(String name);
+    
 }
