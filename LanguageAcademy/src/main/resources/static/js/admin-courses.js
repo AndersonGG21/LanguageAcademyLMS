@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+    createCourseMaterial();
 });
 
 async function createCourse(){
@@ -10,20 +10,34 @@ async function createCourse(){
     data.image = document.getElementById("recipient-Image").value;
     data.description = document.getElementById("message-Description").value;
 
-    
-    let btnClose=document.getElementById("btnClose");
-    btnClose.click();
+    if (data.name===""|| data.name===" "){
+        condicion=false;
+        document.getElementById("conditionName").classList.add('conditionColor');
+    }
+    if (data.img===""||data.img===" "){
+        condicion=false;
+        document.getElementById("conditionImage").classList.add('conditionColor');
+    }
+    if (data.desc===""||data.desc===" "){
+        condicion=false;
+        document.getElementById("conditionDescription").classList.add('conditionColor')
+    }
+    if(condicion){
+        const request = await fetch('/api/groups/' + id, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                teacher
+            })
+        });
+        let btnClose=document.getElementById("btnClose");
+        btnClose.click();
 
-    const request = await fetch('/api/groups/' + id, {
-        method: 'PATCH',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            teacher
-        })
-    });
+    }
+
 }
 
 async function createCourseMaterial(){
