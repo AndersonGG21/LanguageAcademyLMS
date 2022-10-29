@@ -7,8 +7,8 @@ async function createCourse(){
     let data={};
     data.code=Date.now().toString();
     data.name = document.getElementById("recipient-name").value;
-    data.image = document.getElementById("recipient-Image").value;
-    data.description = document.getElementById("message-Description").value;
+    data.img = document.getElementById("recipient-Image").value;
+    data.desc = document.getElementById("message-Description").value;
 
     if (data.name===""|| data.name===" "){
         condicion=false;
@@ -125,7 +125,7 @@ async function createCourseMaterial(){
 
 
 function cleanModalCourse(){
-    document.getElementById("recipient-name").value=null;
-    document.getElementById("recipient-Image").value=null;
-    document.getElementById("message-Description").value=null;
+    document.getElementById("recipient-name").value=" ";
+    document.getElementById("recipient-Image").value=" ";
+    document.getElementById("message-Description").value=" ";
 }
