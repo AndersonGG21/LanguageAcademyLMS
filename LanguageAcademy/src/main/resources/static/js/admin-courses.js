@@ -39,6 +39,7 @@ async function createCourse(){
                 teacher
             })
         });
+        cleanModalCourse();
         let btnClose=document.getElementById("btnClose");
         btnClose.click();
 
@@ -123,3 +124,8 @@ async function createCourseMaterial(){
 }    
 
 
+function cleanModalCourse(){
+    document.getElementById("recipient-name").value=null;
+    document.getElementById("recipient-Image").value=null;
+    document.getElementById("message-Description").value=null;
+}
