@@ -26,5 +26,5 @@ public class Subject {
     
     @ManyToOne
     @JoinColumn(name = "course")
-    private Course course;
+    private Course course;//Deberiamos cambiarlo a un STRING 
 }
