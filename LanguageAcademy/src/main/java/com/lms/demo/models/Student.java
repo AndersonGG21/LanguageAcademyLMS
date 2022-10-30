@@ -6,7 +6,8 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Entity(name = "students")
+@Entity
+@Table(name = "students")
 public class Student extends User {
 //    
     @Column(name = "address")

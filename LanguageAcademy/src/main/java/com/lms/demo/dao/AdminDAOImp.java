@@ -8,7 +8,9 @@ package com.lms.demo.dao;
 import com.lms.demo.models.Admin;
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
+import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
+import com.lms.demo.models.User;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import java.util.List;
@@ -83,5 +85,31 @@ public class AdminDAOImp implements AdminDAO{
     @Override
     public void registerAdmin(Admin admin) {
         entityManager.merge(admin);
+    }
+    
+    @Override
+    public User getUserByEmail(String email){
+        String adminQuery = "SELECT a FROM Admin a WHERE a.email = :email";
+        List<Admin> resAdmin = entityManager.createQuery(adminQuery).setParameter("email", email).getResultList();
+        
+        if (!resAdmin.isEmpty()) {
+            return resAdmin.get(0);
+        }
+        
+        String teacherQuery = "SELECT t FROM Teacher t WHERE t.email = :email";
+        List<Teacher> resTeacher = entityManager.createQuery(teacherQuery).setParameter("email", email).getResultList();
+        
+        if (!resTeacher.isEmpty()) {
+            return resTeacher.get(0);
+        }
+
+        String studentQuery = "SELECT s FROM Student s WHERE s.email = :email";
+        List<Student> resStudent = entityManager.createQuery(studentQuery).setParameter("email", email).getResultList();
+        if (!resStudent.isEmpty()) {
+            return resStudent.get(0);
+        }   
+        
+        return null;
+        
     }
 }

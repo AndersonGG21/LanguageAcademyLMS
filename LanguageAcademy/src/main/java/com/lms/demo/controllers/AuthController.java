@@ -15,6 +15,7 @@ import com.lms.demo.models.User;
 import com.lms.demo.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,15 +46,17 @@ public class AuthController {
     }
     
     @PostMapping(value = "/api/login")
-    public String login(@RequestBody Admin admin){
-        Admin logged = adminDAO.getAdminByCr(admin);
-        System.out.println("AdminBody: " + logged.toString());
-        System.out.println("AdminPass" + admin.getPassword());
-        if(logged != null){
-            return jwtutil.create(admin.getId(), admin.getEmail());
+    public String login(@RequestBody User user){
+        //Admin logged = adminDAO.getAdminByCr(user);
+        if(user != null){
+            return jwtutil.create(user.getId(), user.getEmail());
         }
         
         return "FAIL";
     }
     
+    @GetMapping(value = "/api/users/{email}")
+    public User getUser(@PathVariable String email){
+        return adminDAO.getUserByEmail(email);
+    }
 }

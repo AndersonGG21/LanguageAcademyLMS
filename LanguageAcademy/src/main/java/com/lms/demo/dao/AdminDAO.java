@@ -9,6 +9,7 @@ import com.lms.demo.models.Admin;
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Teacher;
+import com.lms.demo.models.User;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
@@ -24,5 +25,5 @@ public interface AdminDAO{
     List<Admin> getAdminByName(String name);
     Admin getAdminByCr(Admin admin);
     void registerAdmin(Admin admin);
-    
+    User getUserByEmail(String email);
 }

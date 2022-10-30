@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.lms.demo.dao.StudentDAO;
 import com.lms.demo.models.Student;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 /**
  *
  * @author Julian
@@ -38,6 +40,9 @@ public class StudentController {
     
     @RequestMapping (value = "api/student", method = RequestMethod.POST)
     public void registerStudent(@RequestBody Student student){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash = argon2.hash(1, 1024, 1, student.getPassword());
+        student.setPassword(hash);
         studentDAO.regStudent(student);
     }
     
