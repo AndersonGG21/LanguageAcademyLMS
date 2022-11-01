@@ -5,6 +5,7 @@
  */
 package com.lms.demo.dao;
 
+import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
 import java.util.List;
 

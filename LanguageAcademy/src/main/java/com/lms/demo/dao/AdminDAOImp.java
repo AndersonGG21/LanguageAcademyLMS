@@ -73,7 +73,7 @@ public class AdminDAOImp implements AdminDAO{
         
         String passHashed = res.get(0).getPassword();
         
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
         
         if(argon2.verify(passHashed, admin.getPassword())){
             return res.get(0);
