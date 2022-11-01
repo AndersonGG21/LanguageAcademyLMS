@@ -1,5 +1,5 @@
 $(document).ready(function () {
-   $('#btn-download').click(function () {
+   $('.btn-download').click(function () {
       $('#content').printThis({
          importCSS: true,
          importStyle: true,
