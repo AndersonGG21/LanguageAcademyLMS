@@ -67,7 +67,7 @@ async function createCourseMaterial(){
         <div class='modal-content'>\n\
         <div class='modal-header'>\n\
             <h1 class='modal-title fs-5' id='exampleModalLabel'>Course material-"+iterator[3]+"</h1>\n\
-        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>\n\
+        <button type='button' class='btn-close'  onClick='createCourseClose()' data-bs-dismiss='modal' aria-label='Close'></button>\n\
         </div>\n\
         <div class='modal-body'>\n\
             <form class='formModal'>\n\
@@ -109,7 +109,7 @@ async function createCourseMaterial(){
                 </form>\n\
             </div>\n\
         <div class='modal-footer'>\n\
-            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose'>Close</button>\n\
+            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose'onClick='createCourseClose()'>Close</button>\n\
             <button type='button' class='btn btn-primary' onClick='createCourse()' >Create scourse material</button>\n\
         </div>\n\
         </div>\n\
@@ -155,7 +155,9 @@ function modalCreateMaterialArray(element,id,name){
     // console.log(data);
 
 }
-
+function createCourseClose(){
+    arrayModal=[];
+}
 
 function cleanModalCourse(){
     document.getElementById("recipient-name").value=" ";
