@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -50,10 +52,6 @@ public class AdminController {
     
     @PostMapping(value = "/api/admins")
     public void registerAdmin(@RequestBody Admin admin){
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        String hash = argon2.hash(1, 1024, 1, admin.getPassword());
-        admin.setPassword(hash);
-        System.out.println("AdminBody:" + admin.toString());
         adminDAO.registerAdmin(admin);
     }
 }

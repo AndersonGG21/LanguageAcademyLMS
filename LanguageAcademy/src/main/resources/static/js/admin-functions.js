@@ -5,6 +5,12 @@ $(document).ready(function () {
 let groupCode;
 let courseCode;
 
+$("#logout").click(function (e) { 
+    e.preventDefault();
+    localStorage.clear();
+    location.href = "login.html"
+});
+
 function setGroupCode(code) {
     groupCode = code;
     getTeachers();

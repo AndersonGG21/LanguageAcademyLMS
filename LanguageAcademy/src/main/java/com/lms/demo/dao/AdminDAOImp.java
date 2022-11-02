@@ -31,7 +31,7 @@ public class AdminDAOImp implements AdminDAO{
 
     @PersistenceContext
     private EntityManager entityManager;
-
+        
     @Override
     public void assignTeacher(Group group,String gpCode) {
         Group temp = entityManager.find(Group.class, gpCode);
@@ -84,6 +84,9 @@ public class AdminDAOImp implements AdminDAO{
 
     @Override
     public void registerAdmin(Admin admin) {
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash = argon2.hash(1, 1024, 1, admin.getPassword());
+        admin.setPassword(hash);
         entityManager.merge(admin);
     }
     

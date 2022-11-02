@@ -9,5 +9,5 @@ class LanguageAcademyApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
+        
 }
