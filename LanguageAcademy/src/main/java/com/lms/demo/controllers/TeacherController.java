@@ -5,11 +5,15 @@
  */
 package com.lms.demo.controllers;
 
+import com.lms.demo.dao.StudentDAO;
 import com.lms.demo.dao.TeacherDAO;
+import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,8 +26,15 @@ public class TeacherController {
     @Autowired
     private TeacherDAO teacherDAO;
     
+    
     @GetMapping(value = "/api/teachers")
     public List<Teacher> getTeachers(){
         return teacherDAO.getTeachers();
     }
+    
+    @RequestMapping(value = "/api/teacher-students", method = RequestMethod.GET)
+    public List<Student> getMyStudents(){
+        return teacherDAO.getMyStudents();
+    } 
+    
 }

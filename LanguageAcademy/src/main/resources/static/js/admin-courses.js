@@ -67,34 +67,49 @@ async function createCourseMaterial(){
         <div class='modal-content'>\n\
         <div class='modal-header'>\n\
             <h1 class='modal-title fs-5' id='exampleModalLabel'>Course material-"+iterator[3]+"</h1>\n\
-        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>\n\
+        <button type='button' class='btn-close'  onClick='createCourseClose()' data-bs-dismiss='modal' aria-label='Close'></button>\n\
         </div>\n\
         <div class='modal-body'>\n\
-            <form>\n\
-            <div class='mb-3'>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar</strong></label>\n\
-                <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-grammar"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
-                <input type='text' class='form-control' id='recipient-listening"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
-              <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
-              <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-reading"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
-              <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
-              <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-speaking"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
-              <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
-              <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-writing"+iterator[1]+"'>\n\
-            </div>\n\
-            </form>\n\
+            <form class='formModal'>\n\
+                <div>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar </strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(1,"+iterator[0]+")' class='btn btn-success'id='success-grammar"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary' id='danger-grammar"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
+                </div>\n\
+                <div>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(2,"+iterator[0]+")' class='btn btn-success'id='success-listening"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary' id='danger-listening"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
+                </div>\n\
+                <div>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(3,"+iterator[0]+")' class='btn btn-success'id='success-reading"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary'id='danger-reading"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
+                </div>\n\
+                <div>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(4,"+iterator[0]+")' class='btn btn-success'id='success-speaking"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary'id='danger-speaking"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
+                </div>\n\
+                <div>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
+                    <div>\n\
+                        <button type='button' onClick='modalCreateMaterial(5,"+iterator[0]+")'class='btn btn-success'id='success-writing"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary'id='danger-writing"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
+                </div>\n\
+                </form>\n\
             </div>\n\
         <div class='modal-footer'>\n\
-            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose'>Close</button>\n\
+            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose'onClick='createCourseClose()'>Close</button>\n\
             <button type='button' class='btn btn-primary' onClick='createCourse()' >Create scourse material</button>\n\
         </div>\n\
         </div>\n\
@@ -105,6 +120,58 @@ async function createCourseMaterial(){
     document.getElementById('containerModal').innerHTML = list;
 }    
 
+// class='btn btn-secondary'
+// class="btn btn-secondary"
+// class='btn btn-success'
+let arrayModal=[];
+function modalCreateMaterial(element,id){
+    switch (element) {
+        case 1://grammar
+            modalCreateMaterialArray("gra",id,"grammar");
+            break;
+        case 2://listening
+            modalCreateMaterialArray("lis",id,"listening");
+            break;
+        case 3://reading
+            modalCreateMaterialArray("rea",id,"reading");
+            break;    
+        case 4://speaking
+            modalCreateMaterialArray("spe",id,"speaking");
+            break;
+        case 5://writing
+            modalCreateMaterialArray("wri",id,"writing");
+        break;
+        default:
+          console.log("Problems");
+        }
+        console.log(arrayModal);
+}
+function modalCreateMaterialArray(element,id,name){
+    data={};
+    data.subject_id=element+id;
+    data.subject_name=name;
+    data.course=id;
+    if(checkModal(data)){
+        arrayModal.push(data);
+    }
+    
+}
+function checkModal(element){
+    let condicion=true;
+    for (const elementArray of arrayModal){
+        if(elementArray.subject_id===element.subject_id){
+            condicion=false;
+            return condicion
+
+        }
+        console.log(elementArray.subject_id);
+    }
+    return condicion;
+
+}
+function createCourseClose(){
+    arrayModal=[];
+}
 
 function cleanModalCourse(){
     document.getElementById("recipient-name").value=" ";

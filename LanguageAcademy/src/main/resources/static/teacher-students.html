@@ -42,7 +42,7 @@
     </nav>
 
     <h2 style="display: inline-block">My Students</h2>
-    <button id="btn-download" style="display: inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    <button class="btn btn-download" style="display: inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal"
         data-bs-whatever="@mdo">
         Download Students List
     </button>
@@ -51,27 +51,12 @@
         <table class="table" id="tableStudents">
             <thead>
                 <tr>
-                    <th scope="col" id="table-first" class="th-reduce">Id</th>
+                    <th scope="col" id="table-first">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone Number</th>
-                    <th scope="col">Address</th>
+                    <th scope="col" id="table-last" class="th-reduce">Address</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                </tr>
-
             </thead>
             <tbody>
                 <!-- Content table -->

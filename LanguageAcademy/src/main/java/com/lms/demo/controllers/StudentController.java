@@ -40,7 +40,7 @@ public class StudentController {
     
     @RequestMapping (value = "api/student", method = RequestMethod.POST)
     public void registerStudent(@RequestBody Student student){
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
         String hash = argon2.hash(1, 1024, 1, student.getPassword());
         student.setPassword(hash);
         studentDAO.regStudent(student);

@@ -130,6 +130,12 @@ th{
 .modalGreen {
   color:black;
 }
+.formModal{
+  display: grid;
+  gap:1rem;
+  /* grid-auto-rows:22rem; */
+  grid-template-columns:repeat(auto-fill,100px)
+}
 
 @keyframes scale-up-horizontal-left {
   0% {
