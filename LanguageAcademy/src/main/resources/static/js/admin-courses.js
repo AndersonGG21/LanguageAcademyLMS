@@ -1,7 +1,7 @@
 $(document).ready(function () {
     createCourseMaterial();
 });
-let array=[];
+
 async function createCourse(){
     let condicion=true;
     let id=Date.now().toString();
@@ -74,35 +74,35 @@ async function createCourseMaterial(){
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar </strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(1)' class='btn btn-success'id='success-grammar"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(1,"+iterator[0]+")' class='btn btn-success'id='success-grammar"+iterator[1]+"'>+</button>\n\
                         <button type='button' class='btn btn-secondary' id='danger-grammar"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(2)' class='btn btn-success'id='success-listening"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(2,"+iterator[0]+")' class='btn btn-success'id='success-listening"+iterator[1]+"'>+</button>\n\
                         <button type='button' class='btn btn-secondary' id='danger-listening"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(3)' class='btn btn-success'id='success-reading"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(3,"+iterator[0]+")' class='btn btn-success'id='success-reading"+iterator[1]+"'>+</button>\n\
                         <button type='button' class='btn btn-secondary'id='danger-reading"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(4)' class='btn btn-success'id='success-speaking"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(4,"+iterator[0]+")' class='btn btn-success'id='success-speaking"+iterator[1]+"'>+</button>\n\
                         <button type='button' class='btn btn-secondary'id='danger-speaking"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
                     <div>\n\
-                        <button type='button' onClick='modalCreateMaterial(5)'class='btn btn-success'id='success-writing"+iterator[1]+"'>+</button>\n\
+                        <button type='button' onClick='modalCreateMaterial(5,"+iterator[0]+")'class='btn btn-success'id='success-writing"+iterator[1]+"'>+</button>\n\
                         <button type='button' class='btn btn-secondary'id='danger-writing"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
@@ -123,29 +123,39 @@ async function createCourseMaterial(){
 // class='btn btn-secondary'
 // class="btn btn-secondary"
 // class='btn btn-success'
-function modalCreateMaterial(element){
-    
+let arrayModal=[];
+function modalCreateMaterial(element,id){
     switch (element) {
-        case 1:
-            console.log("Hola: "+element);
+        case 1://grammar
+            modalCreateMaterialArray("gra",id,"grammar");
             break;
-        case 2:
-            console.log("Hola: "+element);
+        case 2://listening
+            modalCreateMaterialArray("lis",id,"listening");
             break;
-        case 3:
-            console.log("Hola: "+element);
+        case 3://reading
+            modalCreateMaterialArray("rea",id,"reading");
             break;    
-        case 4:
-            console.log("Hola: "+element);
+        case 4://speaking
+            modalCreateMaterialArray("spe",id,"speaking");
             break;
-        case 5:
-            console.log("Hola: "+element);
+        case 5://writing
+            modalCreateMaterialArray("wri",id,"writing");
         break;
         default:
           console.log("Problems");
         }
-   
+        console.log(arrayModal);
 }
+function modalCreateMaterialArray(element,id,name){
+    data={};
+    data.subject_id=element+id;
+    data.subject_name=name;
+    data.course=id;
+    arrayModal.push(data);
+    // console.log(data);
+
+}
+
 
 function cleanModalCourse(){
     document.getElementById("recipient-name").value=" ";
