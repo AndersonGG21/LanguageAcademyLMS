@@ -1,7 +1,7 @@
 $(document).ready(function () {
     createCourseMaterial();
 });
-
+let array=[];
 async function createCourse(){
     let condicion=true;
     let id=Date.now().toString();
@@ -70,33 +70,43 @@ async function createCourseMaterial(){
         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>\n\
         </div>\n\
         <div class='modal-body'>\n\
-            <form>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar </strong></label>\n\
+            <form class='formModal'>\n\
                 <div>\n\
-                    <button type='button' class='btn btn-success'id='recipient-grammar"+iterator[1]+"'>+</button>\n\
-                    <button type='button' class='btn btn-danger'>-</button>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar </strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(1)' class='btn btn-success'id='success-grammar"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary' id='danger-grammar"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
                 </div>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
                 <div>\n\
-                    <button type='button' class='btn btn-success'id='recipient-listening"+iterator[1]+"'>+</button>\n\
-                    <button type='button' class='btn btn-danger'>-</button>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(2)' class='btn btn-success'id='success-listening"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary' id='danger-listening"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
                 </div>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
                 <div>\n\
-                    <button type='button' class='btn btn-success'id='recipient-reading"+iterator[1]+"'>+</button>\n\
-                    <button type='button' class='btn btn-danger'>-</button>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(3)' class='btn btn-success'id='success-reading"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary'id='danger-reading"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
                 </div>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
                 <div>\n\
-                    <button type='button' class='btn btn-success'id='recipient-speaking"+iterator[1]+"'>+</button>\n\
-                    <button type='button' class='btn btn-danger'>-</button>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
+                    <div>\n\
+                        <button type='button'  onClick='modalCreateMaterial(4)' class='btn btn-success'id='success-speaking"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary'id='danger-speaking"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
                 </div>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
                 <div>\n\
-                    <button type='button' class='btn btn-success'id='recipient-writing"+iterator[1]+"'>+</button>\n\
-                    <button type='button' class='btn btn-danger'>-</button>\n\
+                    <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
+                    <div>\n\
+                        <button type='button' onClick='modalCreateMaterial(5)'class='btn btn-success'id='success-writing"+iterator[1]+"'>+</button>\n\
+                        <button type='button' class='btn btn-secondary'id='danger-writing"+iterator[1]+"'>-</button>\n\
+                    </div>\n\
                 </div>\n\
-            </form>\n\
+                </form>\n\
             </div>\n\
         <div class='modal-footer'>\n\
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose'>Close</button>\n\
@@ -110,6 +120,32 @@ async function createCourseMaterial(){
     document.getElementById('containerModal').innerHTML = list;
 }    
 
+// class='btn btn-secondary'
+// class="btn btn-secondary"
+// class='btn btn-success'
+function modalCreateMaterial(element){
+    
+    switch (element) {
+        case 1:
+            console.log("Hola: "+element);
+            break;
+        case 2:
+            console.log("Hola: "+element);
+            break;
+        case 3:
+            console.log("Hola: "+element);
+            break;    
+        case 4:
+            console.log("Hola: "+element);
+            break;
+        case 5:
+            console.log("Hola: "+element);
+        break;
+        default:
+          console.log("Problems");
+        }
+   
+}
 
 function cleanModalCourse(){
     document.getElementById("recipient-name").value=" ";
