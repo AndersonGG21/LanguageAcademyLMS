@@ -5,6 +5,7 @@
  */
 package com.lms.demo.dao;
 
+
 import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
 import java.util.List;
@@ -18,4 +19,5 @@ public interface TeacherDAO {
     void deleteTeacher(int id);
     Teacher getTeacher(int id);
     List<Teacher> getTeachers();
+    List<Student> getMyStudents();
 }

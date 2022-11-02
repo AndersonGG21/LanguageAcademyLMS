@@ -5,6 +5,7 @@
  */
 package com.lms.demo.dao;
 
+import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -23,6 +24,12 @@ public class TeacherDAOImp implements TeacherDAO{
 
     @PersistenceContext
     private EntityManager entityManager;
+    
+    @Transactional 
+    public List<Student> getMyStudents(){
+        String query = "SELECT id, name, email, address FROM Student";
+        return entityManager.createQuery(query).getResultList();
+    }
             
     @Override
     public void registerTeacher(Teacher teacher) {

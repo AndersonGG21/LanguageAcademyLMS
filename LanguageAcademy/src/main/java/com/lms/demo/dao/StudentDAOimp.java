@@ -28,7 +28,7 @@ public class StudentDAOimp implements StudentDAO{
     
     @Transactional 
     public List<Student> getStudent(){
-        String query = "FROM students";
+        String query = "FROM Student";
         return entityManager.createQuery(query).getResultList();
     }
 

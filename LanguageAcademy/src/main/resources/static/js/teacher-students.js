@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 async function loadStudents() {
 
-   const request = await fetch('api/students', {
+   const request = await fetch('api/teacher-students', {
        method: 'GET',
        headers: {
            'Accept': 'application/json',
@@ -33,7 +33,7 @@ async function loadStudents() {
                        <td>"+ it_students.id + "</td>\n\
                        <td>"+ it_students.name + "</td>\n\
                        <td>"+ it_students.email + "</td>\n\
-                       <td>"+ it_students.phoneNumber + "</td>\n\
+                       <td>"+ it_students.phoneNumber + "<td>\n\
                        <td>"+ it_students.address + "</td>\n\
                        </tr>";
        listHTML += studentsHTML;

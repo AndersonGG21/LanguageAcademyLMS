@@ -32,5 +32,10 @@ public class TeacherController {
         return teacherDAO.getTeachers();
     }
     
- 
+    @RequestMapping(value = "/api/teacher-students", method = RequestMethod.GET)
+    public List<Student> getMyStudents(){
+        return teacherDAO.getMyStudents();
+    } 
+    
+
 }
