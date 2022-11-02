@@ -27,7 +27,7 @@ public class TeacherDAOImp implements TeacherDAO{
     
     @Transactional 
     public List<Student> getMyStudents(){
-        String query = "SELECT id, name, email, address FROM Student";
+        String query = "FROM Student";
         return entityManager.createQuery(query).getResultList();
     }
             

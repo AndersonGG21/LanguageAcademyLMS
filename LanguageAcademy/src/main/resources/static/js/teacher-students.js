@@ -33,7 +33,7 @@ async function loadStudents() {
                        <td>"+ it_students.id + "</td>\n\
                        <td>"+ it_students.name + "</td>\n\
                        <td>"+ it_students.email + "</td>\n\
-                       <td>"+ it_students.phoneNumber + "<td>\n\
+                       <td>"+ it_students.phoneNumber + "</td>\n\
                        <td>"+ it_students.address + "</td>\n\
                        </tr>";
        listHTML += studentsHTML;
