@@ -71,26 +71,31 @@ async function createCourseMaterial(){
         </div>\n\
         <div class='modal-body'>\n\
             <form>\n\
-            <div class='mb-3'>\n\
-                <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar</strong></label>\n\
-                <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-grammar"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
+                <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar </strong></label>\n\
+                <div>\n\
+                    <button type='button' class='btn btn-success'id='recipient-grammar"+iterator[1]+"'>+</button>\n\
+                    <button type='button' class='btn btn-danger'>-</button>\n\
+                </div>\n\
                 <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
-                <input type='text' class='form-control' id='recipient-listening"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
-              <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
-              <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-reading"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
-              <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
-              <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-speaking"+iterator[1]+"'>\n\
-            </div>\n\
-            <div class='mb-3'>\n\
-              <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
-              <input type='file'  accept='application/pdf,application/vnd.ms-excel' class='form-control' id='recipient-writing"+iterator[1]+"'>\n\
-            </div>\n\
+                <div>\n\
+                    <button type='button' class='btn btn-success'id='recipient-listening"+iterator[1]+"'>+</button>\n\
+                    <button type='button' class='btn btn-danger'>-</button>\n\
+                </div>\n\
+                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
+                <div>\n\
+                    <button type='button' class='btn btn-success'id='recipient-reading"+iterator[1]+"'>+</button>\n\
+                    <button type='button' class='btn btn-danger'>-</button>\n\
+                </div>\n\
+                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
+                <div>\n\
+                    <button type='button' class='btn btn-success'id='recipient-speaking"+iterator[1]+"'>+</button>\n\
+                    <button type='button' class='btn btn-danger'>-</button>\n\
+                </div>\n\
+                <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
+                <div>\n\
+                    <button type='button' class='btn btn-success'id='recipient-writing"+iterator[1]+"'>+</button>\n\
+                    <button type='button' class='btn btn-danger'>-</button>\n\
+                </div>\n\
             </form>\n\
             </div>\n\
         <div class='modal-footer'>\n\
