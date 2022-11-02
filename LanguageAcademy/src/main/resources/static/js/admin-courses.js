@@ -151,8 +151,22 @@ function modalCreateMaterialArray(element,id,name){
     data.subject_id=element+id;
     data.subject_name=name;
     data.course=id;
-    arrayModal.push(data);
-    // console.log(data);
+    if(checkModal(data)){
+        arrayModal.push(data);
+    }
+    
+}
+function checkModal(element){
+    let condicion=true;
+    for (const elementArray of arrayModal){
+        if(elementArray.subject_id===element.subject_id){
+            condicion=false;
+            return condicion
+
+        }
+        console.log(elementArray.subject_id);
+    }
+    return condicion;
 
 }
 function createCourseClose(){
