@@ -7,10 +7,11 @@ async function createCourse(){
     let id=Date.now().toString();
     let data={};
     data.code=id;
-    data.name = document.getElementById("recipient-name").value;
+    data.name = document.getElementById("recipient-name").value+document.getElementById("selectLevelCourse").value;
     data.img = document.getElementById("recipient-Image").value;
     data.desc = document.getElementById("message-Description").value;
-
+    
+    console.log(data);
     if (data.name===""|| data.name===" "){
         condicion=false;
         document.getElementById("conditionName").classList.add('conditionColor');
@@ -38,7 +39,7 @@ async function createCourse(){
             },
             body: JSON.stringify(data)
         });
-        createSubjects(id,data.name);
+        // createSubjects(id,data.name);
         cleanModalCourse();
         let btnClose=document.getElementById("btnClose");
         btnClose.click();
@@ -177,6 +178,7 @@ function cleanModalCourse(){
     document.getElementById("recipient-name").value=" ";
     document.getElementById("recipient-Image").value=" ";
     document.getElementById("message-Description").value=" ";
+    document.getElementById("selectLevelCourse").value="Level";
 }
 
 

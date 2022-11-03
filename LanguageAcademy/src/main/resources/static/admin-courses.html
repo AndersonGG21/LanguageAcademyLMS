@@ -61,9 +61,20 @@
                 <p id="conditionName"> Name cannot be null*</p>
             </div>
             <div class="mb-3">
+                <label for="recipient-name" class="col-form-label modalGreen"><strong>Level:</strong></label>
+                <select  id="selectLevelCourse"class="form-select" aria-label="Default select example">
+                  <option selected></option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="B1">B1</option>
+                  <option value="B2">B2</option>
+                </select>
+                <p id="conditionName">Choose one</p>
+            </div>
+            <div class="mb-3">
                 <label for="recipient-name" class="col-form-label modalGreen"> <strong>Image:</strong></label>
                 <input type="text" class="form-control" id="recipient-Image">
-                <p id="conditionImage">Image cannot be null*</p>
+                <p id="conditionImage">Image cannot be null and image is url*</p>
             </div>
             <div class="mb-3">
                 <label for="message-text" class="col-form-label modalGreen"><strong>Description:</strong></label>
