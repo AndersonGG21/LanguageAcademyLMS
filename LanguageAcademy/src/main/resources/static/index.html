@@ -1,16 +1,144 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/admin-courses.css" />
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <title>IDIOOM | Home</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/imgs/white-logo.png" alt="JDAS-white-logo" class="white-logo" width="50px" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a href="/login.html" class="btn btn-primary" style="margin-left: 90%;">
+                    Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container container-fluid">
+        <div class="slogan">
+            <div class="idioms" id="chinese"></div>
+            <h1>LEARN LENGUAGE ANYWHERE</h1>
+            <p id="lorem">Learn idioms with the best content</p>
+            <div class="idioms" id="french"></div>
+        </div>
+        <div id="prueba">hola!</div>
+        <div class="rigth">
+            <img src="/imgs/home.png" alt="" class="img-fluid" height="300px">
+        </div>
+        <div class="blob"></div>
+    </div>
+    <a href="#info">
+        <button class="btn btn-primary" style="width: 200px; height:50px; margin-left: 20%; margin-top: 20px;">Get
+            Started</button>
+    </a>
+    <div class="container-fluid info" data-aos="fade-right" data-aos-duration="500" id="info">
+        <div class="custom-shape-divider-top-1667503039">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+        <br><br><br><br>
+        <div class="why-idiom container-fluid">
+            <div class="text">
+                <h1 class="title">Why Idioom?</h1>
+                <p>Speaking a second language opens the door to many personal and professional opportunities, which is
+                    why today people who speak more than one language receive more and better job offers.</p>
+                <p>At Idioom we offer you several language courses taught by highly qualified instructors and experts in
+                    teaching through the Idioom Method. We offer group courses. So, no matter what your needs are, with
+                    us you will find the most effective way of learning.</p>
+                <p>We are a state-of-the-art experiential learning platform that allows you to take control of your
+                    training processes and achieve better results. With us you will have the opportunity to generate
+                    easy-to-manage workspaces, awaken interest through social interaction, provide the possibility of
+                    being connected 24/7, follow up based on user or course analytics and much more. Make learning an
+                    unforgettable experience,</p>
+            </div>
+            <div class="rigth">
+                <img src="/imgs/home.png" alt="" class="img-fluid" height="300px">
+            </div>
+        </div>
+    </div>
+    <div class="our-idioms" data-aos="fade-left" data-aos-duration="500">
+        <div class="custom-shape-divider-top-1667539338">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="text">
+            <h1 class="title">Idioms:</h1>
+        <p>We teach different languages with various learning methods, you just have to choose the one that best suits you.</p>
+        </div>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide container-fluid" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="/imgs/ena1.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <!-- <h5>First slide label</h5> -->
+                  <p>Spanish</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="/imgs/ena1.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <!-- <h5>Second slide label</h5> -->
+                  <p>French</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/imgs/ena1.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <!-- <h5>Third slide label</h5> -->
+                  <p>Chinese</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
 </html>

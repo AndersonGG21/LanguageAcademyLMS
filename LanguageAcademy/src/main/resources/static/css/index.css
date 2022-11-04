@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-container{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content:  center;
+    flex-direction: row;
+}
+
+.slogan{
+    margin-left: 50px;
+    margin-top: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+}
+.slogan h1{
+    font-weight: bold;
+    font-size: 60px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #ef233c;
+}
+
+.rigth{
+    margin-left: 100px;
+    /* height: 300px; */
+    
+}
+
+.idioms{
+    width: 80px;
+}
+
+#chinese::before{
+    content: '你好';
+    font-size: 1.5em;
+    width: 90px;
+    height: 90px;
+    border: 2px solid red;
+    border-radius: 4px;
+    z-index: -1;
+    rotate: 25deg;
+    margin-left: 100px;
+    /* margin-bottom: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FDFDFD;
+    transition: background-color 1s cubic-bezier(0.25, 1, 0.5, 1) 0s;
+}
+
+#chinese:hover::before{
+    cursor: pointer;
+    background-color: #ef233c;
+    transition: background 1.2s 0s ease;
+    content: 'HI';
+    transition:  1.2s 0s ease;
+    color: white;
+    border-color: white;
+}
+
+#french{
+    margin-right: 350px;
+}
+
+#french::before{
+    content: 'Salut';
+    font-size: 1.5em;
+    width: 90px;
+    height: 90px;
+    border: 2px solid red;
+    border-radius: 4px;
+    z-index: -1;
+    rotate: -25deg;
+    margin-left: 100px;
+    /* margin-bottom: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FDFDFD;
+    transition: background-color 1s cubic-bezier(0.25, 1, 0.5, 1) 0s;
+}
+
+#french:hover::before{
+    cursor: pointer;
+    background-color: #ef233c;
+    transition: background 1.2s 0s ease;
+    content: 'Hello';
+    transition:  1.2s 0s ease;
+    color: white;
+    border-color: white;
+}
+
+
+.info{
+    margin-top: 100px;
+    background-color: #ef233c;
+    color: wheat;
+}
+
+@media (width < 500px) {
+    #prueba{
+        visibility: hidden;
+    }
+    .blob{
+      visibility: hidden;
+    }
+
+    /* img{
+      visibility: hidden;
+    } */
+} 
+
+body #prueba {
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 15px;
+  color: #ef233c;
+  background-color: inherit;
+  padding: 50px;
+  border-radius: 11px;
+  position: absolute;
+  top: 90px;
+  right: 40px;
+  box-shadow: 20px 20px #ef233b67;
+  /* font-family: "Baloo 2", cursive; */
+  border: 1px solid #ef233c;
+  height: 5px;
+  /* width: 30px; */
+}
+body #prueba:after {
+  transform: translatey(0px);
+  animation: float2 5s ease-in-out infinite;
+  content: ".";
+  font-weight: bold;
+  -webkit-text-stroke: 0.5px #ef233c;
+  -webkit-text-fill-color: beige;
+  border: 1px solid #ef233c;
+  text-shadow: 22px 22px #ef233b67;
+  text-align: left;
+  font-size: 55px;
+  width: 25px;
+  height: 5px;
+  line-height: 30px;
+  border-radius: 11px;
+  background-color: beige;
+  position: absolute;
+  display: block;
+  bottom: -30px;
+  left: 0;
+  box-shadow: 22px 22px #ef233b67;
+  z-index: -2;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+  55% {
+    transform: translatey(-20px);
+  }
+  60% {
+    line-height: 10px;
+  }
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+}
+
+@keyframes morph {
+  0%, 100%{
+    border-radius: 
+    42% 56% 72% 28% / 42% 42% 56% 48%;
+  }
+  33%{
+    border-radius: 
+    72% 28% 48% 48% / 28% 28% 72% 72%;
+  }
+  66%{
+    border-radius: 
+    100% 56% 56% 100% / 100% 100% 56% 56%;
+  }
+}
+
+.blob{
+  position: relative;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 42% 56% 72% 28% / 42% 42% 56% 48%;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spanish_Presidential_Flag.svg/600px-Spanish_Presidential_Flag.svg.png");
+  background-size: cover;
+  background-position: center;
+  animation: morph 3.75s linear infinite;
+  top: 140px;
+  right: 420px;
+  z-index: -2;
+}
+
+.custom-shape-divider-top-1667503039 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: -1;
+}
+
+.custom-shape-divider-top-1667503039 svg {
+  position: relative;
+  display: block;
+  width: calc(158% + 1.3px);
+  height: 150px;
+}
+
+.custom-shape-divider-top-1667503039 .shape-fill {
+  fill: #FFFFFF;
+}
+
+.title{
+  font-size: 70px;
+  font-weight: bold;
+  color: white;
+}
+
+.text{
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin-left: 20px;
+}
+
+.why-idiom{
+  display: flex;
+  flex-direction: row;
+  /* align-content: center; */
+  /* justify-content: center; */
+}
+
+.why-idiom p{
+  font-size: 20px;
+}
+
+
+.our-idioms{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* flex-wrap: wrap; */
+}
+
+.our-idioms p{
+  font-weight: bold;
+  font-size: 20px;
+  /* flex-wrap: wrap; */
+}
+
+.our-idioms .title{
+  margin-top: 20px;
+  color: #ef233c;
+  /* flex-wrap: wrap; */
+}
+
+.our-idioms .text{
+  width: 100%;
+  /* flex-wrap: wrap; */
+}
+
+#carouselExampleDark{
+  max-width: 600px;
+}
+
+.carousel-item {
+  max-width: 600px !important;
+  /* height: 500px !important; */
+}
+
+.custom-shape-divider-top-1667539338 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1667539338 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 34px;
+}
+
+.custom-shape-divider-top-1667539338 .shape-fill {
+  fill: #ef233c;
+}

@@ -36,7 +36,8 @@ async function login() {
         alert("Usuario o contraseña invalida");
     }else{
         localStorage.role = roleName;
-        localStorage.token = resp;     
+        localStorage.token = resp; 
+        localStorage.email = document.getElementById("exampleInputEmail1").value;    
         
         if (roleName == "ADMIN") {
             location.href = "admin-courses.html"
