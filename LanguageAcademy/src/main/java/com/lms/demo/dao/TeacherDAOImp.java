@@ -25,12 +25,22 @@ public class TeacherDAOImp implements TeacherDAO{
     @PersistenceContext
     private EntityManager entityManager;
     
+    /*
     @Transactional 
     public List<Student> getMyStudents(){
-        String query = "FROM Student";
+        String query = "FROM Student WHERE email='pkollatschk@nymag.com'";
         return entityManager.createQuery(query).getResultList();
     }
-            
+    */
+    
+  
+    public List<Student> getMyStudents(String email1){
+        String sqlQuery = "SELECT s.id, s.name, s.email, s.phone_number,s.address, e.enrollment_course FROM `groups` g INNER JOIN `enrollments` e ON g.group_code=e.enrollment_group INNER JOIN `students` s ON e.enrollment_student=s.id INNER JOIN `teachers` t ON g.asigned_teacher=t.id WHERE t.email=? order by s.phone_number;";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, email1);
+        return query.getResultList();
+    }
+    
     @Override
     public void registerTeacher(Teacher teacher) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

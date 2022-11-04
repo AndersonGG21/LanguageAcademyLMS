@@ -19,5 +19,6 @@ public interface TeacherDAO {
     void deleteTeacher(int id);
     Teacher getTeacher(int id);
     List<Teacher> getTeachers();
-    List<Student> getMyStudents();
+    //List<Student> getMyStudents();
+    List<Student> getMyStudents(String email1);
 }
