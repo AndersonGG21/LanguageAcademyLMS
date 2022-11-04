@@ -83,25 +83,25 @@ async function createCourseMaterial(){
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar </strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(1,"+iterator[0]+")' class='btn btn-success'id='success-grammar"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(1,"+iterator[0]+")' class='btn btn-success'id='grammar"+iterator[0]+"'>+</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(2,"+iterator[0]+")' class='btn btn-success'id='success-listening"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(2,"+iterator[0]+")' class='btn btn-success'id='listening"+iterator[0]+"'>+</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(3,"+iterator[0]+")' class='btn btn-success'id='success-reading"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(3,"+iterator[0]+")' class='btn btn-success'id='reading"+iterator[0]+"'>+</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
                     <div>\n\
-                        <button type='button'  onClick='modalCreateMaterial(4,"+iterator[0]+")' class='btn btn-success'id='success-speaking"+iterator[1]+"'>+</button>\n\
+                        <button type='button'  onClick='modalCreateMaterial(4,"+iterator[0]+")' class='btn btn-success'id='speaking"+iterator[0]+"'>+</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
@@ -120,34 +120,70 @@ async function createCourseMaterial(){
         </div>\n\
         </div>";
         list += modalElement;
+        
     }
     document.getElementById('containerModal').innerHTML = list;
+    checkCreateMaterial();
 }    
 
 // class='btn btn-secondary'
 // class="btn btn-secondary"
 // class='btn btn-success'
 let arrayModal=[];
-function checkCreateMaterial(){
-    
+let arraySubjectDB=[]
+async function checkCreateMaterial(){
+    const request = await fetch('api/subjects', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+    arraySubjectDB = await request.json();
+    for (const subject of arraySubjectDB){
+        // console.log(document.getElementById(subject[1]+subject[2]));
+        document.getElementById(subject[1]+subject[2]).classList.add('inactive');
+    }
+
+}
+function check(id){
+    let condicion=true;
+    for (const subject of arraySubjectDB){
+        if(subject[1]+subject[2]==id){
+           return false;
+        }
+   
+    }
+    return condicion;
 }
 
 function modalCreateMaterial(element,id){
+    // checkCreateMaterial(element,id);
     switch (element) {
         case 1:
-            modalCreateMaterialArray("gra",id,"grammar");
+            if(check("grammar"+id)){
+                modalCreateMaterialArray(id,"grammar");
+            }
             break;
         case 2:
-            modalCreateMaterialArray("lis",id,"listening");
+            if(check("listening"+id)){
+                modalCreateMaterialArray(id,"listening");
+            }
             break;
         case 3:
-            modalCreateMaterialArray("rea",id,"reading");
+            if(check("reading"+id)){
+                modalCreateMaterialArray(id,"reading");
+            }
             break;    
         case 4:
-            modalCreateMaterialArray("spe",id,"speaking");
+            if(check("speaking"+id)){
+                modalCreateMaterialArray(id,"speaking");
+            }
             break;
         case 5:
-            modalCreateMaterialArray("wri",id,"writing");
+            if(check("writing"+id)){
+                modalCreateMaterialArray(id,"writing");
+            }
         break;
         default:
           console.log("Problems");
@@ -163,7 +199,7 @@ function modalCreateMaterialFull(){
     let btnClose=document.getElementById("btnCloseCreate");
     btnClose.click();
 }
-function modalCreateMaterialArray(element,id,name){
+function modalCreateMaterialArray(id,name){
     data={};
     data.name=name;
     data.course=id;

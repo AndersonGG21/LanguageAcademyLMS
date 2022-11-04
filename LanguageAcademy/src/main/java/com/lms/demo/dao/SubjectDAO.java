@@ -5,6 +5,7 @@
 package com.lms.demo.dao;
 
 import com.lms.demo.models.Subject;
+import java.util.List;
 
 /**
  *
@@ -12,4 +13,6 @@ import com.lms.demo.models.Subject;
  */
 public interface SubjectDAO {
     void createSubject(Subject subject);
+    
+    List<Subject> getSubjects();
 }
