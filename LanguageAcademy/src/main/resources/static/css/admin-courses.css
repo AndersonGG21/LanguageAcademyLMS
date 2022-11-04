@@ -136,6 +136,10 @@ th{
   /* grid-auto-rows:22rem; */
   grid-template-columns:repeat(auto-fill,100px)
 }
+.inactive{
+  --bs-btn-bg: #6C757D;
+  background-color:#6C757D ;
+}
 
 @keyframes scale-up-horizontal-left {
   0% {

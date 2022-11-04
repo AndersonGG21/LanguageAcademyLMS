@@ -15,8 +15,9 @@ $(document).ready(function () {
 });
 
 async function loadStudents() {
-
-   const request = await fetch('api/teacher-students', {
+   email1="maria@gmail.com";
+   // email1=localStorage.email1;
+   const request = await fetch('api/teacher-students/' +email1, {
        method: 'GET',
        headers: {
            'Accept': 'application/json',
@@ -24,17 +25,19 @@ async function loadStudents() {
        }
    });
    const studentsHTML = await request.json();
+
    let listHTML = '';
 
 
    for (let it_students of studentsHTML) {
-
+     
        let studentsHTML = "<tr>\n\
-                       <td>"+ it_students.id + "</td>\n\
-                       <td>"+ it_students.name + "</td>\n\
-                       <td>"+ it_students.email + "</td>\n\
-                       <td>"+ it_students.phoneNumber + "</td>\n\
-                       <td>"+ it_students.address + "</td>\n\
+                       <td>"+ it_students[0] + "</td>\n\
+                       <td>"+ it_students[1] + "</td>\n\
+                       <td>"+ it_students[2] + "</td>\n\
+                       <td>"+ it_students[3] +"</td>\n\
+                       <td>"+ it_students[4] + "</td>\n\
+                       <td>"+ it_students[5] + "</td>\n\
                        </tr>";
        listHTML += studentsHTML;
    }

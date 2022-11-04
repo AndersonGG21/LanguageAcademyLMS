@@ -18,7 +18,8 @@ import lombok.*;
 @Entity(name = "subjects")
 public class Subject {   
     
-    @Id @Column(name = "subject_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @Column(name = "subject_id") 
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
     @Column(name = "subject_name")
