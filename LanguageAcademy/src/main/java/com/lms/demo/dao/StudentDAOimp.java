@@ -58,7 +58,7 @@ public class StudentDAOimp implements StudentDAO{
    }
    
    @Override
-   public void delete(int id){
+   public void delete(String id){
        Student student = entityManager.find(Student.class, id);
        entityManager.remove(student);
    }
