@@ -84,42 +84,37 @@ async function createCourseMaterial(){
                     <label for='recipient-name' class='col-form-label modalGreen'><strong>Grammar </strong></label>\n\
                     <div>\n\
                         <button type='button'  onClick='modalCreateMaterial(1,"+iterator[0]+")' class='btn btn-success'id='success-grammar"+iterator[1]+"'>+</button>\n\
-                        <button type='button' class='btn btn-secondary' id='danger-grammar"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Listening</strong></label>\n\
                     <div>\n\
                         <button type='button'  onClick='modalCreateMaterial(2,"+iterator[0]+")' class='btn btn-success'id='success-listening"+iterator[1]+"'>+</button>\n\
-                        <button type='button' class='btn btn-secondary' id='danger-listening"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Reading</strong></label>\n\
                     <div>\n\
                         <button type='button'  onClick='modalCreateMaterial(3,"+iterator[0]+")' class='btn btn-success'id='success-reading"+iterator[1]+"'>+</button>\n\
-                        <button type='button' class='btn btn-secondary'id='danger-reading"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Speaking</strong></label>\n\
                     <div>\n\
                         <button type='button'  onClick='modalCreateMaterial(4,"+iterator[0]+")' class='btn btn-success'id='success-speaking"+iterator[1]+"'>+</button>\n\
-                        <button type='button' class='btn btn-secondary'id='danger-speaking"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 <div>\n\
                     <label for='recipient-name' class='col-form-label modalGreen'> <strong>Writing</strong></label>\n\
                     <div>\n\
                         <button type='button' onClick='modalCreateMaterial(5,"+iterator[0]+")'class='btn btn-success'id='success-writing"+iterator[1]+"'>+</button>\n\
-                        <button type='button' class='btn btn-secondary'id='danger-writing"+iterator[1]+"'>-</button>\n\
                     </div>\n\
                 </div>\n\
                 </form>\n\
             </div>\n\
         <div class='modal-footer'>\n\
-            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnClose'onClick='createCourseClose()'>Close</button>\n\
-            <button type='button' class='btn btn-primary' onClick='createCourse()' >Create scourse material</button>\n\
+            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnCloseCreate'onClick='createCourseClose()'>Close</button>\n\
+            <button type='button' class='btn btn-primary' onClick='modalCreateMaterialFull()' >Create scourse material</button>\n\
         </div>\n\
         </div>\n\
         </div>\n\
@@ -133,36 +128,43 @@ async function createCourseMaterial(){
 // class="btn btn-secondary"
 // class='btn btn-success'
 let arrayModal=[];
+function checkCreateMaterial(){
+    
+}
+
 function modalCreateMaterial(element,id){
     switch (element) {
-        case 1://grammar
+        case 1:
             modalCreateMaterialArray("gra",id,"grammar");
             break;
-        case 2://listening
+        case 2:
             modalCreateMaterialArray("lis",id,"listening");
             break;
-        case 3://reading
+        case 3:
             modalCreateMaterialArray("rea",id,"reading");
             break;    
-        case 4://speaking
+        case 4:
             modalCreateMaterialArray("spe",id,"speaking");
             break;
-        case 5://writing
+        case 5:
             modalCreateMaterialArray("wri",id,"writing");
         break;
         default:
           console.log("Problems");
         }
         
-        for (const data of arrayModal){
-            createSubjects(data);
-        }
+        
+}
+function modalCreateMaterialFull(){
+    for (const data of arrayModal){
+        createSubjects(data);
+    }
+    createCourseClose();
+    let btnClose=document.getElementById("btnCloseCreate");
+    btnClose.click();
 }
 function modalCreateMaterialArray(element,id,name){
     data={};
-    // data.id=element+id;
-    data.id=10;
-    
     data.name=name;
     data.course=id;
     if(checkModal(data)){
@@ -196,7 +198,6 @@ function cleanModalCourse(){
 
 
 async function createSubjects(data){
-    console.log(data);
     let course={
         code:data.course
     };
