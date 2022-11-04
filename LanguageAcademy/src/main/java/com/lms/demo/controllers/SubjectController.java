@@ -7,20 +7,23 @@ package com.lms.demo.controllers;
 import com.lms.demo.dao.SubjectDAO;
 import com.lms.demo.models.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author david
  */
+@RestController
 public class SubjectController {
     
     @Autowired
     private SubjectDAO subjectDAO;
-    
-    @RequestMapping(value = "/api/subjects", method = RequestMethod.POST)
+
+    @PostMapping(value = "api/subjects")
     public void createCourse(@RequestBody Subject subject){ 
         subjectDAO.createSubject(subject);
     }

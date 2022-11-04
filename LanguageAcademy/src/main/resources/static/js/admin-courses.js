@@ -6,13 +6,22 @@ async function createCourse(){
     let condicion=true;
     let id=Date.now().toString();
     let data={};
+    let select=document.getElementById("selectLevelCourse").value;
+    let name=document.getElementById("recipient-name").value;
     data.code=id;
-    data.name = document.getElementById("recipient-name").value+document.getElementById("selectLevelCourse").value;
+    data.name =name +select;
     data.img = document.getElementById("recipient-Image").value;
     data.desc = document.getElementById("message-Description").value;
     
-    console.log(data);
-    if (data.name===""|| data.name===" "){
+
+ 
+    if(select===""||select===" "){
+        condicion=false;
+        document.getElementById("conditionNameLevel").classList.add('conditionColor');
+    }else{
+        document.getElementById("conditionNameLevel").classList.remove('conditionColor');
+    }
+    if (name===""|| name===" "){
         condicion=false;
         document.getElementById("conditionName").classList.add('conditionColor');
     }else{
@@ -39,7 +48,6 @@ async function createCourse(){
             },
             body: JSON.stringify(data)
         });
-        // createSubjects(id,data.name);
         cleanModalCourse();
         let btnClose=document.getElementById("btnClose");
         btnClose.click();
@@ -145,12 +153,17 @@ function modalCreateMaterial(element,id){
         default:
           console.log("Problems");
         }
-        console.log(arrayModal);
+        
+        for (const data of arrayModal){
+            createSubjects(data);
+        }
 }
 function modalCreateMaterialArray(element,id,name){
     data={};
-    data.subject_id=element+id;
-    data.subject_name=name;
+    // data.id=element+id;
+    data.id=10;
+    
+    data.name=name;
     data.course=id;
     if(checkModal(data)){
         arrayModal.push(data);
@@ -160,7 +173,7 @@ function modalCreateMaterialArray(element,id,name){
 function checkModal(element){
     let condicion=true;
     for (const elementArray of arrayModal){
-        if(elementArray.subject_id===element.subject_id){
+        if(elementArray.id===element.id){
             condicion=false;
             return condicion
 
@@ -182,19 +195,21 @@ function cleanModalCourse(){
 }
 
 
-async function createSubjects(idCourse,name){
-    let SubjectGram={}
-    SubjectGram.name="Grammar-"+name;
-    SubjectGram.course=idCourse;
-    // SubjectGram.id=22;
-    console.log(SubjectGram);
-    
-    const request = await fetch('/api/subjects', {
+async function createSubjects(data){
+    console.log(data);
+    let course={
+        code:data.course
+    };
+    const request = await fetch('api/subjects', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(SubjectGram)
+        body: JSON.stringify({
+            name:data.name, 
+            course
+        })
+        
     });
 }
