@@ -41,6 +41,47 @@
         </div>
     </nav>
 
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">Group Student Info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form name="modalForm">
+                    <p><b>Student <b> <span id="customerId"></span></p>
+                    <label for="customerName" class="form-label">Julian Garcia Arenas</label>
+                    <hr>
+                    <label for="gruposChinesse">Grupo Chinesse:</label>
+                    <select name="gruposChinesse" class="form-select" aria-label="Default select example" id="gruposChinesse">
+                        <option value="Grupo01">Grupo01</option>
+                        <option value="Grupo02">Grupo02</option>
+                        <option value="Grupo03">Grupo03</option>
+                        <option value="Grupo04">Grupo04</option>
+                    </select>
+                    <hr>
+                    <label for="gruposChinesse">Grupo English:</label>
+                    <select class="form-select" aria-label="Default select example" name="gruposChinesse" id="gruposChinesse">
+                        <option value="Grupo01">Grupo01</option>
+                        <option value="Grupo02">Grupo02</option>
+                        <option value="Grupo03">Grupo03</option>
+                        <option value="Grupo04">Grupo04</option>
+                    </select>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="modifyCustomer()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Update Modal -->
+
     <h2 style="display: inline-block">Students</h2>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

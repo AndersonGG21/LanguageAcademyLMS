@@ -52,7 +52,7 @@ public class StudentController {
     }
     
     @RequestMapping(value = "api/student/{id}", method = RequestMethod.DELETE)
-    public void deleteStudent(@PathVariable int id){
+    public void deleteStudent(@PathVariable String id){
         studentDAO.delete(id);
     }
 }

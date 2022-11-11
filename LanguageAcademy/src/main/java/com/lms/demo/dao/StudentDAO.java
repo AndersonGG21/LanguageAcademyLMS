@@ -16,7 +16,7 @@ public interface StudentDAO {
     
     void modStudent(Student student, int id);
     
-    void delete(int id);
+    void delete(String id);
     
     Student getStudentOne(int id);
 }
