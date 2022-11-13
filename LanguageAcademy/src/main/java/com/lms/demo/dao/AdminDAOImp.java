@@ -96,8 +96,9 @@ public class AdminDAOImp implements AdminDAO{
         List<Admin> resAdmin = entityManager.createQuery(adminQuery).setParameter("email", email).getResultList();
         
         if (!resAdmin.isEmpty()) {
-            return resAdmin.get(0);
+            return resAdmin.get(0);    
         }
+        
         
         String teacherQuery = "SELECT t FROM Teacher t WHERE t.email = :email";
         List<Teacher> resTeacher = entityManager.createQuery(teacherQuery).setParameter("email", email).getResultList();

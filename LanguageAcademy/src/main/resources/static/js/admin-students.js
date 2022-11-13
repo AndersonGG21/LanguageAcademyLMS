@@ -42,3 +42,34 @@ async function loadStudents() {
     document.querySelector('#tableStudents tbody').outerHTML = listHTML;
 
 }
+
+async function deleteStudents(id) {
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#43546F',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            const request = await fetch('api/student/' + id, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+            Swal.fire(
+                'Deleted!',
+                'The student has been deleted.',
+                'success'
+            )
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+        }
+    })
+}

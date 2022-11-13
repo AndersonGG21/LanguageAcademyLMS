@@ -15,8 +15,8 @@ async function login() {
     });
 
     let uArray = await user.json();
-
     let roleName = uArray.roleName;
+    let email = uArray.email;
 
     const request = await fetch('/api/login', {
         method: 'POST',
@@ -25,7 +25,7 @@ async function login() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email : document.getElementById("exampleInputEmail1").value,
+            email : email,
             password: document.getElementById("exampleInputPassword1").value,
             roleName: roleName,
             profession: "DEVELOPER"
@@ -37,7 +37,7 @@ async function login() {
     }else{
         localStorage.role = roleName;
         localStorage.token = resp; 
-        localStorage.email = document.getElementById("exampleInputEmail1").value;    
+        localStorage.email = email;
         
         if (roleName == "ADMIN") {
             location.href = "admin-courses.html"
@@ -48,8 +48,6 @@ async function login() {
 let email = document.getElementById("exampleInputEmail1");
 let password = document.getElementById("exampleInputPassword1");
 
-//const email_reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-//const email_reg = /[a-z0-9._%+-]+@\.+[//b@elpoli.edu.co//b]{2,}$/
 const email_reg = /(\W|^)[\w.\-]{0,25}@(elpoli)\.edu.co(\W|$)/
 email.addEventListener('input', validate);
 password.addEventListener('input', validate);
