@@ -6,7 +6,7 @@ let colores2=['#B833FF',"#FF33E0","#E6DF92","#BFF5D7","#E6CFF1","#3371FF","#CFD7
 
 function reportSale() {
     
-    
+    ddd
 
     alert("gg");
     
