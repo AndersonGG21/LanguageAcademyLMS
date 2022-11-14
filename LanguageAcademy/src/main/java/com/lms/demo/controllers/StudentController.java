@@ -6,12 +6,14 @@ package com.lms.demo.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.lms.demo.dao.StudentDAO;
+import com.lms.demo.models.Course;
 import com.lms.demo.models.Student;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -55,4 +57,10 @@ public class StudentController {
     public void deleteStudent(@PathVariable String id){
         studentDAO.delete(id);
     }
+
+    @GetMapping(value = "/api/students/{email}")
+    public List<Course> getMyCourses(@PathVariable String email){
+        return studentDAO.getMyCourses(email);
+    }
+
 }
