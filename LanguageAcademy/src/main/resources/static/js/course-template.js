@@ -1,5 +1,6 @@
 $(document).ready(function () {
   document.title = "Course - " + localStorage.code;
+  loadData();
 });
 
 $("#g-articles").click(function (e) {
@@ -38,8 +39,37 @@ $(".close-btn").click(function (e) {
   }, 1000);
 });
 
-$("#logout").click(function (e) { 
-    e.preventDefault();
-    localStorage.clear();
-    location.href = "login.html"
+$("#logout").click(function (e) {
+  e.preventDefault();
+  localStorage.clear();
+  location.href = "login.html";
 });
+
+async function loadData() {
+  const data = JSON.stringify({
+    student: {
+      email: "mateo@elpoli.edu.co",
+    },
+    course: {
+      code: localStorage.code,
+    },
+  });
+
+  const request = await fetch("/api/enrollments", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+
+  const response = await request.json();
+  console.log(response);
+
+  document.getElementById("course-name").innerHTML = response[0][0];
+  document.getElementById("course-code").innerHTML = response[0][1];
+  // document.getElementById("course-des").innerHTML = response[0][2];
+  document.getElementById("course-group").innerHTML = response[0][3];
+  document.getElementById("course-teacher").innerHTML = response[0][4];
+}
