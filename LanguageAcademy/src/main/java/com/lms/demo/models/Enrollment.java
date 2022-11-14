@@ -16,6 +16,9 @@ public class Enrollment {
     @Id @Column(name = "code") @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int code;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "enrollmentStudent")
     private Student student;
