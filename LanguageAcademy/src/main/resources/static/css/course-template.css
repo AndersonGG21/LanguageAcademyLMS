@@ -150,6 +150,10 @@ a:hover {
   border-radius: 0;
 }
 
+.dropdown-menu{
+  transition: 0.5s ease-in-out;
+}
+
 .content-right {
   margin-left: auto;
   width: 750px;
@@ -186,6 +190,48 @@ a:hover {
     display: inline;
 }
 
+.alert{
+  width:400px;
+  position:fixed;
+  top:10px;
+  right:10px;
+}
+
+.bi{
+  margin-right: 10px;
+}
+
+.custom-loader {
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  padding:3px;
+  background: 
+    radial-gradient(farthest-side,#d90429 95%,#0000) 50% 0/12px 12px no-repeat,
+    radial-gradient(farthest-side,#0000 calc(100% - 5px),#d90429 calc(100% - 4px)) content-box;
+  animation:s6 4s infinite ;
+  transition: 0.5s;
+}
+@keyframes s6 {to{transform: rotate(1turn)}}
+
+.bi-check-lg{
+  color: #d90429;
+  font-size: 30px;
+  margin-left: 100px;
+  display: none;
+  transition: 0.5s;
+  transform: scale(1.2);
+}
+
+.custom-loader-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.custom-loader-container span{
+  margin-top: 10px;
+  margin-left: 10px;
+}
 
 @media (width < 450px) {
     .img-container {

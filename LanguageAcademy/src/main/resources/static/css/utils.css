@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css");
 
 body {
   font-family: "Poppins", sans-serif;
@@ -88,4 +89,25 @@ h2 {
 .course-container {
   display: flex;
   justify-content: center;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+  padding: 32px 8vw;
+  background-color: #ef233c;
+  height: 50px;
+  color: white;
+}
+.copyright a {
+  color: #fff;
+  margin: 0 1vw 0 1vw;
+}
+.copyright a:last-child {
+  margin-right: 0;
+}
+.copyright a::before {
+  background-color: #fff !important;
 }

@@ -44,7 +44,7 @@ public class EnrollmentDAOImp implements EnrollmentDAO {
         
         if (student != null) {
             String id = student.getId();
-            String sqlQuery = "SELECT c.course_name,c.course_code,c.course_des, g.group_name, t.name FROM `enrollments` e INNER JOIN `students` s ON s.id = e.enrollment_student INNER JOIN `groups` g ON g.group_code = e.enrollment_group INNER JOIN `teachers` t ON t.id = g.asigned_teacher INNER JOIN `courses` c ON e.enrollment_course = c.course_code WHERE s.id = ? AND c.course_code = ?";
+            String sqlQuery = "SELECT c.course_name,c.course_code,c.course_des, g.group_name, t.name, c.pensum FROM `enrollments` e INNER JOIN `students` s ON s.id = e.enrollment_student INNER JOIN `groups` g ON g.group_code = e.enrollment_group INNER JOIN `teachers` t ON t.id = g.asigned_teacher INNER JOIN `courses` c ON e.enrollment_course = c.course_code WHERE s.id = ? AND c.course_code = ?";
 
             Query query = entityManager.createNativeQuery(sqlQuery).setParameter(1, id);
             query.setParameter(2, enroll.getCourse());

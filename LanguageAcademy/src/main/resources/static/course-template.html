@@ -46,15 +46,15 @@
         <div class="header">
             <div class="course-info">
                 <h1 id="course-name">{Course Name}</h1>
-                <br>
+                <br />
                 <p>Course Code: <span id="course-code"></span></p>
                 <!-- <p id="course-des">{Course Description}</p> -->
                 <p>Group: <span id="course-group"></span></p>
                 <p>Teacher: <span id="course-teacher"></span></p>
-                <a href="https://www.politecnicojic.edu.co/images/downloads/facultades/ingenieria/programa-ingenieria-informatica-plan-10.jpg" target="_blank">Pensum</a>
+                <a href="" id="pensum"></a>
             </div>
             <div class="img-container">
-                <img src="/imgs/why.png" class="img-fluid" alt="">
+                <img src="/imgs/why.png" class="img-fluid" alt="" />
             </div>
         </div>
         <div class="course-content">
@@ -66,7 +66,9 @@
                         Grammar
                     </button>
                     <ul class="dropdown-menu">
-                        <li value="Articles"><a class="dropdown-item" href="" id="g-articles">Articles</a></li>
+                        <li value="Articles">
+                            <a class="dropdown-item" href="" id="g-articles">Articles</a>
+                        </li>
                         <li><a class="dropdown-item" href="#">Sustantives</a></li>
                         <li><a class="dropdown-item" href="#">Adjectives</a></li>
                     </ul>
@@ -95,22 +97,24 @@
                 </div>
             </div>
             <div class="content-right animate__animated">
-                <div class="video-container">
-
-                </div>
+                <div class="video-container"></div>
                 <p id="theme"></p>
-                <p id="teory">
-
-                </p>
-                <div class="dropdown" id="quiz">
-
-                </div>
+                <p id="teory"></p>
+                <div class="dropdown" id="quiz"></div>
 
                 <button class="btn btn-primary close-btn">Close Lesson</button>
             </div>
         </div>
-
+        <section class="copyright">
+            <p><span>©</span> 2022 Rights Reserved, Idioom</p>
+        </section>
     </div>
+
+    
+    
+    
+    <!-- <button class="btn btn-warning" data-type="warning"
+        data-message="This course doesnt have a pensum">Show Alert</button> -->
 
 
     <!-- JavaScript Bundle with Popper -->
@@ -118,7 +122,6 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
     <script src="/js/course-template.js"></script>
-
 </body>
 
 </html>
