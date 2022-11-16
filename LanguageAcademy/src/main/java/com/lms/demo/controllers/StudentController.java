@@ -48,6 +48,11 @@ public class StudentController {
         return studentDAO.getCourse(id);
     }
     
+    @RequestMapping(value = "/api/students/group/{id}-{idCourse}", method = RequestMethod.GET)
+    public List<Group> getGroupOne(@PathVariable String idCourse,@PathVariable String id){
+        return studentDAO.getGroupOne(idCourse,id);
+    }
+    
     @RequestMapping (value = "api/student", method = RequestMethod.POST)
     public void registerStudent(@RequestBody Student student){
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
