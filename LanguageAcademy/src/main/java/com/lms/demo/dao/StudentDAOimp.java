@@ -65,5 +65,27 @@ public class StudentDAOimp implements StudentDAO{
        Student student = entityManager.find(Student.class, id);
        entityManager.remove(student);
    }
+
+    @Override
+    public List<Course> getCourse(String id) {
+        
+        String sqlQuery = "SELECT c.course_name, c.course_code , s.name, e.code FROM `courses` c INNER JOIN `enrollments` e ON e.enrollment_course = c.course_code INNER JOIN `students` s ON s.id = e.enrollment_student WHERE s.id = ?";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, id);
+        List<Course> result = query.getResultList();
+        if(result.size()>=1){
+           return result; 
+        }
+        else{
+        Course empty = new Course();
+        empty.setCode(id);
+        empty.setDesc("Nothing enrollments");
+        Student temp= entityManager.find(Student.class, id);
+        empty.setName(temp.getName());
+        result.add(empty);
+        return result; 
+        }
+        
+    }
     
 }
