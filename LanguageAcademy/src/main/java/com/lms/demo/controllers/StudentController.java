@@ -12,9 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.lms.demo.dao.StudentDAO;
+import com.lms.demo.models.Course;
+import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import org.springframework.web.bind.annotation.PatchMapping;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.ResponseBody;
 /**
  *
  * @author Julian
