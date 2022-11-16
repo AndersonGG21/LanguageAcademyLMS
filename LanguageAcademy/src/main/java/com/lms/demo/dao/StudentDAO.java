@@ -17,4 +17,5 @@ public interface StudentDAO {
     void delete(String id);
     Student getStudentOne(int id);
     List<Course> getMyCourses(String email);
+    List<Course> getCompletedCourses(String email);
 }

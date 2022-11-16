@@ -1,4 +1,4 @@
-.course-card{
+.course-card, .course-cardCompleted{
     width: 290px;
     height: 280px;
     margin-left: 20px;
@@ -10,6 +10,20 @@
     /* cursor: pointer; */
     transform: scale(1.05);
     transition: 0.5s;
+}
+
+.course-cardCompleted:hover{
+    /* cursor: pointer; */
+    transform: scale(1.05);
+    transition: 0.5s;
+    background-color: green;
+    color: white;
+}
+
+.card-bodyCompleted{
+    display: flex;
+    justify-content: center;
+    padding-top: 75px;
 }
 
 
@@ -37,13 +51,21 @@
     background-repeat: no-repeat;
 }
 
-.my-courses-container{
+.my-courses-container, .courses-completed{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+/* {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}  */
+
+
 .hi{
     margin: 40px 0px 35px 40px;
     color: black;
 }
+

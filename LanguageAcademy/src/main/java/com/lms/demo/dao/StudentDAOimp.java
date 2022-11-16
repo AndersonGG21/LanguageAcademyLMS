@@ -81,5 +81,17 @@ public class StudentDAOimp implements StudentDAO {
 
         return null;
     }
+    
+    @Override
+    public List<Course> getCompletedCourses(String email){
+        User student = adminDAO.getUserByEmail(email);
+        if(student !=null){
+            String sqlQuery = "SELECT DISTINCT c.course_name, c.course_code FROM `enrollments` e INNER JOIN `courses` c ON e.enrollment_course = c.course_code INNER JOIN `students` s ON s.id = e.enrollment_student  WHERE s.email = ? AND e.status = 'FINISHED'";
+            Query query = entityManager.createNativeQuery(sqlQuery).setParameter(1, student.getEmail());
+            return query.getResultList();    
+        }
+  
+        return null;
+    }
 
 }
