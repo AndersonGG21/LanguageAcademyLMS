@@ -21,7 +21,7 @@ async function loadStudents() {
         btnDelete = "<button class='btn-icons' onclick=deleteStudents(\'" + it_students.id + "\')>\n\
                     <i class='bi bi-trash'></i>\n\
                     </button>";
-        btnEdit = "<button class='btn-icons' onclick=loadDataStudents(\'" + it_students.id + "\') data-bs-toggle='modal' data-bs-target='#updateModal'>\n\
+        btnEdit = "<button class='btn-icons' onclick=getCourse(\'" + it_students.id + "\') data-bs-toggle='modal' data-bs-target='#updateModal'>\n\
                     <i class='bi bi-pencil'></i>\n\
                     </button>";
 
