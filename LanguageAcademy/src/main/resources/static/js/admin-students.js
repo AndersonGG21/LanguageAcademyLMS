@@ -153,3 +153,75 @@ async function deleteStudents(id) {
         }
     })
 }
+
+async function modifyStudent(id) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    let data = {};
+
+    // data.name = document.getElementById("inputName").value;
+
+
+    Swal.fire({
+        title: 'Do you want to save the changes?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Save',
+        denyButtonText: `Don't save`,
+    }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        var groupsNew = new Map();
+        for (var [key, value] of groupsModify) {
+            var option = document.getElementById(value);
+            var content = option.value;
+            groupsNew.set(value,content);
+        }
+        const out = Object.create(null)
+        groupsNew.forEach((value, key) => {
+          if (value instanceof Map) {
+            out[key] = map_to_object(value)
+
+          }
+          else {
+            out[key] = value
+          }
+        })
+        console.log(JSON.stringify({out}));
+        if (result.isConfirmed) {
+            const request = await fetch('/api/students/group/' + id, {
+                method: 'PATCH',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(out)
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Saved successfully'
+            })
+            setTimeout(function () {
+                location.reload();
+            }, 3000);
+        } else if (result.isDenied) {
+            Toast.fire({
+                icon: 'warning',
+                title: 'Not Saved'
+            })
+            setTimeout(function () {
+                location.reload();
+            }, 3000);
+        }
+    })
+}
