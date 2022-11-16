@@ -3,6 +3,7 @@ $(document).ready(function () {
 });
 
 let studentsToModify;
+var groupsModify = new Map();;
 
 async function loadStudents() {
 
