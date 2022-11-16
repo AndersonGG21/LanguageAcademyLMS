@@ -87,5 +87,32 @@ public class StudentDAOimp implements StudentDAO{
         }
         
     }
+
+    @Override
+    public List<Group> getGroupOne(String idCourse, String id) {
+        String sqlQuery =  "SELECT g.group_code, g.group_name FROM `groups` g INNER JOIN `enrollments` e ON G.group_code = e.enrollment_group INNER JOIN `courses` c ON e.enrollment_course = c.course_code INNER JOIN `students` s ON s.id = e.enrollment_student WHERE c.course_code = ? and s.id = ?;";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, idCourse);
+        query.setParameter(2, id);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Group> getGroup(String idCourse) {
+        String sqlQuery =  "SELECT g.group_code, g.group_name FROM `groups` g INNER JOIN `courses` c ON g.course = c.course_code WHERE c.course_code = ?;";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, idCourse);
+        return query.getResultList();
+    }
+
+    @Override
+    public void updateGroup(String idCourse, String group, String id) {
+        String sqlQuery =  "UPDATE `enrollments` SET`enrollment_group`=?1 WHERE `enrollment_student`=?2 AND `enrollment_course`=?3";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, group);
+        query.setParameter(2, id);
+        query.setParameter(3, idCourse);
+        query.executeUpdate();
+    }
     
 }
