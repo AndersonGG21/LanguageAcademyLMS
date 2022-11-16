@@ -12,12 +12,9 @@ import java.util.List;
  * @author seang
  */
 public interface StudentDAO {
-    List<Student> getStudent();
-    
-    void regStudent(Student student);
-    
+    List<Student> getStudent();    
+    void regStudent(Student student);    
     void modStudent(Student student, int id);
-    
     void delete(String id);
     
     void updateGroup(String idCourse,String group,String id);
@@ -29,4 +26,5 @@ public interface StudentDAO {
     List<Group> getGroup(String Courses);
     
     Student getStudentOne(int id);
+    List<Course> getMyCourses(String email);
 }

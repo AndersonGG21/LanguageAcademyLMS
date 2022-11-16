@@ -13,6 +13,8 @@ import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
 import com.lms.demo.models.User;
 import com.lms.demo.utils.JWTUtil;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,9 +49,20 @@ public class AuthController {
     
     @PostMapping(value = "/api/login")
     public String login(@RequestBody User user){
-        //Admin logged = adminDAO.getAdminByCr(user);
-        if(user != null){
-            return jwtutil.create(user.getId(), user.getEmail());
+        User logged = adminDAO.getUserByEmail(user.getEmail());
+        if(logged != null){
+            System.out.println("Logged:" + logged.getName());
+            String passHashed = logged.getPassword();
+            Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
+            
+            System.out.println("Argon2:" + argon2.verify(passHashed, logged.getPassword()));
+            System.out.println("Server:" + logged.getPassword());
+            System.out.println("Client:" + user.getPassword());
+            
+            if(argon2.verify(passHashed, user.getPassword())){
+                return jwtutil.create(logged.getId(), logged.getEmail());
+            }
+            
         }
         
         return "FAIL";

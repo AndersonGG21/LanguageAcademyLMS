@@ -24,4 +24,8 @@ public class Course {
 
     @Column(name = "course_img")
     private String img;
+
+    @Column(name = "pensum")
+    @NonNull
+    private String pensum;
 }

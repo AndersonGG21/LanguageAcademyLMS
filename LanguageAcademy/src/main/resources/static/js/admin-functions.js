@@ -114,9 +114,8 @@ async function getTeachers() {
 async function prueba() {
     const splitted = $("#selectTeacher :selected").text().split(" - ");
     if (splitted == '' || splitted == 'Please select a teacher:') {
-        alert("Esoge un teacher");
+        alert("You must select a teacher");
     }else{
-        alert("Correcto Pai")
         assignTeacher(groupCode, splitted[0]);
         location.reload();
     }
@@ -150,7 +149,9 @@ async function createGroup() {
         });
 
         if (request.status == 200) {
-            alert("Melisimo pai")
+            alert("Group Created")
+            $("#grgroupTableBody").toggle();
+            $("#grgroupTableBody").toggle();
         }
     }
     

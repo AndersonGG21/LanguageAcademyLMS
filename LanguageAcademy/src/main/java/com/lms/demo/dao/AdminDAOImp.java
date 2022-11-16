@@ -6,7 +6,6 @@
 package com.lms.demo.dao;
 
 import com.lms.demo.models.Admin;
-import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
@@ -96,8 +95,9 @@ public class AdminDAOImp implements AdminDAO{
         List<Admin> resAdmin = entityManager.createQuery(adminQuery).setParameter("email", email).getResultList();
         
         if (!resAdmin.isEmpty()) {
-            return resAdmin.get(0);
+            return resAdmin.get(0);    
         }
+        
         
         String teacherQuery = "SELECT t FROM Teacher t WHERE t.email = :email";
         List<Teacher> resTeacher = entityManager.createQuery(teacherQuery).setParameter("email", email).getResultList();
