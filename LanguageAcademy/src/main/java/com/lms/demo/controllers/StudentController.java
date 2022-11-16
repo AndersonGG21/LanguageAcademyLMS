@@ -43,6 +43,10 @@ public class StudentController {
         return studentDAO.getStudent();
     } 
     
+    @RequestMapping(value = "/api/students/course/{id}", method = RequestMethod.GET)
+    public List<Course> getCourse(@PathVariable String id){
+        return studentDAO.getCourse(id);
+    }
     
     @RequestMapping (value = "api/student", method = RequestMethod.POST)
     public void registerStudent(@RequestBody Student student){
