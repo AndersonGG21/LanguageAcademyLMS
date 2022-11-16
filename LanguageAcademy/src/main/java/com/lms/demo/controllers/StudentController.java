@@ -62,5 +62,5 @@ public class StudentController {
     public List<Course> getMyCourses(@PathVariable String email){
         return studentDAO.getMyCourses(email);
     }
-
+    
 }
