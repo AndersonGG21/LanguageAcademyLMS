@@ -18,5 +18,13 @@ public interface StudentDAO {
     
     void delete(String id);
     
+    void updateGroup(String idCourse,String group,String id);
+    
+    List<Course> getCourse(String id);
+    
+    List<Group> getGroupOne(String Courses, String id);
+    
+    List<Group> getGroup(String Courses);
+    
     Student getStudentOne(int id);
 }
