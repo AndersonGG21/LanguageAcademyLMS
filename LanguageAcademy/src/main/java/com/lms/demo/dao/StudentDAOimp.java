@@ -9,7 +9,11 @@ import com.lms.demo.models.Course;
  *
  * @author seang
  */
+import com.lms.demo.models.Course;
+import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
+import java.util.ArrayList;
+import javax.persistence.Query;
 import com.lms.demo.models.User;
 
 import java.util.List;
@@ -38,6 +42,55 @@ public class StudentDAOimp implements StudentDAO {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
+    public List<Course> getCourse(String id) {
+        
+        String sqlQuery = "SELECT c.course_name, c.course_code , s.name, e.code FROM `courses` c INNER JOIN `enrollments` e ON e.enrollment_course = c.course_code INNER JOIN `students` s ON s.id = e.enrollment_student WHERE s.id = ?";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, id);
+        List<Course> result = query.getResultList();
+        if(result.size()>=1){
+           return result; 
+        }
+        else{
+        Course empty = new Course();
+        empty.setCode(id);
+        empty.setDesc("Nothing enrollments");
+        Student temp= entityManager.find(Student.class, id);
+        empty.setName(temp.getName());
+        result.add(empty);
+        return result; 
+        }
+        
+    }
+
+    @Override
+    public List<Group> getGroupOne(String idCourse, String id) {
+        String sqlQuery =  "SELECT g.group_code, g.group_name FROM `groups` g INNER JOIN `enrollments` e ON G.group_code = e.enrollment_group INNER JOIN `courses` c ON e.enrollment_course = c.course_code INNER JOIN `students` s ON s.id = e.enrollment_student WHERE c.course_code = ? and s.id = ?;";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, idCourse);
+        query.setParameter(2, id);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Group> getGroup(String idCourse) {
+        String sqlQuery =  "SELECT g.group_code, g.group_name FROM `groups` g INNER JOIN `courses` c ON g.course = c.course_code WHERE c.course_code = ?;";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, idCourse);
+        return query.getResultList();
+    }
+
+    @Override
+    public void updateGroup(String idCourse, String group, String id) {
+        String sqlQuery =  "UPDATE `enrollments` SET`enrollment_group`=?1 WHERE `enrollment_student`=?2 AND `enrollment_course`=?3";
+        Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, group);
+        query.setParameter(2, id);
+        query.setParameter(3, idCourse);
+        query.executeUpdate();
+    }
+    
     public Student getStudentOne(int id) {
         return entityManager.find(Student.class, id);
     }
