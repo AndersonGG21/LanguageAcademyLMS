@@ -58,6 +58,16 @@ public class StudentController {
         return studentDAO.getGroup(idCourse);
     }
     
+    @RequestMapping(value = "/api/students/group/{id}", method = RequestMethod.PATCH, consumes="application/json")
+    @ResponseBody
+    public void updateGroup(@RequestBody Map<String, String> groups, @PathVariable String id){
+        for (String i : groups.keySet()) {
+            System.out.println("key: " + i + " value: " + groups.get(i));
+             studentDAO.updateGroup(i,groups.get(i),id);
+        }
+       
+    }
+    
     @RequestMapping (value = "api/student", method = RequestMethod.POST)
     public void registerStudent(@RequestBody Student student){
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
