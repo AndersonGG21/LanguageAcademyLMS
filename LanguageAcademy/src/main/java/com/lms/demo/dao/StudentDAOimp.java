@@ -8,8 +8,11 @@ package com.lms.demo.dao;
  *
  * @author seang
  */
+import com.lms.demo.models.Course;
+import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
 import java.util.ArrayList;
+import javax.persistence.Query;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
