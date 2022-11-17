@@ -28,4 +28,6 @@ public interface StudentDAO {
     Student getStudentOne(int id);
     List<Course> getMyCourses(String email);
     List<Course> getCompletedCourses(String email);
+    List<Course> getCoursesHaventSeen();
+    
 }

@@ -96,4 +96,9 @@ public class StudentController {
     public List<Course> getCompletedCourses(@PathVariable String email){
     return studentDAO.getCompletedCourses(email);
     }
+    
+     @GetMapping(value = "/api/students-havent-seen/")
+    public List<Course> getCoursesHaventSeen(){
+    return studentDAO.getCoursesHaventSeen();
+    }
 }

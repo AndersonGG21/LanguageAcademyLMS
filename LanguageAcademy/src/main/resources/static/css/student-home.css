@@ -1,4 +1,4 @@
-.course-card, .course-cardCompleted{
+.course-card{
     width: 290px;
     height: 280px;
     margin-left: 20px;
@@ -12,21 +12,31 @@
     transition: 0.5s;
 }
 
-.course-cardCompleted:hover{
-    /* cursor: pointer; */
-    transform: scale(1.05);
-    transition: 0.5s;
-    background-color: green;
+.card-headerCompleted{
+    border-radius: 10px;
+    color: black;
+    width: 300px;
+    height: 100px;
+    background-color: transparent;
+    border:solid 1px  #d90429;
+    padding-top: 20px;
+    padding-left: 15px;
+    margin-left: 30px;
+}
+
+.codCompletedCourse{
     color: white;
+    position: relative !important;
+    background-color: #d90429;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
 
-.card-bodyCompleted{
-    display: flex;
-    justify-content: center;
-    padding-top: 75px;
-}
-
-
+/* ------------------------------------------ */
 .course-card::-webkit-scrollbar{
     width: 8px !important;     /* Tamaño del scroll en vertical */
     height: 8px !important;    /* Tamaño del scroll en horizontal */
@@ -51,10 +61,14 @@
     background-repeat: no-repeat;
 }
 
-.my-courses-container, .courses-completed{
+.my-courses-container, .courses-completed, .courses-havent-seen{
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.courses-havent-seen{
+    margin-bottom: 100px;
 }
 
 /* {

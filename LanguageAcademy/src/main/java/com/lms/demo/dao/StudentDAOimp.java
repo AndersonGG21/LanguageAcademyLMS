@@ -146,5 +146,13 @@ public class StudentDAOimp implements StudentDAO {
   
         return null;
     }
+    
+    @Override
+     public List<Course> getCoursesHaventSeen(){
+  
+            String sqlQuery = "SELECT course_name, course_code FROM `courses`";
+            Query query = entityManager.createNativeQuery(sqlQuery);
+            return query.getResultList();    
+    }
 
 }
