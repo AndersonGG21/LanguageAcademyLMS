@@ -1,11 +1,11 @@
 $(document).ready(function () {
     loadCourses();
-    localStorage.email = "anderson@elpoli.edu.co"
+    localStorage.email = "manolo@elpoli.edu.co"
     // console.log(replace("Anderson","Garces"));
 });
 
 async function loadCourses() {
-    const request = await fetch('/api/students/' + "goku@elpoli.edu.co" , {
+    const request = await fetch('/api/students/' + localStorage.email , {
         method: 'GET',
         headers: {
             'Accept': 'application/json',

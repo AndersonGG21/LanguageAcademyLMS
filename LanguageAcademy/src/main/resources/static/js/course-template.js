@@ -92,7 +92,7 @@ $("#logout").click(function (e) {
 async function loadData() {
   const data = JSON.stringify({
     student: {
-      email: "mateo@elpoli.edu.co",
+      email: localStorage.email,
     },
     course: {
       code: localStorage.code,
