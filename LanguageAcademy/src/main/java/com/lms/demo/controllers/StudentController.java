@@ -14,9 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.lms.demo.dao.StudentDAO;
 import com.lms.demo.models.Course;
+import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import org.springframework.web.bind.annotation.PatchMapping;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.ResponseBody;
 /**
  *
  * @author Julian
@@ -39,6 +44,30 @@ public class StudentController {
         return studentDAO.getStudent();
     } 
     
+    @RequestMapping(value = "/api/students/course/{id}", method = RequestMethod.GET)
+    public List<Course> getCourse(@PathVariable String id){
+        return studentDAO.getCourse(id);
+    }
+    
+    @RequestMapping(value = "/api/students/group/{id}-{idCourse}", method = RequestMethod.GET)
+    public List<Group> getGroupOne(@PathVariable String idCourse,@PathVariable String id){
+        return studentDAO.getGroupOne(idCourse,id);
+    }
+    
+    @RequestMapping(value = "/api/students/groups/{idCourse}", method = RequestMethod.GET)
+    public List<Group> getGroup(@PathVariable String idCourse){
+        return studentDAO.getGroup(idCourse);
+    }
+    
+    @RequestMapping(value = "/api/students/group/{id}", method = RequestMethod.PATCH, consumes="application/json")
+    @ResponseBody
+    public void updateGroup(@RequestBody Map<String, String> groups, @PathVariable String id){
+        for (String i : groups.keySet()) {
+            System.out.println("key: " + i + " value: " + groups.get(i));
+             studentDAO.updateGroup(i,groups.get(i),id);
+        }
+       
+    }
     
     @RequestMapping (value = "api/student", method = RequestMethod.POST)
     public void registerStudent(@RequestBody Student student){
@@ -63,4 +92,13 @@ public class StudentController {
         return studentDAO.getMyCourses(email);
     }
     
+    @GetMapping(value = "/api/students-completed/{email}")
+    public List<Course> getCompletedCourses(@PathVariable String email){
+    return studentDAO.getCompletedCourses(email);
+    }
+    
+     @GetMapping(value = "/api/students-havent-seen/")
+    public List<Course> getCoursesHaventSeen(){
+    return studentDAO.getCoursesHaventSeen();
+    }
 }

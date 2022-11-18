@@ -5,6 +5,7 @@
 package com.lms.demo.dao;
 import com.lms.demo.models.Course;
 import com.lms.demo.models.Student;
+import com.lms.demo.models.Group;
 import java.util.List;
 /**
  *
@@ -15,6 +16,18 @@ public interface StudentDAO {
     void regStudent(Student student);    
     void modStudent(Student student, int id);
     void delete(String id);
+    
+    void updateGroup(String idCourse,String group,String id);
+    
+    List<Course> getCourse(String id);
+    
+    List<Group> getGroupOne(String Courses, String id);
+    
+    List<Group> getGroup(String Courses);
+    
     Student getStudentOne(int id);
     List<Course> getMyCourses(String email);
+    List<Course> getCompletedCourses(String email);
+    List<Course> getCoursesHaventSeen();
+    
 }
