@@ -45,7 +45,7 @@ public class StudentDAOimp implements StudentDAO {
     @Override
     public List<Course> getCourse(String id) {
         
-        String sqlQuery = "SELECT c.course_name, c.course_code , s.name, e.code FROM `courses` c INNER JOIN `enrollments` e ON e.enrollment_course = c.course_code INNER JOIN `students` s ON s.id = e.enrollment_student WHERE s.id = ?";
+        String sqlQuery = "SELECT c.course_name, c.course_code , s.name, e.code FROM `courses` c INNER JOIN `enrollments` e ON e.enrollment_course = c.course_code INNER JOIN `students` s ON s.id = e.enrollment_student WHERE s.id = ? AND e.status = 'IN PROGRESS'";
         Query query = entityManager.createNativeQuery(sqlQuery);
         query.setParameter(1, id);
         List<Course> result = query.getResultList();

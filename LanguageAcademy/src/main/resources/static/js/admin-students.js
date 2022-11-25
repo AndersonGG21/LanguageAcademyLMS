@@ -23,7 +23,7 @@ async function loadStudents() {
                     <i class='bi bi-trash'></i>\n\
                     </button>";
         btnEdit = "<button class='btn-icons' onclick=getCourse(\'" + it_students.id + "\') data-bs-toggle='modal' data-bs-target='#updateModal'>\n\
-                    <i class='bi bi-pencil'></i>\n\
+                    <i class='bi bi-people'></i>\n\
                     </button>";
 
 
@@ -61,11 +61,11 @@ async function getCourse(id) {
     for (const iterator of resp) {
         if(resp[0].desc!=null){
             name=resp[0].name;
-            htmlCode="<h2>"+resp[0].desc+"</h2>";
+            htmlCode="<h2 class='text-balck'>"+resp[0].desc+"</h2>";
         }
         else{
             let idLabel="h2"+iterator[3];
-            let label = "<label id='"+iterator[3]+"' for='"+id+"'>Course:"+iterator[0]+"</label><br><label id='"+idLabel+"'></label>";
+            let label = "<label id='"+iterator[3]+"' class='text-balck' for='"+id+"'>Course:"+iterator[0]+"</label><br><label class='text-balck' id='"+idLabel+"'></label>";
             let option = "<select name='"+id+"Name' class='form-select' aria-label='Default select example' id='"+iterator[1]+"'>"+getGroup(iterator[1])+"</select><hr>";
             getGroupOne(id,iterator[1],idLabel)
             options+= label;
@@ -98,10 +98,10 @@ async function getGroupOne(id,idCourse,id_html) {
         options+= option;
     }
     if(options==""){
-        document.getElementById(id_html).innerHTML = "sin grupo asignado, seleccionar:";
+        document.getElementById(id_html).innerHTML = "no group assigned, select:";
     }
     else{
-        document.getElementById(id_html).innerHTML = "Grupo actual: "+options+"<br>cambiar a :";
+        document.getElementById(id_html).innerHTML = "current group: "+options+"<br>cambiar a :";
     }
 }
 

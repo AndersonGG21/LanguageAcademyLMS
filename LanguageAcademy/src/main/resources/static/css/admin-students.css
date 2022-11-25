@@ -7,6 +7,10 @@ body {
   color: black;
 }
 
+.text-balck{
+    color: black;
+}
+
 .card {
   display: flex;
   flex-direction: row;
