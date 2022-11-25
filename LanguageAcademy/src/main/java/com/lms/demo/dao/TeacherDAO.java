@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface TeacherDAO {
     void registerTeacher(Teacher teacher);
-    void deleteTeacher(int id);
-    Teacher getTeacher(int id);
+    void deleteTeacher(String id);
+    Teacher getTeacher(String id);
     List<Teacher> getTeachers();
-    //List<Student> getMyStudents();
+    List<Teacher> getTeachersInfo();
     List<Student> getMyStudents(String email1);
 }

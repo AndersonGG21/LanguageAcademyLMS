@@ -149,10 +149,20 @@ public class StudentDAOimp implements StudentDAO {
     
     @Override
      public List<Course> getCoursesHaventSeen(){
-  
-            String sqlQuery = "SELECT course_name, course_code FROM `courses`";
+            String sqlQuery = "SELECT course_name, course_code FROM `courses` WHERE course_code NOT IN (SELECT e.enrollment_course FROM `enrollments` e)";
             Query query = entityManager.createNativeQuery(sqlQuery);
             return query.getResultList();    
+    }
+
+    @Override
+    public String getName(String email) {
+        User student = adminDAO.getUserByEmail(email);
+        
+        if (student != null) {
+            return student.getName();
+        }
+        
+        return "";
     }
 
 }

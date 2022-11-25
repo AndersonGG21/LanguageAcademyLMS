@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/admin-students.css" />
+    <link rel="stylesheet" href="/css/admin-teacher.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <title>Teachers | Admin</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/imgs/white-logo.png" alt="JDAS-white-logo" class="white-logo" width="50px" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="admin-courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-students.html">Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin-teachers.html">Teachers</a>
+                    </li>
+                </ul>
+                <button class="btn btn-primary" id="logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header-container">
+        <h2 style="display: inline-block">Teachers</h2>
+        <button class="icon-btn add-btn" data-bs-toggle="modal" data-bs-target="#teacherModal">
+            <div class="add-icon"></div>
+            <div class="btn-txt">Add a Teacher</div>
+        </button>
+    </div>
+
+
+    <div id="containerTableStudents" class="table-responsive">
+        <table class="table" id="tableTeachers">
+            <thead>
+                <tr>
+                    <th scope="col" id="table-first" class="th-reduce">Document</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col" id="table-last" class="th-reduce">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Content table -->
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Teacher</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" id="form" onsubmit="return false" novalidate>
+                        <div class="mb-3">
+                            <label for="inputDoc" class="form-label">Document:</label>
+                            <input type="number" class="form-control" id="inputDoc" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please, enter a valid Docuemnt
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputName" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="inputName" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please, enter a valid name
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email address:</label>
+                            <input type="email" class="form-control" id="inputEmail" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please, enter a valid email
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPass" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="inputPass" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                The password must be at least 8 characters long
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPhone" class="form-label">Phone Number:</label>
+                            <input type="number" class="form-control" id="inputPhone" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                The phone number must be 10 characters long
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit" id="submitBtn">Create Teacher</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+        </script>
+    <script src="/js/admin-teachers.js"></script>
+    <script src="/js/logout.js"></script>
+
+    <!-- Custom alerts script -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

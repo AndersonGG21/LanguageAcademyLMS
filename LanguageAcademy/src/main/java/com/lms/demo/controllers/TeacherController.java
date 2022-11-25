@@ -5,17 +5,13 @@
  */
 package com.lms.demo.controllers;
 
-import com.lms.demo.dao.StudentDAO;
 import com.lms.demo.dao.TeacherDAO;
 import com.lms.demo.models.Student;
 import com.lms.demo.models.Teacher;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 /**
  *
@@ -32,17 +28,25 @@ public class TeacherController {
     public List<Teacher> getTeachers(){
         return teacherDAO.getTeachers();
     }
-    /*
-    @RequestMapping(value = "/api/teacher-students", method = RequestMethod.GET)
-    public List<Student> getMyStudents(){
-        return teacherDAO.getMyStudents();
-    } 
-    */
+    
+    @GetMapping(value = "/api/teachers/info")
+    public List<Teacher> getTeachersInfo(){
+        return teacherDAO.getTeachersInfo();
+    }
     
     @RequestMapping(value = "/api/teacher-students/{email1}", method = RequestMethod.GET)
     public List<Student> getMyStudents(@PathVariable String email1){
         return teacherDAO.getMyStudents(email1);
     }
     
+    @DeleteMapping(value = "/api/teachers/{id}")
+    public void deleteTeacher(@PathVariable String id){
+        teacherDAO.deleteTeacher(id);
+    }
+    
+    @PostMapping(value = "/api/teachers")
+    public void registerTeacher(@RequestBody Teacher teacher){
+        teacherDAO.registerTeacher(teacher);
+    }
     
 }
