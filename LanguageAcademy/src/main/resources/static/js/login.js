@@ -45,7 +45,7 @@ async function login() {
         }
 
         if (roleName == "TEACHER") {
-            location.href = "admin-teachers.html"
+            location.href = "teacher-students.html"
         }
     }
 }

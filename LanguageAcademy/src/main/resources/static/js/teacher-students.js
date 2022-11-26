@@ -1,5 +1,5 @@
 $(document).ready(function () {
-   $('.btn-download').click(function () {
+   $('.download-button').click(function () {
       $('#content').printThis({
          importCSS: true,
          importStyle: true,
@@ -15,9 +15,7 @@ $(document).ready(function () {
 });
 
 async function loadStudents() {
-   email1="maria@gmail.com";
-   // email1=localStorage.email1;
-   const request = await fetch('api/teacher-students/' +email1, {
+   const request = await fetch('api/teacher-students/' + localStorage.email, {
        method: 'GET',
        headers: {
            'Accept': 'application/json',
@@ -38,6 +36,7 @@ async function loadStudents() {
                        <td>"+ it_students[3] +"</td>\n\
                        <td>"+ it_students[4] + "</td>\n\
                        <td>"+ it_students[5] + "</td>\n\
+                       <td>"+ it_students[6] + "</td>\n\
                        </tr>";
        listHTML += studentsHTML;
    }
