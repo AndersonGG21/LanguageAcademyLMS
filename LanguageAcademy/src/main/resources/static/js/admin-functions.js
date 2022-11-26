@@ -2,6 +2,7 @@ $(document).ready(function () {
     loadCourses()
 });
 
+
 let groupCode;
 let courseCode;
 

@@ -1,6 +1,13 @@
 $(document).ready(function () {
     createCourseMaterial();
+    validateRole();
 });
+
+function validateRole() {
+    if (localStorage.role != "ADMIN") {
+      location.href = "401.html"
+    }
+  }
 
 async function createCourse(){
     let condicion=true;

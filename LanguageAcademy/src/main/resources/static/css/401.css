@@ -1,0 +1,126 @@
+body {
+  background-image: linear-gradient(to bottom right, #d90429 50%, white 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+h2{
+  color: white;
+  font-weight: bold;
+}
+
+.desc{
+  display: flex;
+  flex-direction: column;
+  margin-left: 500px;
+  margin-right: 200px;
+  margin-top: 50px;
+}
+
+.message {
+  
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+  /* margin-left: 300px; */
+  margin-bottom: 30px;
+}
+
+.message2 {
+  /* margin-left: 650px; */
+  font-size: 35px;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  text-shadow: 0 0 2px black;
+}
+
+.btn-outline-danger {
+  width: 200px;
+  background-color: white;
+  border: 1px solid white;
+  color: black;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.btn-outline-danger:hover{
+  background-color: #f1f1f1;
+  color: black;
+  font-weight: bold;
+}
+
+.neon {
+  text-align: center;
+  width: 300px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 90px;
+  color: #d90429;
+  letter-spacing: 3px;
+  text-shadow: 0 0 5px #d90429;
+  animation: flux 2s linear infinite;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 800px;
+  height: 400px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.1);
+  /* backdrop-filter: saturate(180%) blur(10px); */
+}
+
+.text-container{
+  position: absolute;
+  left: 10px;
+  top: 60px;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .container {
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+  }
+}
+
+.isometric-text{
+  position: relative;
+  font-weight: 700;
+  font-size: 12em;
+  color: #fff;
+  line-height: 0.9em;
+  letter-spacing: 2px;
+  text-align: center;
+  transform: rotate(-28deg) skew(25deg);
+}
+
+.isometric-text::before{
+  content: attr(data-text);
+  position: absolute;
+  top: 30px;
+  left: -30px;
+  color: rgba(0, 0, 0, 0.3);
+  text-shadow: none;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+@keyframes flux {
+  0%,
+  100% {
+    text-shadow: 0 0 5px #d90429, 0 0 15px #d90429, 0 0 50px #d90429,
+      0 0 50px #d90429, 0 0 2px #e41638, 2px 2px 3px #e41638;
+    color: #e41638;
+  }
+  50% {
+    text-shadow: 0 0 3px #e41638, 0 0 7px #e41638, 0 0 25px #e41638,
+      0 0 25px #d90429, 0 0 2px #e01739, 2px 2px 3px #e01739;
+    color: #e01739;
+  }
+}

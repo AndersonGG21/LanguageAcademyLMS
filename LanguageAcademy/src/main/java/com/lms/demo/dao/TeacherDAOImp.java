@@ -45,7 +45,7 @@ public class TeacherDAOImp implements TeacherDAO{
     
     @Override
     public void registerTeacher(Teacher teacher) {
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
         String hash = argon2.hash(1, 1024, 1, teacher.getPassword());
         teacher.setPassword(hash);
         entityManager.merge(teacher);

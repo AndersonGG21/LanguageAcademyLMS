@@ -1,7 +1,14 @@
 $(document).ready(function () {
   loadTeachers();
   validate();
+  validateRole();
 });
+
+function validateRole() {
+  if (localStorage.role != "ADMIN") {
+    location.href = "401.html"
+  }
+}
 
 function validate() {
   (() => {

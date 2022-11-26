@@ -15,6 +15,7 @@ async function login() {
     });
 
     let uArray = await user.json();
+    console.log(uArray)
     let roleName = uArray.roleName;
     let email = uArray.email;
 
@@ -41,6 +42,10 @@ async function login() {
         
         if (roleName == "ADMIN") {
             location.href = "admin-courses.html"
+        }
+
+        if (roleName == "TEACHER") {
+            location.href = "admin-teachers.html"
         }
     }
 }
