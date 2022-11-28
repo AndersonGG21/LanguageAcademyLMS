@@ -1,77 +1,16 @@
-.carta {
-  width: 250px;
-  height: 110px;
-  transition: all 0.5s;
-  box-shadow: 15px 15px 30px rgba(25, 25, 25, 0.11),
-    -15px -15px 30px rgba(60, 60, 60, 0.082);
-  text-align: center;
-  overflow: hidden;
-  margin: 50px;
-  border-radius: 4px;
-}
-
-.carta:hover {
-  height: 470px;
-}
-
-.carta .header {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+.form-container{
+  display: flex;  
   align-items: center;
-  justify-content: center;
-  background: #ef233c;
-  margin-bottom: 16px;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* width: 100%; */
 }
 
-.carta .header .img-box {
-  width: 50px;
+h1{
+  color: #e62222;
 }
 
-.carta .header .title {
-  font-size: 1.1em;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 4px 0 14px 0;
-  transition: all 0.5s;
-  color: white;
-}
-
-.carta:hover .header {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 96%);
-}
-
-.carta:hover .card .header .title {
-  padding: 0;
-}
-
-.carta .content {
-  display: block;
-  text-align: justify;
-  color: #212121;
-  margin: 0 18px;
-}
-
-.carta .content:hover {
-  height: 200px;
-}
-
-.carta .content p {
-  transition: all 0.5s;
-  font-size: 1em;
-  margin-bottom: 8px;
-}
-
-.carta .content a {
-  color: #1d8122;
-  cursor: pointer;
-  transition: all 0.5s;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.carta .content .btn-link:hover {
-  border-bottom: 1px solid #1d8122;
+form{
+  width: 500px;
 }

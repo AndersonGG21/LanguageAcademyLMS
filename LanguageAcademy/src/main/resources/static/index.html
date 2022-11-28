@@ -9,10 +9,13 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/admin-courses.css" />
     <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/index-slider.css">
+    <link rel="stylesheet" href="/css/utils.css">
     <script src="https://code.jquery.com/jquery-2.2.4.js"
         integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
     <title>IDIOOM | Home</title>
 </head>
@@ -109,58 +112,79 @@
                 have to choose the one that best suits you.
             </p>
         </div>
-        <div id="carouselExampleDark" class="carousel carousel-dark slide container-fluid" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png"
-                        class="d-block w-100" alt="..." width="200px" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <!-- <h5>First slide label</h5> -->
-                        <p>Spanish</p>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg/1200px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg.png"
-                        class="d-block w-100" alt="..." width="200px" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <p>French</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://cdn.britannica.com/90/7490-004-BAD4AA72/Flag-China.jpg" class="d-block w-100"
-                        alt="..." width="200px" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <p>Chinese</p>
-                    </div>
-                </div>
-                <!-- <div class="carousel-item">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <p>English</p>
-                </div>
-              </div> -->
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
     </div>
 
+    <!-- Courses slider -->
+    <div class="blog-slider">
+        <div class="blog-slider__wrp swiper-wrapper">
+            <div class="blog-slider__item swiper-slide">
+                <div class="blog-slider__img">
+
+                    <img src="https://media.istockphoto.com/id/508451794/es/foto/fuente-de-la-cibeles-en-la-plaza-de-cibeles-en-madrid.jpg?s=612x612&w=is&k=20&c=96F4l8BIuqU5aJUCHLvl41TlR_wS8oAbraWfSQJXDJo="
+                        alt="">
+                </div>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code">!Top¡</span>
+                    <div class="blog-slider__title">Spanish</div>
+                    <div class="blog-slider__text">We focus our program on the motivation that is required to communicate by the students so they are able to use Spanish from the first day of classes. Courses are structured on an immersive perspective where sounds, images, touch and sensations play a fundamental role in learning. We use an active approach on the Communicative Methodology</div>
+                    <span class="blog-slider__code">Levels:</span>
+                    <ul class="level-list">
+                        <button class="level-btn">A1</button>
+                        <button class="level-btn">A2</button>
+                        <button class="level-btn">B1</button>
+                        <button class="level-btn">B2</button>
+                        <button class="level-btn">C1</button>
+                        <button class="level-btn">C2</button>
+                    </ul>
+                </div>
+            </div>
+            <div class="blog-slider__item swiper-slide">
+                <div class="blog-slider__img">
+                    <img src="https://elcomercio.pe/resizer/hXihnM_rQ28QsD2FRV4JtD8Po-M=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/HL7XTT2O7JA6NCYH6K5ZPGVQSY.jpg"
+                        alt="">
+                </div>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code">!Popular¡</span>
+                    <div class="blog-slider__title">English</div>
+                    <div class="blog-slider__text">Our English program has specialized materials designed exclusively for the methodological development of Idioom, accompanied by Idioom Press and highly qualified teachers with flexible class schedules.</div>
+                    <!-- <a href="#" class="blog-slider__button">READ MORE</a> -->
+                    <span class="blog-slider__code">Levels:</span>
+                    <ul class="level-list">
+                        <button class="level-btn">A1</button>
+                        <button class="level-btn">A2</button>
+                        <button class="level-btn">B1</button>
+                        <button class="level-btn">B2</button>
+                        <button class="level-btn">C1</button>
+                        <button class="level-btn">C2</button>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="blog-slider__item swiper-slide">
+                <div class="blog-slider__img">
+                    <img src="https://cdn.viaje-a-china.com/pic/2021830-1630308695907.jpg"
+                        alt="">
+                </div>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code">!Trending!</span>
+                    <div class="blog-slider__title">Chinese</div>
+                    <div class="blog-slider__text">Learning Chinese is a challenge. It is one of the most spoken languages in the world and is becoming more and more important thanks to the economic boom that dominates this culture. </div>
+                    <span class="blog-slider__code">Levels:</span>
+                    <ul class="level-list">
+                        <button class="level-btn">A1</button>
+                        <button class="level-btn">A2</button>
+                        <button class="level-btn">B1</button>
+                        <button class="level-btn">B2</button>
+                        <button class="level-btn">C1</button>
+                        <button class="level-btn">C2</button>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="blog-slider__pagination"></div>
+    </div>
+    <!--End of course slider  -->
     <div class="testimonials-clean">
         <div class="container container-fluid">
             <div class="intro">
@@ -216,7 +240,7 @@
                     </div>
                     <div class="author">
                         <img class="rounded-circle"
-                            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />
+                            src="https://img.freepik.com/free-photo/portrait-happy-young-woman-looking-camera_23-2147892777.jpg?w=740&t=st=1669593438~exp=1669594038~hmac=3b27a227215dcdd2c4a5252af715df395fbbafdade7e46420dd18bf8fbced332" />
                         <div class="customer-info">
                             <h5 class="name">Emily Clark</h5>
                             <p class="testimonial-title">Owner of Creative Ltd.</p>
@@ -269,19 +293,33 @@
                 <a href="#">Chinese</a>
             </div>
         </section>
-    
+
         <section class="copyright">
             <p><span>©</span> 2022 Rights Reserved, Idioom</p>
         </section>
     </footer>
 
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>
         AOS.init();
+        var swiper = new Swiper('.blog-slider', {
+            spaceBetween: 30,
+            effect: 'fade',
+            loop: true,
+            mousewheel: {
+                invert: false,
+            },
+            // autoHeight: true,
+            pagination: {
+                el: '.blog-slider__pagination',
+                clickable: true,
+            }
+        });
     </script>
     <script src="/js/logout.js"></script>
 

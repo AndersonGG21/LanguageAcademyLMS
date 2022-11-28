@@ -18,7 +18,4 @@ import lombok.*;
 @Entity
 @Table(name = "admins")
 public class Admin extends User{
-    
-    @Column(name = "profession")
-    private String profession;
 }
