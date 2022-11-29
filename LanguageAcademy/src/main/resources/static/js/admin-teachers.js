@@ -1,6 +1,6 @@
 $(document).ready(function () {
   loadTeachers();
-  validate();
+  validateForm();
   validateRole();
 });
 
@@ -9,6 +9,16 @@ function validateRole() {
     location.href = "401.html"
   }
 }
+
+$("#submitBtn").click(function (e) { 
+  e.preventDefault();
+  const form = document.getElementById("form");
+  if (form.checkValidity()) {
+    registerTeacher();
+  }else{
+    showAlert("danger", "You must complete correctly the form")
+  }
+});
 
 function validate() {
   (() => {
@@ -69,10 +79,10 @@ async function registerTeacher() {
     },
     body: JSON.stringify({
       id: document.getElementById("inputDoc").value,
-      name: document.getElementById("inputName").value,
-      email: document.getElementById("inputEmail").value,
-      password: document.getElementById("inputPass").value,
-      phoneNumber: document.getElementById("inputPhone").value,
+      name: document.getElementById("username").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      phoneNumber: document.getElementById("phone").value,
       roleName: "TEACHER",
     }),
   });

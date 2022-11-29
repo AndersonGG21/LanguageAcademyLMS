@@ -209,3 +209,13 @@ html.has-scroll-dragging {
   right: auto;
   bottom: 0;
 }
+.alert {
+  width: 400px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.alert i{
+  margin-right: 5px;
+}
