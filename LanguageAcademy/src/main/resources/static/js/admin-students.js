@@ -20,12 +20,18 @@ async function loadStudents() {
 
 
     for (let it_students of studentsHTML) {
-        btnDelete = "<button class='btn-icons' onclick=deleteStudents(\'" + it_students.id + "\')>\n\
-                    <i class='bi bi-trash'></i>\n\
-                    </button>";
-        btnEdit = "<button class='btn-icons' onclick=getCourse(\'" + it_students.id + "\') data-bs-toggle='modal' data-bs-target='#updateModal'>\n\
-                    <i class='bi bi-people'></i>\n\
-                    </button>";
+        btnDelete = '<button onclick=deleteStudents(' + it_students.id + ') class="btn btn-outline-danger btn-sm px-2">Delete</button>';
+        let btnEdit = '<button onclick=getCourse(' + it_students.id + ') data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn btn-outline-danger btn-sm">Groups</button>';
+        let student = {
+            id: it_students.id,
+            name: it_students.name,
+            email: it_students.email,
+            address: it_students.address,
+            phoneNumber: it_students.phoneNumber
+        };
+        let name = it_students.name;
+        let btnView = '<button onclick=viewInfo(' + it_students.id + ') data-bs-toggle="modal" data-bs-target="#viewModal" class="btn btn btn-outline-danger btn-sm">View info</button>';
+
 
 
         let studentsHTML = "<tr>\n\
