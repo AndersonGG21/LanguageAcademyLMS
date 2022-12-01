@@ -40,6 +40,32 @@ async function loadStudents() {
 
 }
 
+async function registerStudent() {
+
+    const request = await fetch('/api/students', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: document.getElementById("document").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("pass").value,
+            name: document.getElementById("name").value,
+            phoneNumber: document.getElementById("phone").value,
+            address: document.getElementById("address").value,
+            roleName: "STUDENT"
+        })
+    });
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Has been register',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
 async function getCourse(id) {
     const request = await fetch('/api/students/course/' + id, {
         method: 'GET',
