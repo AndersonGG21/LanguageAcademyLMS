@@ -25,9 +25,10 @@ public interface StudentDAO {
     
     List<Group> getGroup(String Courses);
     
-    Student getStudentOne(int id);
+    Student getStudentOne(String id);
     List<Course> getMyCourses(String email);
     List<Course> getCompletedCourses(String email);
     List<Course> getCoursesHaventSeen();
+    void registerStudent(Student student);
     
 }
