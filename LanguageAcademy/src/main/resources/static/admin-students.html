@@ -68,10 +68,51 @@
             </div>
         </div>
     </div>
-
-    <!-- Card Courses -->
-    <div class="course-container container-fluid scale-up-horizontal-left" id="prueba">
-        <div class='card' style='width: 18rem'>
+    <!-- End of Update Modal -->
+    <!-- Insert Modal -->
+    <div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered-cente">
+            <div class="modal-content modal-content-width">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Insert Student Info</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modal-body h-screen flex justify-center items-center">
+                    <div class="form-text">All fields are required</div>
+                    <div class="input-group">
+                        <input type="text" class="input" required id="name" />
+                        <label for="name" class="input-label">Full Name  </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="input" required id="document" />
+                        <label for="document" class="input-label">Document  </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="input" required id="email" />
+                        <label for="email" class="input-label">Email  </label>
+                    </div>
+                    <div id="emailHelp" class="form-text">The email must be with the business domain</div>
+                    <div class="input-group">
+                        <input type="text" class="input" required id="phone" />
+                        <label for="phone" class="input-label">Phone  </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="input" required id="address" />
+                        <label for="address" class="input-label">Address  </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" class="input" required id="pass" />
+                        <label for="pass" class="input-label">Password  </label>
+                    </div>
+                    <div id="passwordlHelp" class="form-text">Your password must contain 8 characters</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="registerStudent()">Register
+                        Student</button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- View Modal -->
