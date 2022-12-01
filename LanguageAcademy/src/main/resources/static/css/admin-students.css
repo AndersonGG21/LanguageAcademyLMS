@@ -7,31 +7,14 @@ body {
     color: black;
 }
 
-.text-balck{
+.text-balck {
     color: black;
-}
-
-.card {
-    display: flex;
-    flex-direction: row;
-    background-color: inherit;
-    border: none;
 }
 
 .vertical-dotted-line {
     border-left: 1px dotted black;
     height: 100px;
     margin: 0 20px;
-}
-
-.card-body {
-    display: flex;
-    flex-direction: row;
-}
-
-.card-boyd a {
-    width: 20px;
-    height: 20px;
 }
 
 .resume-right {
@@ -57,7 +40,7 @@ body {
     margin-bottom: 2rem;
 }
 
-td{
+td {
     border-color: #d90429;
 }
 
@@ -81,7 +64,7 @@ th {
 
 th {
     border-width: 0 2px 0 2px;
-    background-color: #d90429!important;
+    background-color: #d90429 !important;
     border-color: #fff;
 }
 
@@ -124,7 +107,7 @@ th {
 }
 
 #tableStudents {
-    width: 99% !important;
+    width:80% !important;
     margin: auto;
 }
 
@@ -230,19 +213,6 @@ th {
     width: 100px !important;
 }
 
-.card {
-    /* margin-left: 30px; */
-    margin-bottom: 20px;
-    min-width: 60%;
-    display: flex;
-    flex-direction: column;
-    border-color: #ef233c;
-    display: flex;
-    /* flex-direction: row; */
-    border-radius: 4px !important;
-    background: #fff;
-    box-shadow: 5px 14px 29px #cac4c4, -14px -14px 29px #ffffff;
-}
 
 .btn-insert {
     background-color: #146e18;
@@ -336,4 +306,169 @@ a:hover {
 
 form label {
     color: #d90429;
+}
+
+.card-all {
+    background-color: #ef233b38;
+    width: 430px;
+    border-radius: 20px;
+}
+
+.modal-dialog-centered-cente {
+    justify-content: center;
+}
+
+.modal-content-width {
+    width: auto !important;
+}
+
+.card-insert {
+    background-color: #ef233b38;
+    width: 700px;
+    border-radius: 20px;
+}
+
+
+.document {
+    margin-top: 1px;
+    color: #D90429;
+    font-size: 15px;
+}
+
+.text-stroke {
+    -webkit-text-stroke-color: #D90429;
+    -webkit-text-stroke-width: 2px;
+    /* shorthand */
+    -webkit-text-stroke: 2px #D90429;
+    /* color del texto */
+    -webkit-text-size-adjust: 102px;
+    font-size: 35px;
+    -webkit-text-fill-color: #ef233b38;
+}
+
+.btn {
+
+    border-radius: 15px !important;
+}
+
+.course-card {
+    width: 290px;
+    overflow: auto;
+    transition: 0.5s;
+}
+
+.course-card:hover {
+    /* cursor: pointer; */
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.card-headerCompleted {
+    border-radius: 10px;
+    color: black;
+    background-color: transparent;
+    border: solid 1px #d90429;
+    padding-top: 20px;
+    padding-left: 15px;
+    margin-top: 2rem;
+}
+
+.codCompletedCourse {
+    color: white;
+    position: relative !important;
+    background-color: #d90429;
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+/* ------------------------------------------ */
+.course-card::-webkit-scrollbar {
+    width: 8px !important;
+    /* Tamaño del scroll en vertical */
+    height: 8px !important;
+    /* Tamaño del scroll en horizontal */
+    scrollbar-width: 5px;
+    display: none;
+}
+
+.course-card::-webkit-scrollbar-thumb {
+    background-color: #d9042791;
+    border-radius: 4px;
+    height: 10px;
+}
+
+.course-card::-webkit-scrollbar-thumb:active {
+    background-color: #ef233c;
+}
+
+.card-header {
+    width: 100%;
+    /* background-image: url("/imgs/card-header-bg-1.png"); */
+    background-repeat: no-repeat;
+}
+
+.my-courses-container,
+.courses-completed,
+.courses-havent-seen {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.courses-havent-seen {
+    margin-bottom: 100px;
+}
+
+
+.input-group{
+    position: relative;
+    margin-top: 15px;
+}
+
+.input{
+    padding: 1px 6px;
+    height: 44px;
+    width:100%;
+    border: none;
+    border-radius: 4px!important;
+    font: inherit;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    outline: 2px solid #ef233c;
+}
+
+.modal-title{
+    color: black;
+}
+
+.input-label{
+    position: absolute;
+    color: rgb(0, 0, 0);
+    top:4px;
+    left: 0;
+    transform: translate(10px,10px);
+    transition: transform .25s;
+}
+
+.input:focus+.input-label,.input:valid+.input-label{
+    transform: translate(2px,-14px) scale(.8);
+    color: rgb(0, 0, 0);
+    padding-inline: 5px;
+    background-color:#ffffff;
+    border-right: 4px;
+    border:3px solid #ef233c;
+    border-top: none;
+    border-bottom: none;
+}
+
+.input:is(:valid,:focus){
+    outline-color: #ef233c;
+}
+
+.nameStudent{
+    margin-bottom:0!important;
+    line-height: 0.75;
 }
