@@ -66,6 +66,24 @@ async function registerStudent() {
         timer: 1500
     })
 }
+
+async function viewInfo(id) {
+    const request = await fetch('api/student/' + id, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+    const resp = await request.json();
+    document.getElementById('nameStudent').innerHTML = resp.name;
+    document.getElementById('idStudent').innerHTML = resp.id;
+    document.getElementById('mailStudent').innerHTML = resp.email;
+    document.getElementById('phoneStudent').innerHTML = resp.phoneNumber;
+    document.getElementById('adressStudent').innerHTML = resp.address;
+
+}
+
 async function getCourse(id) {
     const request = await fetch('/api/students/course/' + id, {
         method: 'GET',
