@@ -10,10 +10,8 @@ import com.lms.demo.models.Enrollment;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +26,10 @@ public class EnrollmentController {
     @Autowired
     private EnrollmentDAO enrollDAO;
     
-    @GetMapping(value = "/api/enrollment")
-    public String sexo(){
-        return enrollDAO.sexo();
+
+    @PostMapping(value = "/api/enrollment")
+    public void createEnrollment(@RequestBody Enrollment enrollment){
+        enrollDAO.createEnrollment(enrollment);
     }
 
     @PostMapping(value = "/api/enrollments")

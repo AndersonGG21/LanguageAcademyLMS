@@ -9,17 +9,14 @@ import com.lms.demo.models.Course;
  *
  * @author seang
  */
-import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
-import java.util.ArrayList;
 import javax.persistence.Query;
 import com.lms.demo.models.User;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;

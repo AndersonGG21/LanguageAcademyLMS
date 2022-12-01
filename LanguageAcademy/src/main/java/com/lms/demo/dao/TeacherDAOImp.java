@@ -22,6 +22,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Transactional
+@SuppressWarnings("unchecked")
 public class TeacherDAOImp implements TeacherDAO{
 
     @PersistenceContext

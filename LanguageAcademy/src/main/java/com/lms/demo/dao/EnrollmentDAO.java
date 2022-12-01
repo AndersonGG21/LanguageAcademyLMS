@@ -5,7 +5,6 @@
  */
 package com.lms.demo.dao;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import com.lms.demo.models.Enrollment;
@@ -15,7 +14,6 @@ import com.lms.demo.models.Enrollment;
  * @author Anderson
  */
 public interface EnrollmentDAO {
-    BigInteger subjectsViewedValidation();
     List<Enrollment> getHeaders(Enrollment enroll);
-    String sexo();
+    public void createEnrollment(Enrollment enrollment);
 }

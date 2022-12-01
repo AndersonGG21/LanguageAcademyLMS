@@ -26,6 +26,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Transactional
+@SuppressWarnings("unchecked")
 public class AdminDAOImp implements AdminDAO{
 
     @PersistenceContext
