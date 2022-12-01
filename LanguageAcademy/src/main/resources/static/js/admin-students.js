@@ -2,6 +2,7 @@ $(document).ready(function () {
     loadStudents();
 });
 
+
 let studentsToModify;
 var groupsModify = new Map();;
 
@@ -30,12 +31,7 @@ async function loadStudents() {
         let studentsHTML = "<tr>\n\
                         <td>"+ it_students.id + "</td>\n\
                         <td>"+ it_students.name + "</td>\n\
-                        <td>"+ it_students.email + "</td>\n\
-                        <td>"+ it_students.phoneNumber + "</td>\n\
-                        <td>"+ it_students.address + "</td>\n\
-                        <td>"+ it_students.age + "</td>\n\
-                        <td>"+ btnDelete + "</td>\n\
-                        <td>"+ btnEdit + "</td>\n\
+                        <td class='d-flex justify-content-evenly' >"+ btnDelete + btnEdit + btnView + "</td>\n\
                         </tr>";
         listHTML += studentsHTML;
     }
