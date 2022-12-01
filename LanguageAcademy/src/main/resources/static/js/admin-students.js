@@ -282,3 +282,41 @@ async function modifyStudent(id) {
         }
     })
 }
+
+
+let email = document.getElementById("email");
+let password = document.getElementById("pass");
+
+const email_reg = /(\W|^)[\w.\-]{0,25}@(elpoli)\.edu.co(\W|$)/
+email.addEventListener('input', validate);
+password.addEventListener('input', validate);
+
+function validate(e) {
+    let target = e.target;
+
+    if (target.id == "email") {
+
+        if (email_reg.test(target.value)) {
+            document.getElementById("emailHelp").style.setProperty('content-visibility', 'hidden')
+            document.getElementById("emailHelp").classList.add("valid")
+            document.getElementById("emailHelp").classList.remove("invalid")
+        } else {
+            document.getElementById("emailHelp").style.color = '#f59e0b'
+            document.getElementById("emailHelp").style.setProperty('content-visibility', 'auto')
+            document.getElementById("emailHelp").classList.remove("valid")
+            document.getElementById("emailHelp").classList.add("invalid")
+        }
+    } else if (target.id = "pass") {
+        if (target.value.length < 8) {
+            document.getElementById("passwordlHelp").style.setProperty('content-visibility', 'auto')
+            document.getElementById("passwordlHelp").style.color = '#f59e0b'
+            document.getElementById("passwordlHelp").classList.remove("valid")
+            document.getElementById("passwordlHelp").classList.add("invalid")
+        } else {
+            document.getElementById("passwordlHelp").style.setProperty('content-visibility', 'hidden')
+            document.getElementById("passwordlHelp").style.color = 'green'
+            document.getElementById("passwordlHelp").classList.add("valid")
+            document.getElementById("passwordlHelp").classList.remove("invalid")
+        }
+    }
+}
