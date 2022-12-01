@@ -21,7 +21,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -103,7 +104,6 @@ public class StudentDAOimp implements StudentDAO {
         studentNew.setName(student.getName());
         studentNew.setPhoneNumber(student.getPhoneNumber());
         studentNew.setRoleName(student.getRoleName());
-        studentNew.setAge(student.getAge());
         studentNew.setAddress(student.getAddress());
         entityManager.merge(student);
     }
