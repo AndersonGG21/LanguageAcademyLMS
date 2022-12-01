@@ -21,6 +21,7 @@ import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.web.bind.annotation.PatchMapping;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 /**
  *
@@ -33,9 +34,13 @@ public class StudentController {
     @Autowired
     private StudentDAO studentDAO;
 
-
+    @PostMapping(value = "/api/students")
+    public void registerAdmin(@RequestBody Student student){
+        studentDAO.registerStudent(student);
+    }
+    
     @RequestMapping(value = "api/student/{id}", method = RequestMethod.GET)
-    public Student getStudent(@PathVariable int id){
+    public Student getStudent(@PathVariable String id){
         return studentDAO.getStudentOne(id);
     }
    
