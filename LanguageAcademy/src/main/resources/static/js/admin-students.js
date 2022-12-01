@@ -100,34 +100,42 @@ async function getCourse(id) {
     });
 
     let resp = await request.json();
-    let htmlCode="";
+    let htmlCode = "";
     let name = "";
-    let options="";
+    let options = "";
     groupsModify.clear;
     for (const iterator of resp) {
-        if(resp[0].desc!=null){
-            name=resp[0].name;
-            htmlCode="<h2 class='text-balck'>"+resp[0].desc+"</h2>";
+        if (resp[0].desc != null) {
+            name = resp[0].name;
+            htmlCode = "<h2 class='text-balck'>" + resp[0].desc + "</h2>";
         }
-        else{
-            let idLabel="h2"+iterator[3];
-            let label = "<label id='"+iterator[3]+"' class='text-balck' for='"+id+"'>Course:"+iterator[0]+"</label><br><label class='text-balck' id='"+idLabel+"'></label>";
-            let option = "<select name='"+id+"Name' class='form-select' aria-label='Default select example' id='"+iterator[1]+"'>"+getGroup(iterator[1])+"</select><hr>";
-            getGroupOne(id,iterator[1],idLabel)
-            options+= label;
-            options+= option;
-            htmlCode=options;
-            name=resp[0][2]
-            groupsModify.set(iterator[0],iterator[1]);
+        else {
+            let idLabel = "h2" + iterator[3];
+            let option = "<select name='" + id + "Name' class='form-select' aria-label='Default select example' id='" + iterator[1] + "'>" + getGroup(iterator[1]) + "</select>";
+            let label = "<div class='courseCompleted'>\n\
+                            <div class='card-headerCompleted'>\n\
+                            <label id='"+ iterator[3] + "' class='text-balck' for='" + id + "'>Course:" + iterator[0] + "</label>\n\
+                            <br><label class='text-balck' id='"+ idLabel + "'></label>\n\
+                                <div class='codCompletedCourse'>\n\
+                                    "+ option + "\n\
+                                </div>\n\
+                            </div>\n\
+                        </div>";
+            let groupOne = getGroupOne(id, iterator[1], idLabel);
+            console.log(groupOne);
+            options += label;
+            htmlCode = options;
+            name = resp[0][2]
+            groupsModify.set(iterator[0], iterator[1]);
         }
     }
     document.getElementById("selectors").innerHTML = htmlCode;
-    document.getElementById("buttonContainer").setAttribute('onclick','modifyStudent('+id+')');
-    document.getElementById("studentNameUpdate").innerHTML = "Student: "+name;
+    document.getElementById("buttonContainer").setAttribute('onclick', 'modifyStudent(' + id + ')');
+    document.getElementById("studentNameUpdate").innerHTML = "Student: " + name;
 }
 
-async function getGroupOne(id,idCourse,id_html) {
-    const request = await fetch('/api/students/group/'+id+"-"+idCourse, {
+async function getGroupOne(id, idCourse, id_html) {
+    const request = await fetch('/api/students/group/' + id + "-" + idCourse, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -137,22 +145,24 @@ async function getGroupOne(id,idCourse,id_html) {
 
     let resp = await request.json();
     let options = "";
-        for (const iterator of resp) {
+    for (const iterator of resp) {
+        if (document.getElementById(iterator[0]) != null) {
             document.getElementById(iterator[0]).selected = true;
+        }
         const iterator1 = iterator.join(' - ')
         let option = iterator1;
-        options+= option;
+        options += option;
     }
-    if(options==""){
+    if (options == "") {
         document.getElementById(id_html).innerHTML = "no group assigned, select:";
     }
-    else{
-        document.getElementById(id_html).innerHTML = "current group: "+options+"<br>cambiar a :";
+    else {
+        document.getElementById(id_html).innerHTML = "current group: " + options + "<br>Change to :";
     }
 }
 
 async function getGroup(idCourse) {
-    const request = await fetch('/api/students/groups/'+idCourse, {
+    const request = await fetch('/api/students/groups/' + idCourse, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -164,8 +174,8 @@ async function getGroup(idCourse) {
     let options = "";
     for (const iterator of resp) {
         const iterator1 = iterator.join(' - ')
-        let option = "<option value='"+iterator[0]+"' id='"+iterator[0]+"'>"+iterator1+"</option>";
-        options+= option;
+        let option = "<option value='" + iterator[0] + "' id='" + iterator[0] + "'>" + iterator1 + "</option>";
+        options += option;
     }
     document.getElementById(idCourse).innerHTML = options;
 }
@@ -231,19 +241,19 @@ async function modifyStudent(id) {
         for (var [key, value] of groupsModify) {
             var option = document.getElementById(value);
             var content = option.value;
-            groupsNew.set(value,content);
+            groupsNew.set(value, content);
         }
         const out = Object.create(null)
         groupsNew.forEach((value, key) => {
-          if (value instanceof Map) {
-            out[key] = map_to_object(value)
+            if (value instanceof Map) {
+                out[key] = map_to_object(value)
 
-          }
-          else {
-            out[key] = value
-          }
+            }
+            else {
+                out[key] = value
+            }
         })
-        console.log(JSON.stringify({out}));
+        console.log(JSON.stringify({ out }));
         if (result.isConfirmed) {
             const request = await fetch('/api/students/group/' + id, {
                 method: 'PATCH',
