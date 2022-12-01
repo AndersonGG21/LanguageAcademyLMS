@@ -92,7 +92,15 @@ public class StudentDAOimp implements StudentDAO {
         query.executeUpdate();
     }
     
-    public Student getStudentOne(int id) {
+    @Override
+    public void registerStudent(Student student) {
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
+        String hash = argon2.hash(1, 1024, 1, student.getPassword());
+        student.setPassword(hash);
+        entityManager.merge(student);
+    }
+    
+    public Student getStudentOne(String id) {
         return entityManager.find(Student.class, id);
     }
 
