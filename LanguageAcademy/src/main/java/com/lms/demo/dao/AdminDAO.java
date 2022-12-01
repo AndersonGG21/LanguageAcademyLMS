@@ -6,12 +6,10 @@
 package com.lms.demo.dao;
 
 import com.lms.demo.models.Admin;
-import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Teacher;
 import com.lms.demo.models.User;
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
 
 

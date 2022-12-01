@@ -99,11 +99,16 @@ public class StudentController {
     
     @GetMapping(value = "/api/students-completed/{email}")
     public List<Course> getCompletedCourses(@PathVariable String email){
-    return studentDAO.getCompletedCourses(email);
+        return studentDAO.getCompletedCourses(email);
     }
     
-     @GetMapping(value = "/api/students-havent-seen/")
+    @GetMapping(value = "/api/students-havent-seen/")
     public List<Course> getCoursesHaventSeen(){
-    return studentDAO.getCoursesHaventSeen();
+        return studentDAO.getCoursesHaventSeen();
+    }
+    
+    @GetMapping(value = "/api/student/name/{email}")
+    public String getName(@PathVariable String email){
+        return studentDAO.getName(email);
     }
 }

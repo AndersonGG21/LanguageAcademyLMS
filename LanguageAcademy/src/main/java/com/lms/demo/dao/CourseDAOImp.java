@@ -19,12 +19,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Transactional
+
 public class CourseDAOImp implements CourseDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
     
     @Override
+    @SuppressWarnings("unchecked")
     public List<Course> getCourses() {
         String sqlQuery = "SELECT * FROM `courses`";
         Query query = entityManager.createNativeQuery(sqlQuery);

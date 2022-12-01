@@ -1,6 +1,5 @@
 package com.lms.demo.models;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import lombok.*;
 

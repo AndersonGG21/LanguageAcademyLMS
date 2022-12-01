@@ -30,5 +30,6 @@ public interface StudentDAO {
     List<Course> getCompletedCourses(String email);
     List<Course> getCoursesHaventSeen();
     void registerStudent(Student student);
+    String getName(String email);
     
 }

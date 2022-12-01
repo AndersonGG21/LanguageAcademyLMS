@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Transactional
+@SuppressWarnings("unchecked")
 public class GroupDAOImp implements GroupDAO {
 
     @Autowired

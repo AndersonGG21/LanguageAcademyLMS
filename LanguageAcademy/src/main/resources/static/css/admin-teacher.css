@@ -1,0 +1,194 @@
+.delete {
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #e62222;
+}
+
+.delete,
+.delete span {
+  transition: 200ms;
+}
+
+.delete .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+.delete .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete svg {
+  width: 15px;
+  fill: #eee;
+}
+
+.delete:hover {
+  background: #ff3636;
+}
+
+.delete:hover .text {
+  color: transparent;
+}
+
+.delete:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.delete:focus {
+  outline: none;
+}
+
+.delete:active .icon svg {
+  transform: scale(0.8);
+}
+
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cdcdcd;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition: width 0.2s ease-in-out;
+  font-weight: 500;
+  font-family: inherit;
+  /* margin-bottom: 50px; */
+}
+
+.add-btn:hover {
+  width: 120px;
+}
+
+.add-btn::before,
+.add-btn::after {
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: seagreen;
+}
+
+.add-btn::after {
+  right: 14px;
+  overflow: hidden;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn::before {
+  left: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+  outline: none;
+}
+
+.btn-txt {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.add-btn:hover::before,
+.add-btn:hover::after {
+  width: 4px;
+  border-radius: 2px;
+}
+
+.add-btn:hover .btn-txt {
+  opacity: 1;
+}
+
+.add-icon::after,
+.add-icon::before {
+  transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 2px;
+  top: calc(50% - 10px);
+  background: seagreen;
+  overflow: hidden;
+}
+
+.add-icon::before {
+  left: 22px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.add-icon::after {
+  right: 22px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn:hover .add-icon::before {
+  left: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+  right: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.header-container {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.modal-title {
+  color: black;
+  font-weight: bold;
+}
+
+.form-label {
+  color: black;
+  font-weight: normal;
+}
+
+.td-button{
+    max-width: 80px;
+}
+
+@media (width < 500px) {
+  .delete .icon {
+    display: none;
+  }
+
+  .delete:hover .text {
+    color: white;
+  }
+
+  .delete:hover {
+    content: "";
+  }
+}
+
+

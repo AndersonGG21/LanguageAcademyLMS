@@ -16,11 +16,5 @@ import lombok.ToString;
 @Entity
 @Table(name = "teachers")
 public class Teacher extends User{
-    
-    @Column(name = "salary")
-    private Long salary;
-
-    @Column(name = "hiredate")
-    private String hireDate;
-   
+         
 }   

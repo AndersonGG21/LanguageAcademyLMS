@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Transactional
+@SuppressWarnings("unchecked")
 public class SubjectDAOImp implements SubjectDAO {
     
     @PersistenceContext

@@ -1,6 +1,13 @@
 $(document).ready(function () {
     createCourseMaterial();
+    validateRole();
 });
+
+function validateRole() {
+    if (localStorage.role != "ADMIN") {
+      location.href = "401.html"
+    }
+  }
 
 async function createCourse(){
     let condicion=true;
@@ -126,9 +133,6 @@ async function createCourseMaterial(){
     checkCreateMaterial();
 }    
 
-// class='btn btn-secondary'
-// class="btn btn-secondary"
-// class='btn btn-success'
 let arrayModal=[];
 let arraySubjectDB=[]
 async function checkCreateMaterial(){

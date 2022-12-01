@@ -2,198 +2,260 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/admin-courses.css" />
-    <script src="https://code.jquery.com/jquery-2.2.4.js"
-        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-    <title>Course | Admin</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/admin-courses.css" />
+  <link rel="stylesheet" href="/css/utils.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+  <title>Course | Admin</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="/imgs/white-logo.png" alt="JDAS-white-logo" class="white-logo" width="50px" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Students</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Teachers</a>
-                    </li>
-                </ul>
-                <button class="btn btn-primary" id="logout">Logout</button>
-            </div>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/imgs/white-logo.png" alt="JDAS-white-logo" class="white-logo" width="50px" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin-students.html">Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin-teachers.html">Teachers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin-form.html">Admins</a>
+          </li>
+        </ul>
+        <button class="btn btn-primary" id="logout">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <h2 style="display: inline-block">Courses</h2>
+  <button class="btn btn-insert" style="display: inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo">
+    Add a new course
+  </button>
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnrollment"
+    aria-controls="offcanvasEnrollment">
+    Button with data-bs-target
+  </button>
+
+  <!-- Enrollment Offcanvas -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasEnrollment" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Enroll a Student</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="needs-validation" id="form" onsubmit="return false" novalidate>
+        <div class="mb-3">
+          <label for="selectStudent">Select a student</label>
+          <select class="form-select" aria-label="Default select example" id="selectStudent">
+          </select>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            This is not a valid option
+          </div>
         </div>
-    </nav>
+        <div class="mb-3">
+          <label for="selectCourse">Select a course</label>
+          <select class="form-select" aria-label="Default select example" id="selectCourse">
+          </select>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            This is not a valid option
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="selectGroup">Select a group</label>
+          <select class="form-select" aria-label="Default select example" id="selectGroup" aria-describedby="groupHelp">
+          </select>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            This is not a valid option
+          </div>
+        </div>
+        <div id="groupHelp" class="form-text">If the course doesn't have groups you will not able to do the enrollment</div>
+        <button class="btn btn-primary" type="button" id="btn-submit" style="margin-top: 10px;">Enroll</button>
+      </form>
+    </div>
+  </div>
+  <!-- End of Enrollment Offcanvas -->
 
-    <h2 style="display: inline-block">Courses</h2>
-    <button class="btn btn-insert" style="display: inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"> 
-        Add a new course
-    </button>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+      <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">New course</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="cleanModalCourse()"></button>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New course</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            onclick="cleanModalCourse()"></button>
         </div>
         <div class="modal-body">
-            <form>
+          <form>
             <div class="mb-3">
-                <label for="recipient-name" class="col-form-label modalGreen"><strong>Name:</strong></label>
-                <input type="text" class="form-control" id="recipient-name">
-                <p id="conditionName"> Name cannot be null*</p>
+              <label for="recipient-name" class="col-form-label modalGreen"><strong>Name:</strong></label>
+              <input type="text" class="form-control" id="recipient-name">
+              <p id="conditionName"> Name cannot be null*</p>
             </div>
             <div class="mb-3">
-                <label for="recipient-name" class="col-form-label modalGreen"><strong>Level:</strong></label>
-                <select  id="selectLevelCourse"class="form-select" aria-label="Default select example">
-                  <option selected></option>
-                  <option value="A1">A1</option>
-                  <option value="A2">A2</option>
-                  <option value="B1">B1</option>
-                  <option value="B2">B2</option>
-                </select>
-                <p id="conditionNameLevel">Choose one</p>
+              <label for="recipient-name" class="col-form-label modalGreen"><strong>Level:</strong></label>
+              <select id="selectLevelCourse" class="form-select" aria-label="Default select example">
+                <option selected></option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+              </select>
+              <p id="conditionNameLevel">Choose one</p>
             </div>
             <div class="mb-3">
-                <label for="recipient-name" class="col-form-label modalGreen"> <strong>Image:</strong></label>
-                <input type="text" class="form-control" id="recipient-Image">
-                <p id="conditionImage">Image cannot be null and image is url*</p>
+              <label for="recipient-name" class="col-form-label modalGreen"> <strong>Image:</strong></label>
+              <input type="text" class="form-control" id="recipient-Image">
+              <p id="conditionImage">Image cannot be null and image is url*</p>
             </div>
             <div class="mb-3">
-                <label for="message-text" class="col-form-label modalGreen"><strong>Description:</strong></label>
-                <textarea class="form-control" id="message-Description"></textarea>
-                <p id="conditionDescription">Description cannot be null*</p>
+              <label for="message-text" class="col-form-label modalGreen"><strong>Description:</strong></label>
+              <textarea class="form-control" id="message-Description"></textarea>
+              <p id="conditionDescription">Description cannot be null*</p>
             </div>
             <div class="mb-3">
-                <p id="wrongData" class="conditionDescriptionDisplay">We have a problem you enter wrong data.</p>
+              <p id="wrongData" class="conditionDescriptionDisplay">We have a problem you enter wrong data.</p>
             </div>
-            </form>
+          </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClose" onclick="cleanModalCourse()">Close</button>
-            <button type="button" class="btn btn-primary" onClick="createCourse()" >Create course</button>
-        </div>
-        </div>
-    </div>
-    </div>
-
-    <!-- Card Courses -->
-    <div class="course-container container-fluid scale-up-horizontal-left" id="prueba">
-        <div class='card' style='width: 18rem'>
-        </div>
-    </div>
-    
-    <div class="course-container container-fluid scale-up-horizontal-left" id="containerModal">
-    </div>
-
-
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Groups</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            Here you can assign teachers to groups
-          </div>
-          <hr>
-          <div class="table-responsive">
-            <table class="table table-danger" id="tableGroups">
-                <thead>
-                    <tr>
-                      <th scope="col">Group Code</th>
-                      <th scope="col">Group Name</th>
-                      <th scope="col">Teacher ID</th>
-                      <th scope="col">Change/Assign a Teacher</th>
-                    </tr>
-                </thead>
-                <tbody id="groupTableBody">
-
-                </tbody>
-            </table>
-            <button type="button" onclick="getTeachers()" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#groupModal">Create a Group</button>
-          </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClose"
+            onclick="cleanModalCourse()">Close</button>
+          <button type="button" class="btn btn-primary" onClick="createCourse()">Create course</button>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Create a Group</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- Card Courses -->
+  <div class="course-container container-fluid scale-up-horizontal-left" id="prueba">
+    <div class='card' style='width: 18rem'>
+    </div>
+  </div>
+
+  <div class="course-container container-fluid scale-up-horizontal-left" id="containerModal">
+  </div>
+
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Groups</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        Here you can assign teachers to groups
+      </div>
+      <hr>
+      <div class="table-responsive">
+        <table class="table table-danger" id="tableGroups">
+          <thead>
+            <tr>
+              <th scope="col">Group Code</th>
+              <th scope="col">Group Name</th>
+              <th scope="col">Teacher ID</th>
+              <th scope="col">Change/Assign a Teacher</th>
+            </tr>
+          </thead>
+          <tbody id="groupTableBody">
+
+          </tbody>
+        </table>
+        <button type="button" onclick="getTeachers()" class="btn btn-outline-success" data-bs-toggle="modal"
+          data-bs-target="#groupModal">Create a Group</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create a Group</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="groupCodeInput" class="form-label">Group Code</label>
+              <input type="text" class="form-control" id="groupCodeInput" aria-describedby="emailHelp">
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                      <label for="groupCodeInput" class="form-label">Group Code</label>
-                      <input type="text" class="form-control" id="groupCodeInput" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                      <label for="groupNameInput" class="form-label">Group Name</label>
-                      <input type="text" class="form-control" id="groupNameInput">
-                    </div>
-                    <label for="selectTeacher">Select a Teacher</label>
-                    <select class="form-select" aria-label="Default select example" id="selectTeacherName">
-                    </select>
-                  </form>
+            <div class="mb-3">
+              <label for="groupNameInput" class="form-label">Group Name</label>
+              <input type="text" class="form-control" id="groupNameInput">
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="createGroup()">Create Group</button>
-            </div>
-          </div>
+            <label for="selectTeacher">Select a Teacher</label>
+            <select class="form-select" aria-label="Default select example" id="selectTeacherName">
+            </select>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="createGroup()">Create Group</button>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Modal id Teacher  -->
-      <div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Assign a teacher</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <label for="selectTeacher">Select a Teacher</label>
-                    <select class="form-select" aria-label="Default select example" id="selectTeacher">
-                        
-                    </select>
-                  </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="prueba()">Asiggn Teacher</button>
-            </div>
-          </div>
+  <!-- Modal id Teacher  -->
+  <div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Assign a teacher</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label for="selectTeacher">Select a Teacher</label>
+            <select class="form-select" aria-label="Default select example" id="selectTeacher">
+
+            </select>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="prueba()">Asiggn Teacher</button>
         </div>
       </div>
-      
+    </div>
+  </div>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-    <script src="/js/admin-courses.js"></script>
-    <script src="/js/admin-functions.js"></script>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="/js/admin-courses.js"></script>
+  <script src="/js/admin-functions.js"></script>
+  <script src="/js/logout.js"></script>
+  <script src="/js/utils.js"></script>
 
 </body>
 

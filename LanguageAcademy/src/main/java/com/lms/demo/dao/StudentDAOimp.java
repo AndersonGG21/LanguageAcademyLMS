@@ -9,17 +9,14 @@ import com.lms.demo.models.Course;
  *
  * @author seang
  */
-import com.lms.demo.models.Course;
 import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
-import java.util.ArrayList;
 import javax.persistence.Query;
 import com.lms.demo.models.User;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -157,10 +154,20 @@ public class StudentDAOimp implements StudentDAO {
     
     @Override
      public List<Course> getCoursesHaventSeen(){
-  
-            String sqlQuery = "SELECT course_name, course_code FROM `courses`";
+            String sqlQuery = "SELECT course_name, course_code FROM `courses` WHERE course_code NOT IN (SELECT e.enrollment_course FROM `enrollments` e)";
             Query query = entityManager.createNativeQuery(sqlQuery);
             return query.getResultList();    
+    }
+
+    @Override
+    public String getName(String email) {
+        User student = adminDAO.getUserByEmail(email);
+        
+        if (student != null) {
+            return student.getName();
+        }
+        
+        return "";
     }
 
 }

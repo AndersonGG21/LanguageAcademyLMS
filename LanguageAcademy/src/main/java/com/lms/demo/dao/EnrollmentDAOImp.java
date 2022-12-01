@@ -8,7 +8,6 @@ package com.lms.demo.dao;
 import com.lms.demo.models.Enrollment;
 import com.lms.demo.models.Student;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -34,11 +33,7 @@ public class EnrollmentDAOImp implements EnrollmentDAO {
     private AdminDAO adminDAO;
 
     @Override
-    public BigInteger subjectsViewedValidation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
+    @SuppressWarnings("unchecked")
     public List<Enrollment> getHeaders(Enrollment enroll) {
         Student student = (Student) adminDAO.getUserByEmail(enroll.getStudent().getEmail());
         
@@ -56,8 +51,8 @@ public class EnrollmentDAOImp implements EnrollmentDAO {
     }
 
     @Override
-    public String sexo() {
-        return "Sexo";
+    public void createEnrollment(Enrollment enrollment) {
+        entityManager.merge(enrollment);
     }
     
 }

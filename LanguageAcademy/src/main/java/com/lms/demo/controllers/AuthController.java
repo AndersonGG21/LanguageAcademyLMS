@@ -50,12 +50,13 @@ public class AuthController {
     @PostMapping(value = "/api/login")
     public String login(@RequestBody User user){
         User logged = adminDAO.getUserByEmail(user.getEmail());
+        
         if(logged != null){
             System.out.println("Logged:" + logged.getName());
             String passHashed = logged.getPassword();
             Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
             
-            System.out.println("Argon2:" + argon2.verify(passHashed, logged.getPassword()));
+            System.out.println("Argon2:" + argon2.verify(passHashed, user.getPassword()));
             System.out.println("Server:" + logged.getPassword());
             System.out.println("Client:" + user.getPassword());
             
