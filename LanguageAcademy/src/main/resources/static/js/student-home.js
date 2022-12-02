@@ -1,6 +1,6 @@
 $(document).ready(function () {
     loadCourses();
-    localStorage.email = "manolo@elpoli.edu.co";
+    // localStorage.email = "manolo@elpoli.edu.co";
     loadCompletedCourses();
     loadCoursesHaventSeen();
     getName();

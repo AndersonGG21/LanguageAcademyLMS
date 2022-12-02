@@ -8,6 +8,7 @@ package com.lms.demo.dao;
 import com.lms.demo.models.Enrollment;
 import com.lms.demo.models.Student;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -53,6 +54,28 @@ public class EnrollmentDAOImp implements EnrollmentDAO {
     @Override
     public void createEnrollment(Enrollment enrollment) {
         entityManager.merge(enrollment);
+    }
+
+    @Override
+    public BigInteger getTimesValidation(Enrollment enrollment) {
+        // System.out.println("Enrollment:" + enrollment.toString());
+        String sqlQuery = "SELECT COUNT(e.enrollment_course) FROM `enrollments` e INNER JOIN `students` s ON s.id = e.enrollment_student WHERE e.enrollment_student = ? AND e.enrollment_course = ? AND e.status = 'IN PROGRESS' OR e.status = 'FINISHED'";
+
+        Query query = entityManager.createNativeQuery(sqlQuery).setParameter(1, enrollment.getStudent());
+        query.setParameter(2, enrollment.getCourse());
+    
+        return (BigInteger) query.getResultList().get(0);
+    }
+
+    @Override
+    public BigInteger getLostValidation(Enrollment enrollment) {
+        
+        String sqlQuery = "SELECT COUNT(e.enrollment_course) FROM `enrollments` e INNER JOIN `students` s ON s.id = e.enrollment_student WHERE e.enrollment_student = ? AND e.enrollment_course = ? AND e.status = 'LOST';";
+
+        Query query = entityManager.createNativeQuery(sqlQuery).setParameter(1, enrollment.getStudent());
+        query.setParameter(2, enrollment.getCourse());
+    
+        return (BigInteger) query.getResultList().get(0);
     }
     
 }

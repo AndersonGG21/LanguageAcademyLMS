@@ -47,6 +47,10 @@ async function login() {
         if (roleName == "TEACHER") {
             location.href = "teacher-students.html"
         }
+
+        if (roleName == "STUDENT") {
+            location.href = "student-home.html"
+        }
     }
 }
 
@@ -70,7 +74,7 @@ async function shake() {
     }
 
     if (!email.classList.contains("invalid") && !password.classList.contains("invalid")){
-        console.log("Login");
+        console.log("Login ok");
         login();
     }
 

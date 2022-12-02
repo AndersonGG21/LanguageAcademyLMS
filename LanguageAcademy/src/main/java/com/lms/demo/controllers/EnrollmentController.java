@@ -8,10 +8,13 @@ package com.lms.demo.controllers;
 import com.lms.demo.dao.EnrollmentDAO;
 import com.lms.demo.models.Enrollment;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,5 +38,15 @@ public class EnrollmentController {
     @PostMapping(value = "/api/enrollments")
     public List<Enrollment> getHeader(@RequestBody Enrollment enroll){
         return enrollDAO.getHeaders(enroll);
+    }
+
+    @PostMapping(value = "/api/enrollments/times")
+    public BigInteger getTimesValidation(@RequestBody Enrollment e){
+        return enrollDAO.getTimesValidation(e);
+    }
+
+    @PostMapping(value = "/api/enrollments/lost")
+    public BigInteger getLostValidation(@RequestBody Enrollment e){
+        return enrollDAO.getLostValidation(e);
     }
 }

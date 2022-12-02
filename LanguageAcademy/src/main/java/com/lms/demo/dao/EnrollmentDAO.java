@@ -5,6 +5,7 @@
  */
 package com.lms.demo.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import com.lms.demo.models.Enrollment;
@@ -16,4 +17,6 @@ import com.lms.demo.models.Enrollment;
 public interface EnrollmentDAO {
     List<Enrollment> getHeaders(Enrollment enroll);
     public void createEnrollment(Enrollment enrollment);
+    public BigInteger getTimesValidation(Enrollment enrollment);
+    public BigInteger getLostValidation(Enrollment enrollment);
 }
