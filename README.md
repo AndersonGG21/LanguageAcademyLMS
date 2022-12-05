@@ -41,7 +41,7 @@ _Primero: Levantar los servicios de base de datos:_
 
 _Cargar el script de la BD:_
 
-```
+
 * Luego de haber iniciado los servicios, dale al botón "Admin" del modulo llamada "MySQL"
 * Esto abrirá una página en tu navegador con el nombre de phpMyAdmin
 * Dentro de esta página da click en "Nueva", opción que se encuentra en la parte izquierda de la página.
@@ -53,7 +53,7 @@ _Cargar el script de la BD:_
 * Sube el script descargado anteriormente
 * Baja hasta el final de la página y da click en el botón "Importar"
 * Y listo, ya has cargado el script de la base de datos.
-```
+
 
 
 _Abrir y ejecutar el proyecto_
