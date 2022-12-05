@@ -66,7 +66,7 @@ _Abrir y ejecutar el proyecto_
 * Listo, ya puedes ejecutar el proyecto, dando click en la opción "Run" o presionando la tecla F6.
 
 
-_Para iniciar la aplicación abre tu navegador e ingresa la dirección localhost:8080 😀_
+_Para iniciar la aplicación abre tu navegador e ingresa la dirección [localhost:8080](localhost:8080) 😀_
 
 ## Construido con 🛠️
 
