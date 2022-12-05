@@ -41,7 +41,7 @@ _Primero: Levantar los servicios de base de datos:_
 
 _Cargar el script de la BD:_
 
-
+```
 * Luego de haber iniciado los servicios, dale al botón "Admin" del modulo llamada "MySQL"
 * Esto abrirá una página en tu navegador con el nombre de phpMyAdmin
 * Dentro de esta página da click en "Nueva", opción que se encuentra en la parte izquierda de la página.
@@ -53,15 +53,18 @@ _Cargar el script de la BD:_
 * Sube el script descargado anteriormente
 * Baja hasta el final de la página y da click en el botón "Importar"
 * Y listo, ya has cargado el script de la base de datos.
+```
 
 
 _Abrir y ejecutar el proyecto_
 
+```
 * Abre NetBeans.
 * Haz click en "File" en la parte superior de la pantalla.
 * Selecciona la opción "Open Project" y selecciona la carpeta donde agregaste el repositorio con el proyecto.
 * Espera a que carguen todos los archivos del proyecto. ⌛
 * Listo, ya puedes ejecutar el proyecto, dando click en la opción "Run" o presionando la tecla F6.
+```
 
 _Para iniciar la aplicación abre tu navegador e ingresa la dirección localhost:8080 😀_
 
@@ -84,7 +87,7 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 * **Luis David López** - *Desarrollador* - [luisdavid24](https://github.com/luisdavid24)
 * **Sergio Andres Guerra** - *Desarrollador* - [SergioGuerraN](https://github.com/SergioGuerraN)
 * **Julian Garcia** - *Desarrollador* - [Julian362](https://github.com/Julian362)
-
+* **Anderson Garces** - *Desarrollador* - [AndersonGG21](https://github.com/AndersonGG21)
 También puedes mirar la lista de todos los [contribuyentes](github.com/AndersonGG21/LanguageAcademyLMS/graphs/contributors) quíenes han participado en este proyecto. 
 
 
