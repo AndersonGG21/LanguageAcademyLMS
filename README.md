@@ -33,10 +33,10 @@ _Una vez tengas descargados e instalados los requesitos mencionados anteriorment
 
 _Primero: Levantar los servicios de base de datos:_
 
-```
+
 * Abre XAMPP
 * Presiona el botón "Start" de los modulos llamados: "Apache" & "MySQL"
-```
+
 
 
 _Cargar el script de la BD:_
@@ -58,13 +58,13 @@ _Cargar el script de la BD:_
 
 _Abrir y ejecutar el proyecto_
 
-```
+
 * Abre NetBeans.
 * Haz click en "File" en la parte superior de la pantalla.
 * Selecciona la opción "Open Project" y selecciona la carpeta donde agregaste el repositorio con el proyecto.
 * Espera a que carguen todos los archivos del proyecto. ⌛
 * Listo, ya puedes ejecutar el proyecto, dando click en la opción "Run" o presionando la tecla F6.
-```
+
 
 _Para iniciar la aplicación abre tu navegador e ingresa la dirección localhost:8080 😀_
 
