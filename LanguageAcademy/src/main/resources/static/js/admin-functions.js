@@ -324,61 +324,69 @@ $("#btn-submit").click(async function (e) {
   if (studentSelect || courseSelect || groupSelect) {
     showAlert("danger", "You must complete correctly the form");
   } else {
-
-    
-    const timesValidation = await fetch("/api/enrollments/times",{
+    const timesValidation = await fetch("/api/enrollments/times", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        course: {code: $("#selectCourse").val()},
-        student: {id:$("#selectStudent :selected").text().split("-")[0]}
-      })
-    })
+        course: { code: $("#selectCourse").val() },
+        student: { id: $("#selectStudent :selected").text().split("-")[0] },
+      }),
+    });
 
     const times = await timesValidation.json();
-    
+
     if (times == 1) {
-      showAlert("warning", "The student already seen or are watching this course")
-    }else{
-      const lostValidation = await fetch("/api/enrollments/lost",{
+      showAlert(
+        "warning",
+        "The student already done or are doing this course",
+        "3000"
+      );
+    } else {
+      const lostValidation = await fetch("/api/enrollments/lost", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          course: {code: $("#selectCourse").val()},
-          student: {id:$("#selectStudent :selected").text().split("-")[0]}
-        })
-      })
+          course: { code: $("#selectCourse").val() },
+          student: { id: $("#selectStudent :selected").text().split("-")[0] },
+        }),
+      });
 
       const lost = await lostValidation.json();
-      
+
       if (lost == 2) {
-        showAlert("danger", "The student has already seen this course more than twice", "3000");
+        showAlert(
+          "danger",
+          "The student has already seen this course more than twice",
+          "3000"
+        );
+      } else {
+          const enrollment = await fetch("/api/enrollment/", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              course: { code: $("#selectCourse").val() },
+              group: {
+                groupCode: $("#selectGroup :selected").text().split("-")[0],
+              },
+              student: { id: $("#selectStudent :selected").text().split("-")[0] },
+              status: "IN PROGRESS",
+            }),
+          });
+          if (enrollment.ok) {
+            showAlert("success", "Enrollment Done", "2000");
+          } else {
+            showAlert("danger", "Complete the form error", "2000");
+          }
       }
     }
-
-    // const enrollment = await fetch("/api/enrollment/", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     course: {code: $("#selectCourse").val()},
-    //     group: {groupCode: $("#selectGroup :selected").text().split("-")[0]},
-    //     student: {id:$("#selectStudent :selected").text().split("-")[0]},
-    //     status: "IN PROGRESS"
-    //   }),
-    // });
-    // if (enrollment.ok) {
-    //     showAlert("success", "Enrollment Done", "2000")
-    // }else{
-    //     showAlert("danger", "There was an error", "2000")
-    // }
   }
 });

@@ -10,11 +10,16 @@ $(document).ready(function () {
 });
 
 
+var resp = [];
+
 $(document).ready(function () {
    loadStudents();
 });
 
 async function loadStudents() {
+
+   
+
    const request = await fetch('api/teacher-students/' + localStorage.email, {
        method: 'GET',
        headers: {
@@ -25,10 +30,7 @@ async function loadStudents() {
    const studentsHTML = await request.json();
 
    let listHTML = '';
-
-
    for (let it_students of studentsHTML) {
-     
        let studentsHTML = "<tr>\n\
                        <td>"+ it_students[0] + "</td>\n\
                        <td>"+ it_students[1] + "</td>\n\
@@ -42,6 +44,10 @@ async function loadStudents() {
    }
 
    document.querySelector('#tableStudents tbody').outerHTML = listHTML;
-
 }
+
+
+
+
+
 

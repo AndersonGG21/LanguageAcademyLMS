@@ -9,6 +9,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 import com.lms.demo.models.Enrollment;
+import com.lms.demo.models.Student;
 
 /**
  *
@@ -19,4 +20,5 @@ public interface EnrollmentDAO {
     public void createEnrollment(Enrollment enrollment);
     public BigInteger getTimesValidation(Enrollment enrollment);
     public BigInteger getLostValidation(Enrollment enrollment);
+    public Student getStudent(String id);
 }

@@ -77,5 +77,10 @@ public class EnrollmentDAOImp implements EnrollmentDAO {
     
         return (BigInteger) query.getResultList().get(0);
     }
+
+    @Override
+    public Student getStudent(String id) {
+        return entityManager.find(Student.class, id);
+    }
     
 }
