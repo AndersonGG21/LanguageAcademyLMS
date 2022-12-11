@@ -42,7 +42,7 @@ _Primero: Levantar los servicios de base de datos:_
 _Cargar el script de la BD:_
 
 
-* Luego de haber iniciado los servicios, dale al botón "Admin" del modulo llamada "MySQL"
+* Luego de haber iniciado los servicios, dale al botón "Admin" del modulo llamado "MySQL"
 * Esto abrirá una página en tu navegador con el nombre de phpMyAdmin
 * Dentro de esta página da click en "Nueva", opción que se encuentra en la parte izquierda de la página.
 * Luego, en el campo que dice "Nombre de la base de datos" escribirás "lms" y luego darás click en el botón "Crear"
