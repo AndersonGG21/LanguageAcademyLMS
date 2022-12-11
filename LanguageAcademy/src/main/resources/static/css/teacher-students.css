@@ -7,7 +7,7 @@ body {
 }
 
 #tableStudents {
-  width: 99% !important;
+  width: 80% !important;
   margin: auto;
 }
 
@@ -66,7 +66,6 @@ th {
   background-color: #d90429 !important;
   border-color: #fff;
 }
-
 .th-reduce {
   width: 0.75rem !important;
 }
@@ -213,4 +212,155 @@ th {
   100% {
     transform: translateY(0%);
   }
+}
+/* Info Card */
+
+.card-container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 500px;
+  height: 500px;
+  display: none;
+}
+.card-container .card {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 250px;
+  padding: 20px;
+  overflow: hidden;
+  background: #ccc;
+  border-radius: 10px;
+  box-shadow: -2px 2px 0px 0px #ccc, -10px 10px 40px 0px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transition: all 1s;
+  width: 500px;
+  height: 400px;
+}
+
+.card-container .btn {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.card-container .card h1 {
+  color: crimson;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+.card-container .card h1:nth-of-type(2) {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+.card-container .card h3 {
+  color: crimson;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.card-container .card h3:nth-of-type(2) {
+  font-size: 14px;
+  font-weight: 400;
+}
+.card-container .card i {
+  margin-right: 5px;
+  color: crimson;
+}
+.card-container .card .circle {
+  position: absolute;
+  margin: auto;
+  top: 10%;
+  bottom: 0;
+  right: -50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #d90429;
+  z-index: -2;
+}
+.card-container .card .circle:nth-of-type(2) {
+  width: 100px;
+  height: 100px;
+  top: 90%;
+  right: -20%;
+  z-index: -1;
+  background: crimson;
+}
+@media only screen and (max-width: 780px) {
+  .card-container .card {
+    width: 250px;
+    height: 150px;
+    animation: hvr 5s infinite ease-in-out;
+    transition: none;
+  }
+  .card-container .card h1 {
+    font-size: 18px;
+  }
+  .card-container .card h1:nth-of-type(2) {
+    font-size: 14px;
+  }
+  .card-container .card h3 {
+    font-size: 12px;
+  }
+  .card-container .card h3:nth-of-type(2) {
+    font-size: 10px;
+  }
+  .card-container .card .circle {
+    right: -70%;
+  }
+  @keyframes hvr {
+    0% {
+      box-shadow: -2px 2px 0px 0px #202020,
+        -10px 10px 40px 0px rgba(0, 0, 0, 0.3);
+      transform: translate(0px, 0px) rotateX(30deg) rotateZ(-20deg);
+    }
+    50% {
+      transform: translate(0px, -20px) rotateX(30deg) rotateZ(-20deg);
+      box-shadow: -2px 1px 0px 0px #202020, -40px 40px 40px 0 rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: -2px 2px 0px 0px #202020,
+        -10px 10px 40px 0px rgba(0, 0, 0, 0.3);
+      transform: translate(0px, 0px) rotateX(30deg) rotateZ(-20deg);
+    }
+  }
+}
+
+.btnClose {
+  background-color: inherit;
+  font-size: 30px;
+  width: 50px;
+  border: none;
+  transition: 0.5s;
+}
+
+.btnClose:hover {
+  color: white;
+  transition: 0.5s;
+  transform: scale(0.9);
+}
+
+.note,
+.offcanvas-title {
+  font-weight: bold;
+}
+
+.pNote {
+  font-size: 20px;
+  color: #ef233c;
+}
+
+#approve-btn, #reprove-btn{
+  display: none;
 }

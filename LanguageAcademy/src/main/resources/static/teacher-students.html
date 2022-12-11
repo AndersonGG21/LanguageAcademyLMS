@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="/css/admin-students.css"> -->
     <link rel="stylesheet" href="/css/teacher-students.css" />
     <link rel="stylesheet" href="/css/utils.css">
     <script src="https://code.jquery.com/jquery-2.2.4.js"
@@ -28,13 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Courses</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" href="teacher-students.html">My Students</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Lorem</a>
                     </li>
                 </ul>
                 <button class="btn btn-primary" id="logout">Logout</button>
@@ -42,30 +37,58 @@
         </div>
     </nav>
 
-    <h2 style="display: inline-block">My Students</h2>
-    <!-- <button class="btn btn-download" style="display: inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal"
-        data-bs-whatever="@mdo">
-        Download Students List
-    </button> -->
-
-    <button class="download-button" >
-        <div class="docs"><svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="currentColor" height="20" width="20" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line y2="13" x2="8" y1="13" x1="16"></line><line y2="17" x2="8" y1="17" x1="16"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Download Students List</div>
-        <div class="download">
-          <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="currentColor" height="24" width="24" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line y2="3" x2="12" y1="15" x1="12"></line></svg>
+    <h2 style="display: inline-block; margin-top: 50px;">My Students</h2>
+    <!-- <button id="toggler"></button> -->
+    <div class="card-container" id="card-modal">
+        <div class="card">
+            <button type="button" class="btnClose" style="display: inline-block;"><i class="bi bi-x"></i></button>
+            <h2>Student Notes:</h2>
+            <p class="pNote">Notes: <span id="note1"></span> - <span id="note2"></span> - <span id="note3"></span></p>
+            <p class="pNote">Average: <span id="prom"></span></p>
+            <button class="btn btn-primary" id="resul" style="width: 150px;">Calculate</button>            
+            <div class="circle"></div>
+            <span>We do the grade calculation for you, but you decide whether the student passes or fails 😉.</span>
+            <div class="btn-group">
+                <button class="btn btn-success"  id="approve-btn">Approve 👍🏻</button>
+                <button class="btn btn-warning"  id="reprove-btn">Reprove 👎🏻</button>
+            </div>
+            <!-- <div class="circle"></div> -->
         </div>
-      </button>
+    </div>
+
+    <button class="download-button">
+        <div class="docs"><svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                stroke-width="2" stroke="currentColor" height="20" width="20" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line y2="13" x2="8" y1="13" x1="16"></line>
+                <line y2="17" x2="8" y1="17" x1="16"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg> Download Students List</div>
+        <div class="download">
+            <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2"
+                stroke="currentColor" height="24" width="24" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line y2="3" x2="12" y1="15" x1="12"></line>
+            </svg>
+        </div>
+    </button>
 
     <div id="content">
-        <table class="table" id="tableStudents">
+        <table class="table mt-2" id="tableStudents">
             <thead>
                 <tr>
-                    <th scope="col" id="table-first">Id</th>
+                    <th scope="col" id="table-first">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone Number</th>
-                    <th scope="col">Address</th>
                     <th scope="col">Course</th>
-                    <th scope="col" id="table-last" class="th-reduce">Times</th>
+                    <th scope="col">Note 1</th>
+                    <th scope="col">Note 2</th>
+                    <th scope="col">Note 3</th>
+                    <th scope="col">Times</th>
+                    <th scope="col" id="table-last" class="th-reduce">Grade</th>
                 </tr>
             </thead>
             <tbody>
@@ -74,13 +97,18 @@
         </table>
     </div>
 
+    <div class="lds-ring" id="loader"><div></div><div></div><div></div><div></div>
+
+
+    <!-- Grade offcanvas -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/printThis.js"></script>
     <script src="js/teacher-students.js"></script>
     <script src="/js/logout.js"></script>
+    <script src="/js/utils.js"></script>
 
 </body>

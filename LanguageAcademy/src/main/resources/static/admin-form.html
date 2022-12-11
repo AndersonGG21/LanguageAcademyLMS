@@ -53,6 +53,7 @@
       <div class="mb-3">
         <label for="inputDoc" class="form-label">Document:</label>
         <input type="number" class="form-control" id="inputDoc"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+        <div class="form-text">The document must be at least 10 characters long</div>
         <div class="valid-feedback">
           Looks good!
         </div>
@@ -73,6 +74,7 @@
       <div class="mb-3">
         <label for="email" class="form-label">Email address:</label>
         <input type="email" class="form-control" id="email" required>
+        <div id="emailHelp" class="form-text">Must be an institutional email address</div>
         <div class="valid-feedback">
           Looks good!
         </div>
@@ -83,6 +85,7 @@
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" required>
+        <div class="form-text">The password must be at least 8 characters long</div>
         <div class="valid-feedback">
           Looks good!
         </div>
@@ -93,6 +96,7 @@
       <div class="mb-3">
         <label for="phone" class="form-label">Phone Number:</label>
         <input type="number" class="form-control" id="phone" required>
+        <div class="form-text">The phone number must be 10 characters long</div>
         <div class="valid-feedback">
           Looks good!
         </div>

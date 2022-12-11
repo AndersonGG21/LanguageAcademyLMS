@@ -1,14 +1,10 @@
 $(document).ready(function () {
   loadTeachers();
   validateForm();
-  validateRole();
+  validateRole("ADMIN");
 });
 
-function validateRole() {
-  if (localStorage.role != "ADMIN") {
-    location.href = "401.html"
-  }
-}
+
 
 $("#submitBtn").click(function (e) { 
   e.preventDefault();

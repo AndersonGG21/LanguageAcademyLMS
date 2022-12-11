@@ -30,5 +30,14 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name = "enrollmentGroup")
     private Group group;
+        
     
+    @Column(name = "note1")
+    private int note1;
+    
+    @Column(name = "note2")
+    private int note2;
+    
+    @Column(name = "note3")
+    private int note3;
 }

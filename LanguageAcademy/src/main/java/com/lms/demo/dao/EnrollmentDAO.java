@@ -21,4 +21,8 @@ public interface EnrollmentDAO {
     public BigInteger getTimesValidation(Enrollment enrollment);
     public BigInteger getLostValidation(Enrollment enrollment);
     public Student getStudent(String id);
+    public void setNotes(Enrollment enrollment);
+    public List<Enrollment> getEnrollment(Enrollment enrollment);
+    public void approve(Enrollment enrollment);
+    public void reprove(Enrollment enrollment);
 }

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  validateRole();
+  validateRole("ADMIN");
   validateForm();
   console.log(encrypt());
 });
@@ -14,11 +14,6 @@ $("#submitBtn").click(function (e) {
   }
 });
 
-function validateRole() {
-  if (localStorage.role != "ADMIN") {
-    location.href = "401.html";
-  }
-}
 
 function encrypt() {
   let encrypted = CryptoJS.AES.encrypt("AMDIN", "#4a120*M0nd0ng0");

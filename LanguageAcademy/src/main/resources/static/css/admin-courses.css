@@ -157,6 +157,10 @@ th{
   }
 }
 
+.conditions{
+  display: none;
+}
+
 .course-container {
   display: flex;
   flex-direction: row;
@@ -214,6 +218,189 @@ a:hover{
   /* flex-direction: column; */
 }
 
-form label{
-  color: #d90429;
+
+/* Subjects Inputs */
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --primary-color: #d90429;
+}
+
+legend,
+.bx {
+  font-size: 1.3rem;
+  font-weight: 700px;
+}
+
+.container {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* Hide default radio style */
+.checkbox-input {
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+}
+
+/* Change icon, border and text color when radio is checked */
+.checkbox-input:checked + .checkbox-tile,
+.checkbox-input:checked + .checkbox-tile span {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Checkbox display */
+.checkbox-input:checked + .checkbox-tile::before {
+  transform: scale(1);
+  opacity: 1;
+  background-color: var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+/* Checkbox icon and text */
+.checkbox-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 160px;
+  height: 70px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: 0.1s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-tile:hover {
+  border-color: #999;
+}
+
+/* Checkmark (icon inside checker) */
+.checkbox-tile::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 0.25rem;
+  left: 0.25rem;
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.25s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
+  border: 2px solid var(--primary-color);
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#subjectModal .modal-content{
+  width: 700px !important;
+}
+ /* Add btn */
+
+ .icon-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cdcdcd;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition: width 0.2s ease-in-out;
+  font-weight: 500;
+  font-family: inherit;
+  margin-left: 850px;
+}
+
+.add-btn:hover {
+  width: 120px;
+}
+
+.add-btn::before,
+.add-btn::after {
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: seagreen;
+}
+
+.add-btn::after {
+  right: 14px;
+  overflow: hidden;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn::before {
+  left: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+  outline: none;
+}
+
+.btn-txt {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.add-btn:hover::before,
+.add-btn:hover::after {
+  width: 4px;
+  border-radius: 2px;
+}
+
+.add-btn:hover .btn-txt {
+  opacity: 1;
+}
+
+.add-icon::after,
+.add-icon::before {
+  transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 2px;
+  top: calc(50% - 10px);
+  background: seagreen;
+  overflow: hidden;
+}
+
+.add-icon::before {
+  left: 22px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.add-icon::after {
+  right: 22px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn:hover .add-icon::before {
+  left: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+  right: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
 }

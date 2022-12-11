@@ -9,7 +9,5 @@ import lombok.*;
 @Entity
 @Table(name = "students")
 public class Student extends User {
-//    
-    @Column(name = "address")
-    private String address;
+
 }

@@ -6,51 +6,55 @@ $("#sub").click(function (e) {
 
 
 async function login() {
-    const user = await fetch('/api/users/' + document.getElementById("exampleInputEmail1").value, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    });
+    try {
+        const user = await fetch('/api/users/' + document.getElementById("exampleInputEmail1").value, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+    
+        let uArray = await user.json();
+        let roleName = uArray.roleName;
+        let email = uArray.email;
 
-    let uArray = await user.json();
-    console.log(uArray)
-    let roleName = uArray.roleName;
-    let email = uArray.email;
-
-    const request = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email : email,
-            password: document.getElementById("exampleInputPassword1").value,
-            roleName: roleName,
-            profession: "DEVELOPER"
-        })
-    });
-    const resp = await request.text();
-    if(resp == 'FAIL'){
-        alert("Usuario o contraseña invalida");
-    }else{
-        localStorage.role = roleName;
-        localStorage.token = resp; 
-        localStorage.email = email;
-        
-        if (roleName == "ADMIN") {
-            location.href = "admin-courses.html"
+        const request = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email : email,
+                password: document.getElementById("exampleInputPassword1").value,
+                roleName: roleName,
+                profession: "DEVELOPER"
+            })
+        });
+        const resp = await request.text();
+    
+        if(resp == 'FAIL'){
+            showAlert("warning", "Incorrect user or password", "2000")
+        }else{
+            localStorage.role = roleName;
+            localStorage.token = resp; 
+            localStorage.email = email;
+            
+            if (roleName == "ADMIN") {
+                location.href = "admin-courses.html"
+            }
+    
+            if (roleName == "TEACHER") {
+                location.href = "teacher-students.html"
+            }
+    
+            if (roleName == "STUDENT") {
+                location.href = "student-home.html"
+            }
         }
-
-        if (roleName == "TEACHER") {
-            location.href = "teacher-students.html"
-        }
-
-        if (roleName == "STUDENT") {
-            location.href = "student-home.html"
-        }
+    } catch (error) {
+        showAlert("danger", "This user doesn't exist", "2000")
     }
 }
 
@@ -70,7 +74,7 @@ async function shake() {
     }
     
     if (email.classList.contains("invalid") || password.classList.contains("invalid")) {
-        alert("wrong email and/or password")
+        showAlert("warning", "Incorrect email", "2000")
     }
 
     if (!email.classList.contains("invalid") && !password.classList.contains("invalid")){

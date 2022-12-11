@@ -1,6 +1,5 @@
-
 <!doctype html>
-<html lang="en-US" xmlns:th="http://www.thymeleaf.org>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -17,7 +16,7 @@
         style="@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700); font-family: 'Open Sans', sans-serif;">
         <tr>
             <td>
-                <table style="background-color: ##121212; max-width:670px; margin:0 auto;" width="100%" border="0"
+                <table style="background-color: #121212; max-width:670px; margin:0 auto;" width="100%" border="0"
                     align="center" cellpadding="0" cellspacing="0">
                     <tr>
                         <td style="height:80px;">&nbsp;</td>
@@ -25,7 +24,7 @@
                     <tr>
                         <td style="text-align:center;">
                             <a href="http://localhost:8080/index.html" title="logo" target="_blank">
-                            <img width="160" src="http://drive.google.com/uc?export=view&id=1SczSr9XxYItc5j_P-csgBmcpU7RXAcLm" title="logo" alt="logo">
+                            <img width="160" src="http://drive.google.com/uc?export=view&id=1S4yPMR_2vYXSNriZBeGs9xht-KWbltcv" title="logo" alt="logo">
                           </a>
                         </td>
                     </tr>
@@ -41,10 +40,10 @@
                                 </tr>
                                 <tr>
                                     <td style="padding:0 35px;">
-                                        <h1 style="color:white; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Congratulations! Enrollment Confirmed
+                                        <h1 style="color:white; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Bad News!
                                         </h1>
                                         <p style="font-size:15px; color:white; margin:8px 0 0; line-height:24px;">
-                                             You've successfully enrolled for ${course} course. <br><strong>You can log into the platform at any time to start the course.</strong>.</p>
+                                            We know this news can be disappointing, but we want you to know that we are here to support you. Although losing a course is not a desired outcome, we encourage you to move forward and see this situation as an opportunity to improve and learn...</p>
                                         <span
                                             style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                         <p

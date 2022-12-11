@@ -109,7 +109,6 @@ public class StudentDAOimp implements StudentDAO {
         studentNew.setName(student.getName());
         studentNew.setPhoneNumber(student.getPhoneNumber());
         studentNew.setRoleName(student.getRoleName());
-        studentNew.setAddress(student.getAddress());
         entityManager.merge(student);
     }
 
@@ -153,9 +152,9 @@ public class StudentDAOimp implements StudentDAO {
     }
     
     @Override
-     public List<Course> getCoursesHaventSeen(){
-            String sqlQuery = "SELECT course_name, course_code FROM `courses` WHERE course_code NOT IN (SELECT e.enrollment_course FROM `enrollments` e)";
-            Query query = entityManager.createNativeQuery(sqlQuery);
+     public List<Course> getCoursesHaventSeen(String email){
+            String sqlQuery = "SELECT course_name, course_des FROM `courses` WHERE course_code NOT IN (SELECT e.enrollment_course FROM `enrollments` e INNER JOIN `students` s ON s.id = e.enrollment_student WHERE s.email = ?);";
+            Query query = entityManager.createNativeQuery(sqlQuery).setParameter(1, email);
             return query.getResultList();    
     }
 

@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/utils.css" />
     <link rel="stylesheet" href="/css/course-template.css" />
     <script src="https://code.jquery.com/jquery-2.2.4.js"
@@ -30,12 +29,6 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="student-home.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Teachers</a>
                     </li>
                 </ul>
                 <button class="btn btn-primary" id="logout">Logout</button>
@@ -67,10 +60,10 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li value="Articles">
-                            <a class="dropdown-item" href="" id="g-articles">Articles</a>
+                            <a class="dropdown-item" href="">Lesson 1</a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Sustantives</a></li>
-                        <li><a class="dropdown-item" href="#">Adjectives</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 2</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 3</a></li>
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -79,9 +72,9 @@
                         Listening
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 4</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 5</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 6</a></li>
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -90,9 +83,9 @@
                         Reading
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 7</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 8</a></li>
+                        <li><a class="dropdown-item" href="#">Lesson 9</a></li>
                     </ul>
                 </div>
             </div>
@@ -100,17 +93,114 @@
                 <div class="video-container"></div>
                 <p id="theme"></p>
                 <p id="teory"></p>
-                <div class="dropdown" id="quiz"></div>
-
                 <button class="btn btn-primary close-btn">Close Lesson</button>
             </div>
         </div>
+
+
+        <!-- Button trigger modal -->
+        <div class="form-text" style="margin-left: 50px;">We recommend that you see all lesions before doing the exam.</div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 50px; margin-left: 50px;">
+            Take the test
+        </button>
+
+        <!-- Test Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="">
+                            <h4>Grammar:</h4>
+                            <span>Complete the sentences with \'a\', \'an\' or \'the\', or \'-\'
+                                if no article is needed.</span><br><br>
+                            <div class="mb-3"><span>Do you want <input type="text" class="form-control" id="sandwich-q">
+                                    sandwich?</span></div>
+                            <div class="mb-3"><span>She wants to be <input type="text" class="form-control"
+                                        id="ambulance-q"> ambulance driver when she finishes school.</span></div>
+                            <div class="mb-3"><span>Did you see <input type="text" class="form-control" id="moon-q">
+                                    moon
+                                    last night?</span></div>
+                            <h4>Reading</h4>
+                            <span>Read the following text and answer the questions</span>
+                            <br><br>
+                            <p>The invention with the biggest impact was probably the television. It was invented by a
+                                Scottish man, John Logie Baird. The first televised pictures were sent over a short
+                                distance
+                                in 1924, and his invention was formally demonstrated at the Royal Institute two years
+                                later.
+                                The pictures on the screen were not clear, but the viewers could see that they were
+                                human
+                                faces, and they could see their eyes opening and closing. In 1928, images were sent from
+                                Britain to America, and later, to a ship 1,500 miles out to sea. In the same year, the
+                                first
+                                colour images were sent. The first ‘seeing-in sets’ were sold that same year. For £25
+                                (£1000
+                                in today’s money), people in their homes could watch moving images that were sent from a
+                                broadcasting station.</p>
+                            <span>1) When television images were first transmitted, viewers didn’t know exactly what the
+                                image was. (False)</span>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" value="true"
+                                    id="tv_true">
+                                <label class="form-check-label" for="tv_true">
+                                    True
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" value="false"
+                                    id="tv_false">
+                                <label class="form-check-label" for="tv_false">
+                                    False
+                                </label>
+                            </div>
+                            <span>2) The television was demonstrated at the Royal Institute in 1926. (True)</span>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios1" value="true"
+                                    id="tv1_true">
+                                <label class="form-check-label" for="tv1_true">
+                                    True
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios1" value="false"
+                                    id="tv1_false">
+                                <label class="form-check-label" for="tv1_false">
+                                    False
+                                </label>
+                            </div>
+                            <br>
+                            <h4>Listening</h4>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ad2qjy5w8BM"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                            <br>
+                            <span>Listen to five people talking about their jobs. And write the correct answer.</span>
+                            <div class="mb-3"><span>1) James is a <input type="text" class="form-control" id="james1-q">
+                                    (flight attendant)</span></div>
+                            <div class="mb-3"><span>2) James <input type="text" class="form-control" id="james2-q">
+                                    (Travels a lot)</span></div>
+                            <!-- <div class="custom-loader-container animate__animated animate__fadeInLeft"> -->
+                            <!-- <div class="custom-loader"></div><span>Keep Trying</span> -->
+                            <!-- </div><i class="bi bi-check-lg animate__animated animate__fadeInLeft">Congrats!</i> -->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="validateQuizP1()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section class="copyright">
             <p><span>©</span> 2022 Rights Reserved, Idioom</p>
         </section>
     </div>
-
-    
 
 
     <!-- JavaScript Bundle with Popper -->
@@ -119,6 +209,7 @@
         crossorigin="anonymous"></script>
     <script src="/js/course-template.js"></script>
     <script src="/js/logout.js"></script>
+    <script src="/js/utils.js"></script>
 </body>
 
 </html>

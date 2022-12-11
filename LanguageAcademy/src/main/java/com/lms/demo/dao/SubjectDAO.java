@@ -14,5 +14,5 @@ import java.util.List;
 public interface SubjectDAO {
     void createSubject(Subject subject);
     
-    List<Subject> getSubjects();
+    List<String> getSubjects(String course);
 }

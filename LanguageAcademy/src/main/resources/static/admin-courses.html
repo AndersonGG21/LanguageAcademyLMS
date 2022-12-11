@@ -45,63 +45,16 @@
   </nav>
 
   <h2 style="display: inline-block">Courses</h2>
-  <button class="btn btn-insert" style="display: inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal"
+  <!-- <button class="btn btn-insert" style="display: inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal"
     data-bs-whatever="@mdo">
     Add a new course
-  </button>
+  </button> -->
 
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnrollment"
-    aria-controls="offcanvasEnrollment">
-    Button with data-bs-target
+  <button class="icon-btn add-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+  data-bs-whatever="@mdo">
+    <div class="add-icon"></div>
+    <div class="btn-txt">Add a new Course</div>
   </button>
-
-  <!-- Enrollment Offcanvas -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasEnrollment" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Enroll a Student</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <form class="needs-validation" id="form" onsubmit="return false" novalidate>
-        <div class="mb-3">
-          <label for="selectStudent">Select a student</label>
-          <select class="form-select" aria-label="Default select example" id="selectStudent">
-          </select>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            This is not a valid option
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="selectCourse">Select a course</label>
-          <select class="form-select" aria-label="Default select example" id="selectCourse">
-          </select>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            This is not a valid option
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="selectGroup">Select a group</label>
-          <select class="form-select" aria-label="Default select example" id="selectGroup" aria-describedby="groupHelp">
-          </select>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            This is not a valid option
-          </div>
-        </div>
-        <div id="groupHelp" class="form-text">If the course doesn't have groups you will not able to do the enrollment</div>
-        <button class="btn btn-primary" type="button" id="btn-submit" style="margin-top: 10px;">Enroll</button>
-      </form>
-    </div>
-  </div>
-  <!-- End of Enrollment Offcanvas -->
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -111,12 +64,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             onclick="cleanModalCourse()"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body h-screen flex justify-center items-center">
+          <div class="form-text">All fields are required</div>
           <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label modalGreen"><strong>Code:</strong></label>
+              <input type="text" class="form-control" id="recipient-code">
+              <div id="conditionCode" class="form-text conditions">Code cannot be null</div>
+            </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label modalGreen"><strong>Name:</strong></label>
               <input type="text" class="form-control" id="recipient-name">
-              <p id="conditionName"> Name cannot be null*</p>
+              <!-- <p id="conditionName"> Name cannot be null*</p> -->
+              <div id="conditionName" class="form-text conditions">Name cannot be null</div>
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label modalGreen"><strong>Level:</strong></label>
@@ -126,18 +86,23 @@
                 <option value="A2">A2</option>
                 <option value="B1">B1</option>
                 <option value="B2">B2</option>
+                <option value="C1">C1</option>
+                <option value="C2">C2</option>
               </select>
-              <p id="conditionNameLevel">Choose one</p>
+              <!-- <p id="conditionNameLevel">Choose one</p> -->
+              <div id="conditionNameLevel" class="form-text conditions">Put here the url of the image you want</div>
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label modalGreen"> <strong>Image:</strong></label>
               <input type="text" class="form-control" id="recipient-Image">
-              <p id="conditionImage">Image cannot be null and image is url*</p>
+              <!-- <p id="conditionImage">Image cannot be null and image is url*</p> -->
+              <div id="conditionImage" class="form-text conditions">Put here the url of the image you want</div>
             </div>
             <div class="mb-3">
               <label for="message-text" class="col-form-label modalGreen"><strong>Description:</strong></label>
               <textarea class="form-control" id="message-Description"></textarea>
-              <p id="conditionDescription">Description cannot be null*</p>
+              <!-- <p id="conditionDescription">Description cannot be null*</p> -->
+              <div id="conditionDescription" class="form-text conditions">Description cannot be nul</div>
             </div>
             <div class="mb-3">
               <p id="wrongData" class="conditionDescriptionDisplay">We have a problem you enter wrong data.</p>
@@ -246,6 +211,68 @@
       </div>
     </div>
   </div>
+
+  <!-- Subject Modal -->
+  <div class="modal-container">
+
+  </div>
+  <div class="modal fade" id="subjectModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Subjects for <span id="curso"></span></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.reload()"></button>
+        </div>
+        <div class="modal-body">
+          <span>If you cannot select a subject, it is because this course has already created this subject.</span>
+          <!-- Inputs -->
+          <div class="container">
+            <div class="checkbox">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" value="Grammar" class="checkbox-input" id="Grammar"/>
+                <span class="checkbox-tile">
+                  <span>Grammar</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" value="Reading" class="checkbox-input" id="Reading"/>
+                <span class="checkbox-tile">
+                  <span>Reading</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" value="Listening" class="checkbox-input" id="Listening"/>
+                <span class="checkbox-tile">
+                  <span>Listening</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" value="Writing" class="checkbox-input" id="Writing"/>
+                <span class="checkbox-tile">
+                  <span>Writing</span>
+                </span>
+              </label>
+            </div>
+          </div>        
+        </div>
+        <!-- End of inputs -->
+        <div class="modal-footer">
+          
+          <button class="btn btn-primary" id="info">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of subject -->
 
 
   <!-- JavaScript Bundle with Popper -->

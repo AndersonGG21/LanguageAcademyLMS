@@ -3,9 +3,9 @@ function validateForm() {
   console.log(inputs);
   const patterns = {
     inputDoc: /.{8,}/,
-    username: /^[a-z\d]{5,12}$/i,
+    username: /^[a-z\d]{5,30}$/i,
     password: /^[\d\w@-]{8,20}$/i,
-    email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
+    email: /(\W|^)[\w.\-]{0,25}@(elpoli)\.edu.co(\W|$)/,
     phone: /.{10,}/,
   };
 
@@ -64,4 +64,9 @@ function showAlert(type, message, duration) {
         $(this).remove();
       });
   }
+}
+
+
+function validateRole(role) {
+  localStorage.role != role ? location.href = '401.html' : true;
 }

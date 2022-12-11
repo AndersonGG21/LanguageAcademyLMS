@@ -1,8 +1,9 @@
 $(document).ready(function () {
   loadCourses();
   offcanvasData();
-
   onChangeValidation();
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 });
 
 let groupCode;
@@ -56,16 +57,18 @@ async function loadCourses() {
   });
 
   const coursesHTML = await request.json();
+  console.log(coursesHTML)
 
   let list = "";
 
   for (const iterator of coursesHTML) {
+    // let btn = `<button class="btn btn-info" id="info" onclick=createSubject("${iterator[0]}")>Click</button>`
     let card =
       "<div class='card' style='width: 18rem'>\n\
                         <div class='card-left'>\n\
                             <div class='row g-0'>\n\
                             <div class='col-md-4 img-container'>\n\
-                            <img src='/imgs/ena1.png' class='img-fluid rounded-start' alt='...'/>\n\
+                            <img src='"+iterator[2]+"' class='img-fluid rounded-start' alt='...'/>\n\
                         </div>\n\
                         <div class='col-md-8'>\n\
                         <div class='card-body'>\n\
@@ -80,17 +83,41 @@ async function loadCourses() {
                         <button class='btn btn-danger' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample' onclick=loadGroups('" +
       iterator[0] +
       "')>Groups</button>\n\
-                        <button class='btn btn-dark' style='width: 200px;' data-bs-toggle='modal' data-bs-target='#ModalCourse" +
+                        <button id= 'subjectsBtn'class='btn btn-dark' style='width: 200px;' data-bs-toggle='modal' data-bs-target='#subjectModal' onclick=setCurso(\"" +
       iterator[0] +
-      "' data-bs-whatever='@mdo'>Subjects</button>\n\
+      '")>Subjects</button>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
                         </div>\n\
-                </div>";
+                </div>';
     list += card;
   }
   document.getElementById("prueba").innerHTML = list;
+}
+
+async function setCurso(curso) {
+  localStorage.curso = curso;
+  const subjects = ["Writing", "Grammar", "Listening", "Reading"];
+
+  $("#curso").html(curso);
+
+  const subjectsDB = await fetch("/api/subjects/" + localStorage.curso, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+
+  let response = await subjectsDB.json();
+
+  console.log(response)
+  for (const text of response) {
+    if (subjects.includes(text)) {
+      $(`#${text}`).attr("disabled", true);
+    }
+  }
 }
 
 async function assignTeacher(groupCode, idTeacher) {
@@ -133,6 +160,8 @@ async function getTeachers() {
 }
 
 async function prueba() {
+
+  
   const splitted = $("#selectTeacher :selected").text().split(" - ");
   if (splitted == "" || splitted == "Please select a teacher:") {
     alert("You must select a teacher");
@@ -144,13 +173,13 @@ async function prueba() {
 
 async function createGroup() {
   const splitted = $("#selectTeacherName :selected").text().split(" - ");
-  if (splitted == "" || splitted == "Please select a teacher:") {
-    alert("Esoge un teacher");
-  } else {
+
+  if ($("#groupCodeInput").val() == '' || $("#groupNameInput").val() == '' || splitted == "" || splitted == "Please select a teacher:") {
+    showAlert("warning", "You must complete the form", "2000")
+  }else {
     let teacher = {
       id: splitted[0],
     };
-
     let course = {
       code: courseCode,
     };
@@ -366,26 +395,26 @@ $("#btn-submit").click(async function (e) {
           "3000"
         );
       } else {
-          const enrollment = await fetch("/api/enrollment/", {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
+        const enrollment = await fetch("/api/enrollment/", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            course: { code: $("#selectCourse").val() },
+            group: {
+              groupCode: $("#selectGroup :selected").text().split("-")[0],
             },
-            body: JSON.stringify({
-              course: { code: $("#selectCourse").val() },
-              group: {
-                groupCode: $("#selectGroup :selected").text().split("-")[0],
-              },
-              student: { id: $("#selectStudent :selected").text().split("-")[0] },
-              status: "IN PROGRESS",
-            }),
-          });
-          if (enrollment.ok) {
-            showAlert("success", "Enrollment Done", "2000");
-          } else {
-            showAlert("danger", "Complete the form error", "2000");
-          }
+            student: { id: $("#selectStudent :selected").text().split("-")[0] },
+            status: "IN PROGRESS",
+          }),
+        });
+        if (enrollment.ok) {
+          showAlert("success", "Enrollment Done", "2000");
+        } else {
+          showAlert("danger", "Complete the form error", "2000");
+        }
       }
     }
   }

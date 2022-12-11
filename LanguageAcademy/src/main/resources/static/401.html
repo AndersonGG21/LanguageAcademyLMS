@@ -3,6 +3,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
   <link rel="stylesheet" href="/css/401.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
   <title>401</title>
 </head>
 
@@ -18,9 +20,7 @@
       <div class="message2">
         Access Denied/Forbidden
       </div>
-      <a href="index.html">
-        <button type="button" class="btn btn-outline-danger">Go Home</button>
-      </a>
+      <button type="button" class="btn btn-outline-danger" id="home">Go Home</button>
     </div>
     
   </div>
@@ -44,5 +44,11 @@
     console.log(shadow)
 
     text.style.textShadow = shadow;
+
+    $("#home").click(function (e) { 
+      e.preventDefault();
+      localStorage.clear()
+      location.href = "index.html"
+    });
   </script>
 </body>

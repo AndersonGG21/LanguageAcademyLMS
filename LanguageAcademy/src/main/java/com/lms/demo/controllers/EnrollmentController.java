@@ -22,13 +22,11 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 //import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,15 +55,13 @@ public class EnrollmentController {
     public void createEnrollment(@RequestBody Enrollment enrollment,  Map<String, Object> model) throws IOException, TemplateException, MessagingException{
         Student temp = studentDAO.getStudentOne(enrollment.getStudent().getId());
         enrollDAO.createEnrollment(enrollment);
-        model.put("name", temp.getName());
-        sendMail(enrollment, model, temp);
+        model.put("student", temp.getName());
+        model.put("course", enrollment.getCourse().getCode());
+        sendMail(enrollment, model, temp, "email-template.ftl", "Succesfully enrollment with Idioom");
     }
 
     @PostMapping(value = "/api/enrollments")
     public List<Enrollment> getHeader(@RequestBody Enrollment enroll){
-        
-       
-        
         return enrollDAO.getHeaders(enroll);
     }
 
@@ -78,18 +74,45 @@ public class EnrollmentController {
     public BigInteger getLostValidation(@RequestBody Enrollment e){
         return enrollDAO.getLostValidation(e);
     }
+    
+    @PostMapping(value = "/api/enrollment/v1")
+    public List<Enrollment> getEnrollment(@RequestBody Enrollment enroll){
+        return enrollDAO.getEnrollment(enroll);
+    }
+    
+    @PatchMapping(value = "/api/notes")
+    public void setNotes(@RequestBody Enrollment enrollment){
+        System.out.println(enrollment.getStudent().getEmail());
+        enrollDAO.setNotes(enrollment);
+    }
 
-    private void sendMail(Enrollment enrollment, Map<String, Object> model, Student st) throws MessagingException, IOException, TemplateException{
+    @PostMapping(value = "/api/approve")
+    public void approve(@RequestBody Enrollment enrollment, Map<String, Object> model) throws MessagingException, IOException, TemplateException{
+        enrollDAO.approve(enrollment);
+        Student tempStudent = studentDAO.getStudentOne(enrollment.getStudent().getId());
+        model.put("course", enrollment.getCourse().getCode());
+        model.put("student", tempStudent.getName());
+        sendMail(enrollment, model, tempStudent, "certificate-template.ftl", "Congratulations!");
+    }
+
+    @PostMapping(value = "/api/reprove")
+    public void reprove(@RequestBody Enrollment enrollment, Map<String, Object> model) throws MessagingException, IOException, TemplateException{
+        enrollDAO.reprove(enrollment);
+        Student tempStudent = studentDAO.getStudentOne(enrollment.getStudent().getId());
+        model.put("course", enrollment.getCourse().getCode());
+        model.put("student", tempStudent.getName());
+        sendMail(enrollment, model, tempStudent, "reprove-template.ftl", "Bad News!");
+    }
+
+    private void sendMail(Enrollment enrollment, Map<String, Object> model, Student st, String emailTemplate, String subject) throws MessagingException, IOException, TemplateException{
 
         final String emailToRecipient = st.getEmail();
-        final String emialSubject = "Succesfully enrollment with Idioom";
+        final String emialSubject = subject;
         MimeMessage message = javaMailSender.createMimeMessage();
         
         MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED);     
         
-        //helper.addAttachment("logo.png", new ClassPathResource("logo.png"));
-        
-        Template template = configuration.getTemplate("email-template.ftl");
+        Template template = configuration.getTemplate(emailTemplate);
         
         String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
         
@@ -98,7 +121,5 @@ public class EnrollmentController {
         helper.setSubject(emialSubject);
         
         javaMailSender.send(message);
-        
-        
     }
 }

@@ -4,6 +4,7 @@
  */
 package com.lms.demo.controllers;
 
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +19,18 @@ import com.lms.demo.models.Group;
 import com.lms.demo.models.Student;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
-import org.springframework.web.bind.annotation.PatchMapping;
-import java.util.HashMap;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import java.util.Map;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 /**
  *
  * @author Julian
@@ -30,6 +38,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 public class StudentController {
+
+    @Autowired(required=true)
+    JavaMailSender javaMailSender;
+    
+    @Autowired
+    Configuration configuration;
+    
 
     @Autowired
     private StudentDAO studentDAO;
@@ -75,11 +90,14 @@ public class StudentController {
     }
     
     @RequestMapping (value = "api/student", method = RequestMethod.POST)
-    public void registerStudent(@RequestBody Student student){
+    public void registerStudent(@RequestBody Student student, Map<String, Object> model) throws MessagingException, IOException, TemplateException{
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2d);
+        model.put("pass", student.getPassword());
         String hash = argon2.hash(1, 1024, 1, student.getPassword());
         student.setPassword(hash);
         studentDAO.regStudent(student);
+        model.put("email", student.getEmail());
+        sendMail(model, student, "new-account.ftl", "Account created");
     }
     
     @RequestMapping(value = "api/student/{id}" , method = RequestMethod.PATCH)
@@ -102,13 +120,33 @@ public class StudentController {
         return studentDAO.getCompletedCourses(email);
     }
     
-    @GetMapping(value = "/api/students-havent-seen/")
-    public List<Course> getCoursesHaventSeen(){
-        return studentDAO.getCoursesHaventSeen();
+    @GetMapping(value = "/api/students-havent-seen/{email}")
+    public List<Course> getCoursesHaventSeen(@PathVariable String email){
+        return studentDAO.getCoursesHaventSeen(email    );
     }
     
     @GetMapping(value = "/api/student/name/{email}")
     public String getName(@PathVariable String email){
         return studentDAO.getName(email);
+    }
+
+
+    private void sendMail(Map<String, Object> model, Student st, String emailTemplate, String subject) throws MessagingException, IOException, TemplateException{
+
+        final String emailToRecipient = st.getEmail();
+        final String emialSubject = subject;
+        MimeMessage message = javaMailSender.createMimeMessage();
+        
+        MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED);     
+        
+        Template template = configuration.getTemplate(emailTemplate);
+        
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+        
+        helper.setTo(emailToRecipient);
+        helper.setText(html, true);
+        helper.setSubject(emialSubject);
+        
+        javaMailSender.send(message);
     }
 }

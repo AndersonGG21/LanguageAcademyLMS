@@ -76,7 +76,7 @@
     <!-- Insert Modal -->
     <div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-centered-cente">
-            <div class="modal-content modal-content-width">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Insert Student Info</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
@@ -84,37 +84,63 @@
                 </div>
                 <div class="modal-body h-screen flex justify-center items-center">
                     <div class="form-text">All fields are required</div>
-                    <div class="input-group">
-                        <input type="text" class="input" required id="name" />
-                        <label for="name" class="input-label">Full Name  </label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" class="input" required id="document" />
-                        <label for="document" class="input-label">Document  </label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" class="input" required id="email" />
-                        <label for="email" class="input-label">Email  </label>
-                    </div>
-                    <div id="emailHelp" class="form-text">The email must be with the business domain</div>
-                    <div class="input-group">
-                        <input type="text" class="input" required id="phone" />
-                        <label for="phone" class="input-label">Phone  </label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" class="input" required id="address" />
-                        <label for="address" class="input-label">Address  </label>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" class="input" required id="pass" />
-                        <label for="pass" class="input-label">Password  </label>
-                    </div>
-                    <div id="passwordlHelp" class="form-text">Your password must contain 8 characters</div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="registerStudent()">Register
-                        Student</button>
+                    <form class="needs-validation" id="form1" onsubmit="return false" novalidate>
+                        <div class="mb-3">
+                          <label for="inputDoc" class="form-label">Document:</label>
+                          <input type="number" class="form-control" id="inputDoc"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+                          <div class="form-text">The document must be at least 10 characters long</div>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please, enter a valid Document
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="username" class="form-label">Name:</label>
+                          <input type="text" class="form-control" id="username" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please, enter a valid name
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email address:</label>
+                          <input type="email" class="form-control" id="email" required>
+                          <div id="emailHelp" class="form-text">Must be an institutional email address</div>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please, enter a valid email
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password" required>
+                          <div class="form-text">The password must be at least 8 characters long</div>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            The password must be at least 8 characters long
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="phone" class="form-label">Phone Number:</label>
+                          <input type="number" class="form-control" id="phone" required>
+                          <div class="form-text">The phone number must be 10 characters long</div>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            The phone number must be 10 characters long
+                          </div>
+                        </div>
+                        <button class="btn btn-primary" type="button" id="submitBtn">Register Student</button>
+                      </form>
                 </div>
             </div>
         </div>
@@ -166,10 +192,20 @@
     <!-- End of view Modal -->
     <h2 style="display: inline-block">Students</h2>
     <div class="d-flex justify-content-end " style="width:90%">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal">
-            Add a new Student</button>
+        <!-- <button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#insertModal">
+            Add a new Student</button> -->
+
+            <button class="icon-btn add-btn" data-bs-toggle="modal" data-bs-target="#insertModal">
+                <div class="add-icon"></div>
+                <div class="btn-txt">Add a new student</div>
+            </button>
+            <button class="btn btn-primary rounded" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnrollment"
+            aria-controls="offcanvasEnrollment">
+            Enrollments
+        </button>
     </div>
 
+    
     <div id="containerTableStudents" class="table-responsive">
         <table class="table mt-2" id="tableStudents">
             <thead>
@@ -191,12 +227,69 @@
 
         </div>
     </div>
+
+
+    <!-- Enrollment Offcanvas -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasEnrollment"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Enroll a Student</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form class="needs-validation" id="form" onsubmit="return false" novalidate>
+                <div class="mb-3">
+                    <label for="selectStudent">Select a student</label>
+                    <select class="form-select" aria-label="Default select example" id="selectStudent">
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This is not a valid option
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="selectCourse">Select a course</label>
+                    <select class="form-select" aria-label="Default select example" id="selectCourse">
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This is not a valid option
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="selectGroup">Select a group</label>
+                    <select class="form-select" aria-label="Default select example" id="selectGroup"
+                        aria-describedby="groupHelp">
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This is not a valid option
+                    </div>
+                </div>
+                <div id="groupHelp" class="form-text">If the course doesn't have groups you will not able to do the
+                    enrollment</div>
+                <button class="btn btn-primary" type="button" id="btn-submit" style="margin-top: 10px;">Enroll</button>
+            </form>
+        </div>
+    </div>
+    <div class="lds-ring" id="loader"><div></div><div></div><div></div><div></div>
+    <!-- End of Enrollment Offcanvas -->
+
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
         </script>
+    <!-- <script src="/js/admin-functions.js"></script> -->
     <script src="/js/admin-students.js"></script>
     <script src="/js/logout.js"></script>
+    <script src="/js/utils.js"></script>
+
 
     <!-- Custom alerts script -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

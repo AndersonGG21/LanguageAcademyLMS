@@ -1,5 +1,6 @@
 window.addEventListener("load", () =>{
     loadCanvas();
+    validateRole("STUDENT");
 })
 // let colores=["#146e18","#d90429"];//otra opcion
 // let colores=["#A9B1AA","#F63F61"];// otra opcion 

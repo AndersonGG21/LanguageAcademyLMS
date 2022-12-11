@@ -38,7 +38,7 @@ public class TeacherDAOImp implements TeacherDAO{
     
   
     public List<Student> getMyStudents(String email1){
-        String sqlQuery = "SELECT s.id, s.name, s.email, s.phone_number,s.address, e.enrollment_course, COUNT(e.enrollment_course) FROM `groups` g INNER JOIN `enrollments` e ON g.group_code=e.enrollment_group INNER JOIN `students` s ON e.enrollment_student=s.id INNER JOIN `teachers` t ON g.asigned_teacher=t.id WHERE t.email=? GROUP BY e.enrollment_course;";
+        String sqlQuery = "SELECT s.id, s.name, s.email, s.phone_number, e.enrollment_course,e.note1,e.note2,e.note3,COUNT(e.enrollment_course) FROM `groups` g INNER JOIN `enrollments` e ON g.group_code=e.enrollment_group INNER JOIN `students` s ON e.enrollment_student=s.id INNER JOIN `teachers` t ON g.asigned_teacher=t.id WHERE t.email=? GROUP BY e.enrollment_course, s.name;";
         Query query = entityManager.createNativeQuery(sqlQuery);
         query.setParameter(1, email1);
         return query.getResultList();

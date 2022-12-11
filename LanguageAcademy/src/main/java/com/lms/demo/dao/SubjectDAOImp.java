@@ -30,9 +30,10 @@ public class SubjectDAOImp implements SubjectDAO {
     }
 
     @Override
-    public List<Subject> getSubjects() {
-        String sqlQuery = "SELECT * FROM `subjects`";
+    public List<String> getSubjects(String course) {
+        String sqlQuery = "SELECT s.subject_name FROM `subjects` s WHERE s.course = ?";
         Query query = entityManager.createNativeQuery(sqlQuery);
+        query.setParameter(1, course);
         return query.getResultList();
     }
     

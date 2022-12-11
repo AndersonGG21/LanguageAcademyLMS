@@ -28,7 +28,7 @@ public interface StudentDAO {
     Student getStudentOne(String id);
     List<Course> getMyCourses(String email);
     List<Course> getCompletedCourses(String email);
-    List<Course> getCoursesHaventSeen();
+    List<Course> getCoursesHaventSeen(String email);
     void registerStudent(Student student);
     String getName(String email);
     
