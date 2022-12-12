@@ -1,5 +1,4 @@
 window.addEventListener("load", () =>{
-    // loadCanvas();
     getData();
     // validateRole("STUDENT");
 })
@@ -18,30 +17,41 @@ async function getData() {
         },
       });
     const note = await request.json();
-    const noteFilter = note.filter(element => element[9]==localStorage.email);
-    loadCanvas(noteFilter);
+    const noteFilter=[];
+    note.map((element)=>{
+        if(element[9]==localStorage.email){
+            noteFilter.push(element);
+        }
+    })
+    if(noteFilter.length>0){
+        loadCanvas(noteFilter);
+
+    }else{
+        noData();
+    }
+    
 
 }
-function reportSale(arrayCourse) {
-    // let colores=["#146e18","#d90429"];//otra opcion
-    //  let colores=["#A9B1AA","#F63F61"];// otra opcion 
-    // let colores=["#43546F","#F63F61"];//  la mejor 
-    // let colores=["#bcbce0","#F63F61"];
-    let colores=["#d8c0ee","#F63F61"];
-    // let colores=["#9764e9","#F63F61"];
-
-    // productValue=[10,2,8,4,13,2,3,13,2,4];
+function reportSale(arrayCourse,arrayCourseColor) {
     
-    // product=["Grammar","Pending","Listening","Pending","Reading ","Pending","Speaking","Pending","Wrinting","Pending"];
-    // labelsLanguages=["Grammar","Listening","Reading ","Speaking","Wrinting"];
-    labelsLanguages=["Grammar","Listening","Reading "];
-    // Value=[10,22];
+    let colores=["#d8c0ee","#F63F61"]; 
+    
+    
+    labelsLanguages=["Grammar","Reading","Listening"];
     Progress=["Succes","Failed or pending"];
-    dataSucces=[1,2,3,4,5,6];
-    dataPending=[9,5,4,3,2,1];
-
+    
     let k=0;
     arrayCourse.map((element)=>{
+        const courseAux=element[1].slice(0,-3);
+        for(let i=0;i<arrayCourseColor.length;i++){
+            if(arrayCourseColor[i]==courseAux){
+                if(i%2==0){
+                    colores=["#d8c0ee","#F63F61"]; 
+                }else{
+                    colores=["#9764e9","#F63F61"];
+                }
+            }
+        }
         let arrayAux=[];
         let arrayAuxWrog=[];
         arrayAux.push(element[4]);
@@ -57,7 +67,6 @@ function reportSale(arrayCourse) {
     })
    
     // generateBarPie(Progress,Value,colores,'MiGrafica');
-    // generatestackedBars(colores,labelsLanguages,dataSucces4,dataPending4,"MiGrafica2");
 }
 
 function generateBarChart(product,text,colores,value,id){
@@ -139,25 +148,27 @@ function generatestackedBars(color,labelsLanguages,dataSucces,dataPending,id) {
     let arrayCourse=[];
     let arrayCourseColor=[];
     filterArrayCourses(noteFilter,arrayCourse,arrayCourseColor);
-    
     let numCourse=arrayCourse.length;
-    let containerCanvas="<div>\n\
+    let containerCanvas2="<div>\n\
                 <h1>"+name +" reports</h1>\n\
                 <p>Here you can see reports of your grades</p>\n\
                 </div>";
 
-    let total=1;
+    document.getElementById("containerReport").innerHTML = containerCanvas2;
+    
+    let containerCanvas="";
     for(let i=0;i<numCourse;i++){
         let element="<div>\n\
-                        <h1>"+arrayCourse[i][1]+"</h1>\n\
-                        <h3>"+arrayCourse[i][2]+"</h3>\n\
+                        <h1>Course "+arrayCourse[i][1]+"</h1>\n\
+                        <h4>Group "+arrayCourse[i][2]+"</h4>\n\
+                        <h4>Status "+arrayCourse[i][7]+"</h4>\n\
                         <canvas id='MiGrafica"+i+"' width='100' height='100' class='canvasPie'> </canvas>\n\
                         </div>\n\
                     ";
         containerCanvas+=element;   
     }
     document.getElementById("containerReport2").innerHTML = containerCanvas;
-    reportSale(arrayCourse);
+    reportSale(arrayCourse,arrayCourseColor);
     
 
 }
@@ -187,4 +198,13 @@ function filterArrayCourses(noteFilter,arrayCourse,arrayCourseColor) {
     
 }
 
+
+function noData() {
+    let containerCanvas2="<div>\n\
+                <h1>You have no qualifications.</h1>\n\
+                <p>You must enroll in a course</p>\n\
+                </div>";
+
+    document.getElementById("containerReport").innerHTML = containerCanvas2;
+}
 

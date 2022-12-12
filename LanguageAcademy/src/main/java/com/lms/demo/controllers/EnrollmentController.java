@@ -126,7 +126,7 @@ public class EnrollmentController {
     }
     
     //@PostMapping(value = "/api/enrollments/all",method = RequestMethod.GET)
-    @RequestMapping(value = "/api/enrollments/all/{Email}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/enrollments/all", method = RequestMethod.GET)
     public List<Enrollment> getEnrollmentAll(){
         return enrollDAO.getEnrollmentAll();
     }
