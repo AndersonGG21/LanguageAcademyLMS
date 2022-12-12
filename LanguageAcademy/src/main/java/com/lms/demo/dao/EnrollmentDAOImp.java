@@ -127,4 +127,12 @@ public class EnrollmentDAOImp implements EnrollmentDAO {
         query.executeUpdate();
     }
     
+    
+    public List<Enrollment> getEnrollmentAll() {
+        //SELECT `enrollments`.*, `students`.*FROM `enrollments` LEFT JOIN `students` ON `enrollments`.`enrollment_student` = `students`.`id`;
+        String sql = "SELECT `enrollments`.*, `students`.*FROM `enrollments` LEFT JOIN `students` ON `enrollments`.`enrollment_student` = `students`.`id`";
+        Query query = entityManager.createNativeQuery(sql);
+        return query.getResultList();
+    }
+
 }

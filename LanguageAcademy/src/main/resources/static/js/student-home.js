@@ -18,6 +18,7 @@ async function loadCourses() {
 
     try {
         const response = await request.json(); 
+        
         if (response == '' || response == null) {
             alert("No hay datos")
         }
@@ -82,6 +83,7 @@ async function loadCompletedCourses(){
 
     try {
         const response = await request.json(); 
+        
         if (response == '' || response == null) {
             // alert("No hay datos")
             showAlert("warning", "You have not completed any course. Cheer up 😁", "4000")

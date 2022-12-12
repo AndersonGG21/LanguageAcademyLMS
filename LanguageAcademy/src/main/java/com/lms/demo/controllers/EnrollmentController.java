@@ -29,6 +29,8 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -122,4 +124,11 @@ public class EnrollmentController {
         
         javaMailSender.send(message);
     }
+    
+    //@PostMapping(value = "/api/enrollments/all",method = RequestMethod.GET)
+    @RequestMapping(value = "/api/enrollments/all/{Email}", method = RequestMethod.GET)
+    public List<Enrollment> getEnrollmentAll(){
+        return enrollDAO.getEnrollmentAll();
+    }
+
 }
