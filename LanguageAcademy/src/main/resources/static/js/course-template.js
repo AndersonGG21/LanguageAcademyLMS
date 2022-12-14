@@ -37,7 +37,7 @@ $(".dropdown-item").click(function (e) {
 });
 
 function randomNumber() {
-  return Math.ceil(Math.random() * (6 - 0) + 0);
+  return Math.ceil(Math.random() * (5 - 0) + 0);
 }
 
 async function validateQuizP1() {
@@ -45,16 +45,11 @@ async function validateQuizP1() {
   let nota2 = 0;
   let nota3 = 0;
 
-  $("#sandwich-q").val().toLowerCase() == "a"
-    ? (nota1 += 1.666)
-    : (nota1 = nota1);
-  $("#ambulance-q").val().toLowerCase() == "an"
-    ? (nota1 += 1.666)
-    : (nota1 = nota1);
-  $("#moon-q").val().toLowerCase() == "the"
-    ? (nota1 += 1.666)
-    : (nota1 = nota1);
-  console.log(Math.round(nota1));
+  $("#sandwich-q").val().toLowerCase() == "a" ? (nota1 += 1.666) : (nota1 = nota1);
+  $("#ambulance-q").val().toLowerCase() == "an" ? (nota1 += 1.666): (nota1 = nota1);
+  $("#moon-q").val().toLowerCase() == "the" ? (nota1 += 1.666) : (nota1 = nota1);
+  nota1 = Math.ceil(nota1);
+  console.log(nota1)
 
   $("#james1-q").val().toLowerCase() == "flight attendant"
     ? (nota2 += 2.5)
