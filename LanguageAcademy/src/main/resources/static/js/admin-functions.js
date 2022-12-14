@@ -135,6 +135,12 @@ async function assignTeacher(groupCode, idTeacher) {
       teacher,
     }),
   });
+
+  request.ok ? showAlert("success", "Teacher Assigned 😀", "2000") : showAlert("danger", "There was an error", "2000");
+
+  // setTimeout(() => {
+  //   location.reload();
+  // }, 4000);
 }
 
 async function getTeachers() {
@@ -167,7 +173,9 @@ async function prueba() {
     alert("You must select a teacher");
   } else {
     assignTeacher(groupCode, splitted[0]);
-    location.reload();
+    setTimeout(() => {
+      location.reload();
+    }, 4000);
   }
 }
 
@@ -199,9 +207,13 @@ async function createGroup() {
     });
 
     if (request.status == 200) {
-      alert("Group Created");
+      showAlert("success","Group Created 😁", "4000")
       $("#grgroupTableBody").toggle();
       $("#grgroupTableBody").toggle();
+
+      setTimeout(() => {
+        location.reload();
+      }, 4000);
     }
   }
 }

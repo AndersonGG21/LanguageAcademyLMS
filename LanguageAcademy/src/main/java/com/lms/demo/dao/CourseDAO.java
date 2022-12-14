@@ -18,4 +18,5 @@ public interface CourseDAO {
     void deleteCourse(String courseCode);
     void createCourse(Course course);
     Course getCourse(String courseCode);
+    String getImg(String courseCode);
 }

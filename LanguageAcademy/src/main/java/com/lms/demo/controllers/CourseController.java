@@ -46,4 +46,9 @@ public class CourseController {
     public void createCourse(@RequestBody Course course){ 
         courseDAO.createCourse(course);
     }
+
+    @GetMapping(value = "/api/courses/img/{code}")
+    public String getImg(@PathVariable String code){
+        return courseDAO.getImg(code);
+    }
 }

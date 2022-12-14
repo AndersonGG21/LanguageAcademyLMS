@@ -6,6 +6,7 @@
 package com.lms.demo.dao;
 
 import com.lms.demo.models.Course;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,14 +20,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Transactional
-
+@SuppressWarnings("unchecked")
 public class CourseDAOImp implements CourseDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
     
     @Override
-    @SuppressWarnings("unchecked")
     public List<Course> getCourses() {
         String sqlQuery = "SELECT * FROM `courses`";
         Query query = entityManager.createNativeQuery(sqlQuery);
@@ -47,6 +47,13 @@ public class CourseDAOImp implements CourseDAO {
     @Override
     public Course getCourse(String courseCode) {
         return entityManager.find(Course.class, courseCode);
+    }
+
+    @Override
+    public String getImg(String courseCode) {
+        String sqlQuery = "SELECT c.course_img FROM `courses` c WHERE c.course_code = ?";
+        Query query = entityManager.createNativeQuery(sqlQuery).setParameter(1, courseCode);
+        return (String) query.getSingleResult();
     }
 
     

@@ -114,6 +114,10 @@ async function createSubject(subject) {
     });
 
     request.ok ? showAlert("success", "Subject created", "4000") : showAlert("danger", "There was an error", "4000")
+
+    setTimeout(() => {
+        location.reload();
+    }, 4000);
 }
 
 
