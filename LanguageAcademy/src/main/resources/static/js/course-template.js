@@ -5,6 +5,8 @@ $(document).ready(function () {
   getImg();
 });
 
+
+ 
 const iframes = [
   '<iframe width="560" height="315" src="https://www.youtube.com/embed/1lVqOZ4FKQw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
   '<iframe width="560" height="315" src="https://www.youtube.com/embed/jxsg3EN_EZs?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -172,6 +174,7 @@ async function loadData() {
 
   const response = await request.json();
   console.log(response);
+ 
 
   let a = `<a href="${response[0][5]}"target="_blank">Pensum<a>`;
   console.log(a.includes("null"));

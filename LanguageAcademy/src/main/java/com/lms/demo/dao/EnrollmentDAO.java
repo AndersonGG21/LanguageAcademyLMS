@@ -25,4 +25,6 @@ public interface EnrollmentDAO {
     public List<Enrollment> getEnrollment(Enrollment enrollment);
     public void approve(Enrollment enrollment);
     public void reprove(Enrollment enrollment);
+    
+    public List<Enrollment> getEnrollmentAll();
 }

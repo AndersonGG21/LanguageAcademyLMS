@@ -4,9 +4,6 @@
 }
 
 .divReport2{
-    /* display: grid;
-    justify-content: center;
-    align-items: center; */
     width: 300px;
 }
 
@@ -19,4 +16,9 @@
     align-items: center;
     justify-content: center;
     grid-template-columns:repeat(auto-fill,500px)
+}
+.containerName{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
